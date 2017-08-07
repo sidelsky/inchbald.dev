@@ -2,7 +2,7 @@
 /*
 Plugin Name: Must use plugin loader
 Description: Must use plugin loader - is a must have plugin which loads other must use plugins.
-Author: Breakthrough Media
+Author: Errol Sidelsky
 Version: 1.0
 */
 
