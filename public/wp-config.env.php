@@ -27,18 +27,18 @@
 switch ($hostname) {
 
     // Staging
-    case 'staging.mathevies.com':
+    case 'staging.inchbald.co.uk':
         define('WP_ENV', 'staging');
         break;
 
     // Production
-   	case 'mathevies.com':
+   	case 'inchbald.co.uk':
         define('WP_ENV', 'production');
         break;
 
     // Development
-    case 'mathevies.dev':
+    case 'inchbald.dev':
     default:
         define('WP_ENV', 'development');
-        
+
 }

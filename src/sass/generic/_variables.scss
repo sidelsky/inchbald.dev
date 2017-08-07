@@ -18,7 +18,11 @@ $primary-font-weight: normal;
 $primary-link-color: $black;
 
 //Font faces
-//@include web-font('Nexa', '../fonts/', 'Nexa_Free_Bold-webfont');
+$font-name: 'roboto';
+$font-primary--light: '#{$font-name}-light-webfont', Helvetica, Arial, sans-serif;
+$font-primary--regular: '#{$font-name}-regular-webfont', Helvetica, Arial, sans-serif;
+$font-primary--medium: '#{$font-name}-medium-webfont', Helvetica, Arial, sans-serif;
+$font-primary--bold: '#{$font-name}-bold-webfont', Helvetica, Arial, sans-serif;
 
 //Breakpoints
 $small: 540px;

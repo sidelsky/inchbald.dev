@@ -1,0 +1,9 @@
+/*------------------------------------*\
+    FONT FAMILIES
+\*------------------------------------*/
+$font-name: 'roboto';
+$file-path: 'fonts/#{$font-name}/';
+@include web-font('#{$font-name}-light-webfont', '#{$file-path}', '#{$font-name}-light-webfont');
+@include web-font('#{$font-name}-regular-webfont', '#{$file-path}', '#{$font-name}-regular-webfont');
+@include web-font('#{$font-name}-medium-webfont', '#{$file-path}', '#{$font-name}-medium-webfont');
+@include web-font('#{$font-name}-bold-webfont', '#{$file-path}', '#{$font-name}-bold-webfont');

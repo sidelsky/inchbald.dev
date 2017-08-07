@@ -1,4 +1,12 @@
 @charset "UTF-8";
+/* aspect ratio  | padding-bottom value
+--------------|----------------------
+    16:9      |       56.25%
+    4:3       |       75%
+    3:2       |       66.66%
+    8:5       |       62.5%
+
+@include aspect-ratio(3,2); */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -351,8 +359,6 @@ textarea {
 [type='url']:focus,
 [type='color']:focus,
 textarea:focus {
-  background-color: #999;
-  color: #fff;
   outline: none;
   box-shadow: none;
 }
@@ -537,20 +543,9 @@ body {
   color: #000;
   font-size: 1rem;
   font-smoothing: antialiased;
+  font-family: "roboto-light-webfont", Helvetica, Arial, sans-serif;
   line-height: 1.33;
   text-rendering: optimizeLegibility;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ol,
-ul,
-p {
-  margin: 0;
 }
 
 h1,
@@ -561,24 +556,19 @@ h4 {
   margin-bottom: 2rem;
 }
 
-h3,
-h4 {
-  text-transform: uppercase;
-}
-
 p,
 li {
   font-size: 1.5rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
   p,
   li {
     font-size: 1.5rem;
   }
 }
 
-@media (min-width: 80em) {
+@media (min-width: 1024px) {
   p,
   li {
     font-size: 1.5rem;
@@ -589,13 +579,13 @@ h1 {
   font-size: 3rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
   h1 {
     font-size: 4rem;
   }
 }
 
-@media (min-width: 80em) {
+@media (min-width: 1024px) {
   h1 {
     font-size: 6rem;
   }
@@ -605,13 +595,13 @@ h2 {
   font-size: 2rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
   h2 {
     font-size: 3rem;
   }
 }
 
-@media (min-width: 80em) {
+@media (min-width: 1024px) {
   h2 {
     font-size: 4rem;
   }
@@ -621,13 +611,13 @@ h3 {
   font-size: 2rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
   h3 {
     font-size: 2.5rem;
   }
 }
 
-@media (min-width: 80em) {
+@media (min-width: 1024px) {
   h3 {
     font-size: 3rem;
   }
@@ -637,13 +627,13 @@ h4 {
   font-size: 2rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
   h4 {
     font-size: 2rem;
   }
 }
 
-@media (min-width: 80em) {
+@media (min-width: 1024px) {
   h4 {
     font-size: 2rem;
   }
@@ -654,20 +644,61 @@ blockquote {
   margin: 0;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
   blockquote {
     font-size: 2rem;
   }
 }
 
-@media (min-width: 80em) {
+@media (min-width: 1024px) {
   blockquote {
     font-size: 2rem;
   }
+}
+
+/*------------------------------------*    FONT FAMILIES
+\*------------------------------------*/
+@font-face {
+  font-family: "roboto-light-webfont";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/roboto/roboto-light-webfont.eot");
+  src: url("fonts/roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/roboto/roboto-light-webfont.woff") format("woff"), url("fonts/roboto/roboto-light-webfont.ttf") format("truetype"), url("fonts/roboto/roboto-light-webfont.svgroboto-light-webfont") format("svg");
+}
+
+@font-face {
+  font-family: "roboto-regular-webfont";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/roboto/roboto-regular-webfont.eot");
+  src: url("fonts/roboto/roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/roboto/roboto-regular-webfont.woff") format("woff"), url("fonts/roboto/roboto-regular-webfont.ttf") format("truetype"), url("fonts/roboto/roboto-regular-webfont.svgroboto-regular-webfont") format("svg");
+}
+
+@font-face {
+  font-family: "roboto-medium-webfont";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/roboto/roboto-medium-webfont.eot");
+  src: url("fonts/roboto/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/roboto/roboto-medium-webfont.woff") format("woff"), url("fonts/roboto/roboto-medium-webfont.ttf") format("truetype"), url("fonts/roboto/roboto-medium-webfont.svgroboto-medium-webfont") format("svg");
+}
+
+@font-face {
+  font-family: "roboto-bold-webfont";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/roboto/roboto-bold-webfont.eot");
+  src: url("fonts/roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/roboto/roboto-bold-webfont.woff") format("woff"), url("fonts/roboto/roboto-bold-webfont.ttf") format("truetype"), url("fonts/roboto/roboto-bold-webfont.svgroboto-bold-webfont") format("svg");
 }
 
 html {
   box-sizing: border-box;
+  font: 62.5%;
+  min-height: 100%;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -682,6 +713,14 @@ html {
   text-shadow: none;
 }
 
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
 img {
   max-width: 100%;
 }
@@ -689,15 +728,6 @@ img {
 ul,
 ol {
   padding-left: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-ol,
-ul {
-  margin-bottom: 0;
 }
 
 hr {
@@ -727,4 +757,54 @@ blockquote .quote::after {
 
 a {
   text-decoration: none;
+}
+
+.row::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container--fill {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1170px;
+  width: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .container--fill {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .container--fill {
+    padding: 0 10px;
+  }
 }
