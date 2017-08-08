@@ -69,17 +69,17 @@
 
 			border-left: solid 1px $grey--light;
 			border-right: solid 1px $grey--light;
-			text-align: center;
-			width: 83px;
 			position: relative;
+			text-align: center;
+			width: 71px;
 
 			.search {
 
-				display: block;
-				top: 0;
 				bottom: 0;
-				width: 100%;
+				display: block;
 				position: absolute;
+				top: 0;
+				width: 100%;
 
 				&:hover {
 
