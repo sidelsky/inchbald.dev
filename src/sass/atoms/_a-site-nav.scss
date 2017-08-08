@@ -1,0 +1,46 @@
+.a-site-nav {
+
+    //Menu
+    &__menu {
+
+        font-size: 0;
+        lost-flex-container: row;
+
+        //Menu item
+        .menu-item {
+
+            lost-column: 1/4 flex 0px;
+            border-left: solid 1px $grey--light;
+            text-align: center;
+
+            &:nth-child(n+5) {
+
+                border-top: solid 1px $grey--light;
+
+            }
+
+            //Link
+            a {
+
+                display: block;
+                padding: $spacing--tiny;
+
+            }
+
+        }
+
+        //Current menu item
+        .current-menu-item {
+
+            a {
+
+                background-color: $grey--darker;
+                color: $white;
+
+            }
+
+        }
+
+    }
+
+}

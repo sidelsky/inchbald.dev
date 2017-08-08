@@ -1,39 +1,44 @@
-// Animate with SASS
+//Animate with SASS
 @import '../../bower_components/animatewithsass/properties';
-// @import '../../bower_components/animatewithsass/_fading-entrances/fading-entrances';
+//@import '../../bower_components/animatewithsass/_fading-entrances/fading-entrances';
 
-// Breakpoints
+//Breakpoints
 @import '../../bower_components/compass-breakpoint/stylesheets/breakpoint';
 
-// Iconfont
-// @import "icons";
+//Iconfont
+//@import "icons";
 
-// Spritesheet
-// @import "sprites";
+//Spritesheet
+//@import "sprites";
 
-// Generic
+//Generic
 @import 'generic/functions';
 @import 'generic/mixins';
 
-// Variables
+//Variables
 @import 'generic/variables';
 
-// Reset
+//Reset
 @import 'vendor/reset';
 
-// Vendors
+//Vendors
 @import 'vendor/hamburger';
 
-// Base
+//Base
 @import 'base/button';
 @import 'base/form';
 @import 'base/table';
 @import 'base/typography';
 @import 'base/fonts';
 @import 'base/general';
+@import 'base/icon';
 
-// Partials
+//Partials
 @import 'partials/app';
 @import 'partials/header';
 @import 'partials/footer';
 @import 'partials/homepage';
+
+//Atoms
+@import 'atoms/a-site-nav';
+@import 'atoms/a-search-form';

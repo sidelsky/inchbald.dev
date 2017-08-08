@@ -6,8 +6,7 @@
 "use strict";
 var $ = require('jquery');
 
-//Require our modules
-//EXAMPLE
-require('./sample');
-
-//TO GET THEME PATH use site_data.themePath
+/*------------------------------------*\
+	Sticky logo
+\*------------------------------------*/
+require('./search-form');

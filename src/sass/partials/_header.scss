@@ -1,3 +1,221 @@
-.page-header{
-	
+.page-header {
+
+	background-color: $grey--dark;
+	lost-flex-container: row;
+	flex-wrap: nowrap;
+	font-family: $font-primary--regular;
+
+	a {
+
+		@include set-font-size(1.2rem, 1.2rem, 1.2rem);
+		text-transform: uppercase;
+		color: $grey--lighter;
+		transition: all .2s ease;
+		letter-spacing: 1px;
+
+		//Hover
+		&:hover {
+
+			background-color: $grey--darker;
+			color: $white;
+
+		}
+
+	}
+
+	//Column
+	&__column {
+
+		//Logo
+		&--logo {
+
+			padding: 0 $spacing--small;
+			width: 50%;
+
+			a {
+
+				display: inline-block;
+				padding-top: 7px;
+				position: absolute;
+
+				&:hover {
+
+					background-color: transparent;
+
+				}
+
+			}
+
+		}
+
+		//Navigation
+		&--navigation {
+
+			flex-direction: column;
+			width: 60%;
+
+		}
+
+		// Search and portal
+		&--search-portal {
+
+			display: flex;
+			width: 250px;
+
+		}
+
+		//Search
+		&--search {
+
+			border-left: solid 1px $grey--light;
+			border-right: solid 1px $grey--light;
+			text-align: center;
+			width: 83px;
+			position: relative;
+
+			.search {
+
+				display: block;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				position: absolute;
+
+				&:hover {
+
+					cursor: pointer;
+
+				}
+
+			}
+
+		}
+
+		//login
+		&--portal {
+
+			width: 160px;
+
+		}
+
+	}
+
+
 }
+
+//Icons
+.icon {
+
+	//Inchbald logo
+	&--inchbald-logo {
+
+		height: 60px;
+		width: 160px;
+
+	}
+
+	//Search
+	&--search {
+
+		font-size: 2rem;
+		@include absolute-center();
+		position: absolute;
+
+	}
+
+
+	//Close
+	&--close {
+
+		font-size: 2rem;
+		@include absolute-center();
+		position: absolute;
+
+	}
+
+	//Lock
+	&--lock {
+
+		font-size: 1.1rem;
+		left: 0;
+
+	}
+
+}
+
+
+//Login - Student and Alumni portal
+.login {
+
+	lost-flex-container: row;
+
+	&__item {
+
+		width: 100%;
+
+		a {
+
+			display: block;
+			padding: $spacing--tiny 0 $spacing--tiny $spacing--tiny;
+
+			&:hover {
+
+				.icon {
+
+					fill: $white;
+
+				}
+
+			}
+
+		}
+
+		//Student
+		&--student {
+
+			border-bottom: solid 1px $grey--light;
+
+		}
+
+	}
+
+}
+
+
+// .login {
+//
+// 	border-right: solid 1px $grey--light;
+//
+// 	//Item
+// 	&__item {
+//
+// 		padding: $spacing--tiny 0 $spacing--tiny $spacing--tiny;
+//
+// 		//Student
+// 		&--student {
+//
+// 			border-bottom: solid 1px $grey--light;
+//
+// 		}
+//
+// 	}
+//
+// 	//Link
+// 	&__portal {
+//
+// 		color: $grey--lighter;
+// 		display: inline-block;
+// 		vertical-align: middle;
+// 		width: 100%;
+// 		position: relative;
+//
+// 		//Hover
+// 		&:hover {
+//
+// 			color: $white;
+//
+// 		}
+//
+// 	}
+//
+// }

@@ -21,38 +21,82 @@
 
 		<div class="page-wrap">
 
-			<header class="page-header">
+			<div class="header-wrapper" id="header-wrapper">
 
-				<?php if (is_front_page()): ?>
+				<div class="a-search-form" id="search-form">
+					<?php include 'searchform.php'; ?>
+				</div>
 
-					<h1 class="page-header__logo">
-						<a href="<?php echo home_url(); ?>">
-							<?php bloginfo('name'); ?>
-						</a>
-					</h1>
+				<header class="page-header">
 
-				<?php else: ?>
-
-					<div class="page-header__logo">
-						<a href="<?php echo home_url(); ?>">
-							<?php bloginfo('name'); ?>
+					<!-- Logo -->
+					<div class="page-header__column page-header__column--logo">
+						<a href="<?php echo home_url(); ?>" class="inchbald-logo--link">
+							<svg class="icon icon--inchbald-logo">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-inchbald"></use>
+							</svg>
 						</a>
 					</div>
 
-				<?php endif; ?>
+					<!-- Navigation -->
+					<div class="page-header__column page-header__column--navigation">
+						<nav class="a-site-nav">
+							<?php
+								//Nav Menu
+								$args = array(
+									'container' =>	'',
+									'echo' =>	true,
+									'items_wrap' =>	'<ul class="a-site-nav__menu">%3$s</ul>'
+								);
+								wp_nav_menu($args);
+							?>
+						</nav>
+					</div>
 
-			</header>
+					<!-- Search and Portal-->
+					<div class="page-header__column page-header__column--search-portal">
 
-			<nav class="site-nav">
+						<div class="page-header__column page-header__column--search">
+							<a href="#" class="search" id="search-button">
 
-				<?php
-					//Nav Menu
-					$args = array(
-						'container'       =>	'',
-						'echo'            =>	true,
-						'items_wrap'			=>	'<ul class="site-nav__menu">%3$s</ul>'
-					);
-					wp_nav_menu($args);
-				?>
+								<svg class="icon icon--search" id="search-icon">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-search" viewBox="0 0 32 32"></use>
+								</svg>
 
-			</nav>
+								<svg class="icon icon--close" id="close-icon">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-close" viewBox="0 0 32 32"></use>
+								</svg>
+
+							</a>
+						</div>
+
+						<div class="page-header__column page-header__column--portal">
+							<ul class="login">
+
+								<li class="login__item login__item--student">
+									<a href="#" class="login__portal">
+										<svg class="icon icon--lock">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-lock" viewBox="0 0 32 32"></use>
+										</svg>
+										Student Portal
+									</a>
+								</li>
+
+								<li class="login__item">
+									<a href="#" class="login__portal">
+										<svg class="icon icon--lock">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-lock" viewBox="0 0 32 32"></use>
+										</svg>
+										Alumni Portal
+									</a>
+								</li>
+
+							</ul>
+						</div>
+
+					</div>
+
+
+				</header>
+
+			</div>
