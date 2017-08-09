@@ -10,3 +10,9 @@ var $ = require('jquery');
 	Sticky logo
 \*------------------------------------*/
 require('./search-form');
+
+
+/*------------------------------------*\
+	Hero carousel
+\*------------------------------------*/
+require('./hero-carousel');

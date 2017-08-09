@@ -23,6 +23,7 @@
 
 //Vendors
 @import 'vendor/hamburger';
+@import 'vendor/slick';
 
 //Base
 @import 'base/button';
@@ -42,3 +43,6 @@
 //Atoms
 @import 'atoms/a-site-nav';
 @import 'atoms/a-search-form';
+
+//Organsisms
+@import 'organisms/o-hero-carousel';

@@ -8,7 +8,7 @@ var $ = require('jquery'),
 
 (function() {
 
-    // init
+    // Init
     function init() {
 
         searchClick();

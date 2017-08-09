@@ -26,5 +26,8 @@
     "ease": "^1.1.0",
     "d3-ease": "^0.7.0",
     "echojs": "^1.7.3"
+  },
+  "devDependencies": {
+    "slick-carousel": "^1.7.1"
   }
 }
