@@ -1,0 +1,146 @@
+.o-event-banner {
+
+    background-color: rgba($orange, .9);
+    color: $white;
+    @include clearfix;
+    font-family: $font-primary--regular;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin-top: -63px;
+
+    //Details
+    &__details {
+
+        margin: 0;
+        @include set-font-size(1.8rem, 1.8rem, 1.8rem);
+        padding: $spacing--small 0;
+    }
+
+    //Title
+    &__title {
+
+        //font-family: $font-primary--regular;
+
+    }
+
+    //Date
+    &__date {
+
+        //font-family: $font-primary--light;
+
+    }
+
+
+    //Inner
+    &__inner {
+
+        padding: 0 $spacing--large;
+        text-align: center;
+
+    }
+
+    //Column
+    &__column {
+
+        //padding: $spacing--tiny 0;
+
+        //Narrow
+        &--narrow {
+
+            lost-column: 2/12 0 0px;
+
+        }
+
+        //Wide
+        &--wide {
+
+            lost-column: 10/12 0 0px;
+            position: relative;
+
+        }
+
+    }
+
+    //Event
+    &__event {
+
+        display: inline-block;
+        position: relative;
+
+    }
+
+    //Controls
+    &__controls {
+
+        @include set-font-size(2.4rem, 2.4rem, 2.4rem);
+        display: inline-block;
+        z-index: 1;
+
+        //Next
+        &--next {
+
+            @include vertical-align(absolute, 50%);
+            right: 0;
+
+        }
+
+        //Prev
+        &--prev {
+
+            @include vertical-align(absolute, 50%);
+
+        }
+
+        .icon {
+
+            transition: all .2s ease;
+        }
+
+        &:hover {
+
+            cursor: pointer;
+
+            .icon {
+
+                transform: scale(1.2);
+
+            }
+
+        }
+
+
+    }
+
+
+    //Link
+    &__button {
+
+        border: solid 1px $white;
+        padding: $spacing--x-tiny $spacing--small;
+        margin-left: $spacing--large;
+        color: $white;
+        @include set-font-size(1.3rem, 1.3rem, 1.3rem);
+        position: relative;
+
+        .icon {
+
+            @include set-font-size(1rem, 1rem, 1rem);
+            transform: translateX(4px);
+            transition: all .2s ease;
+
+        }
+
+        &:hover {
+
+            .icon {
+
+                transform: translateX(10px);
+
+            }
+
+        }
+
+    }
+
+}

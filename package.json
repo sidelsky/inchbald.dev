@@ -8,7 +8,8 @@
     "svg-segment": "./bower_components/segment/dist/segment.min.js",
     "ease": "./bower_components/segment/js/ease.min.js",
     "echo": "./bower_components/echojs/dist/echo.min.js",
-    "slickJS": "./bower_components/slick-carousel/slick/slick.js"
+    "slickJS": "./bower_components/slick-carousel/slick/slick.js",
+    "remodal": "./bower_components/remodal/dist/remodal.js"
   },
   "browserify-shim": {
     "skrollr": {
@@ -19,6 +20,9 @@
     },
     "slickJS": {
         "exports": "slickJS"
+    },
+    "remodal": {
+        "exports": "remodal"
     },
     "ease": {
       "exports": "ease"

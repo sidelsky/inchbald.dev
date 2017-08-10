@@ -5,18 +5,11 @@
 
     position: relative;
 
-    //Inner
-    &__inner {
-
-
-
-    }
-
     //Background image
     &__background-image {
 
         overflow: hidden;
-        height: calc(100vh - 71px);
+        height: calc(100vh - 177px);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
@@ -32,7 +25,7 @@
 .o-hero-carousel__content {
 
     @include vertical-align(absolute, 30%);
-    background-color: rgba($grey--darker, .85);
+    background-color: rgba($grey--dark, .6);
     color: $white;
     left: $spacing--large;
     outline: 0;
@@ -47,7 +40,7 @@
     //Content
     &__wrapper {
 
-        padding: $spacing--small;
+        padding: $spacing--tiny $spacing--small $spacing--small;
 
     }
 
@@ -73,8 +66,8 @@
 .o-hero-carousel__controls {
 
     @include set-font-size(1.1rem, 1.1rem, 1.1rem);
-    border-top: solid 1px $grey;
-    color: $grey--lighter;
+    border-top: solid 1px $stroke--light;
+    color: $white;
     display: table;
     text-align: center;
     text-transform: uppercase;
@@ -87,7 +80,7 @@
 
         a {
 
-            color: $grey--lighter;
+            color: currentColor;
             display: block;
             padding: $spacing--tiny $spacing--small;
 
@@ -98,12 +91,18 @@
 
             }
 
+            .icon {
+
+                margin-right: $spacing--x-tiny;
+
+            }
+
         }
 
         &--arrow {
 
             width: 30px;
-            border-right: solid 1px $grey;
+            border-right: solid 1px $stroke--light;
 
         }
 
@@ -133,8 +132,105 @@
 
 }
 
+//Prev button
 .o-hero-carousel__controls__navigation--prev {
 
     transform: rotate(180deg);
+
+}
+
+
+//Call to action
+.o-hero-carousel {
+
+    &__ctas {
+
+        @include vertical-align(absolute, 80%);
+        color: $white;
+        z-index: 1;
+        width: 100%;
+
+    }
+
+    &__ctas-inner {
+
+        lost-flex-container: row;
+
+    }
+
+    &__cta {
+
+        lost-column: 6/12 flex;
+        color: $white;
+        padding: $spacing--small;
+        min-height: 140px;
+        position: relative;
+        box-shadow: 0px 0px 20px 0px rgba($black, .4);
+        transition: all .2s ease;
+
+        &--garden-design {
+
+            background-color: $green;
+
+            &:hover {
+
+                background-color: $green--dark;
+
+            }
+
+        }
+
+        &--interior-design {
+
+            background-color: $blue;
+
+            &:hover {
+
+                background-color: $blue--dark;
+
+            }
+
+        }
+
+
+        &:hover {
+
+            .o-hero-carousel__cta-link {
+
+                transform: translateX(0px);
+
+            }
+
+        }
+
+    }
+
+    //Title
+    &__cta-title {
+
+        margin: 0;
+        @include set-font-size(2.4rem, 2.4rem, 2.4rem);
+
+    }
+
+    //Link
+    &__cta-link {
+
+        @include set-font-size(1.4rem, 1.4rem, 1.4rem);
+        bottom: $spacing--small;
+        position: absolute;
+        right: $spacing--small;
+        transform: translateX(-10px);
+        transition: all .2s ease;
+
+        .icon {
+
+            @include set-font-size(.9rem, .9rem, .9rem);
+            margin-left: $spacing--x-tiny;
+
+        }
+
+    }
+
 
 }

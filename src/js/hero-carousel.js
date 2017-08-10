@@ -21,6 +21,10 @@ var slick = require('slickJS');
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 asNavFor: $heroCarouselBackgroundImage,
+                fade: true,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                cssEase: 'linear',
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',
                 nextArrow: '.o-hero-carousel__controls__navigation--next',
             });
@@ -30,6 +34,8 @@ var slick = require('slickJS');
         */
         $heroCarouselBackgroundImage.slick({
             infinite: true,
+            fade: true,
+            cssEase: 'linear',
             slidesToShow: 1,
             slidesToScroll: 1,
             asNavFor: $heroCarouselControls,

@@ -28,6 +28,7 @@
     "echojs": "^1.7.3"
   },
   "devDependencies": {
-    "slick-carousel": "^1.7.1"
+    "slick-carousel": "^1.7.1",
+    "remodal": "^1.1.1"
   }
 }

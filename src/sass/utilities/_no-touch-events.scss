@@ -1,0 +1,24 @@
+// if no touch event
+.no-touchevents {
+
+    a[href^="tel:"] {
+
+        text-decoration: none!important;
+
+            &:hover {
+
+                cursor: default;
+                color: $color--myrtle!important;
+
+                &:after {
+                    // bottom: -10px;
+                    // content: '';
+                    display: none;
+                }
+
+            }
+
+    }
+
+
+}

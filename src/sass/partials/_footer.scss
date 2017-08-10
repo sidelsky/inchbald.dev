@@ -1,3 +1,104 @@
 .page-footer{
-	
+
+	background-color: $grey--dark;
+	color: $white;
+	@include set-font-size(1.3rem, 1.3rem, 1.3rem);
+	color: $grey--lighter;
+
+
+	//Logo
+	.icon--inchbald-logo {
+
+		width: 130px;
+		height: 61px;
+		margin: $spacing--x-tiny 0;
+
+	}
+
+	a {
+
+		display: inline-block;
+		color: currentColor;
+
+		&:hover {
+
+			color: $white;
+
+		}
+
+	}
+
+	//Columns
+	&__columns {
+
+		display: table;
+		width: 100%;
+
+	}
+
+	//Column
+	&__column {
+
+		display: table-cell;
+
+	}
+
+	&__copyright {
+
+		@include set-font-size(1.1rem, 1.1rem, 1.1rem);
+		border-top: solid 1px $stroke;
+		padding: $spacing--tiny;
+		text-align: center;
+
+	}
+
+
+}
+
+//Footer navigation
+.footer-navigation {
+
+	//Item
+	&__item {
+
+		color: $white;
+		margin-right: $spacing--small;
+
+		&:hover {
+
+			text-decoration: underline;
+
+		}
+
+	}
+
+}
+
+//Social navigation
+.social-navigation {
+
+	@include set-font-size(1.6rem, 1.6rem, 1.6rem);
+	text-align: right;
+
+	//Item
+	&__item {
+
+		color: $white;
+		margin-right: $spacing--small;
+
+		&:hover {
+
+			text-decoration: underline;
+			cursor: pointer;
+
+		}
+
+		&:last-child {
+
+			margin-right: 0;
+
+		}
+
+	}
+
 }

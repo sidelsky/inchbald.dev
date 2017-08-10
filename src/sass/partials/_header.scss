@@ -30,7 +30,7 @@
 		&--logo {
 
 			padding: 0 $spacing--small;
-			width: 50%;
+			width: 60%;
 
 			a {
 
@@ -67,8 +67,8 @@
 		//Search
 		&--search {
 
-			border-left: solid 1px $grey--light;
-			border-right: solid 1px $grey--light;
+			border-left: solid 1px $stroke;
+			border-right: solid 1px $stroke;
 			position: relative;
 			text-align: center;
 			width: 71px;
@@ -173,49 +173,10 @@
 		//Student
 		&--student {
 
-			border-bottom: solid 1px $grey--light;
+			border-bottom: solid 1px $stroke;
 
 		}
 
 	}
 
 }
-
-
-// .login {
-//
-// 	border-right: solid 1px $grey--light;
-//
-// 	//Item
-// 	&__item {
-//
-// 		padding: $spacing--tiny 0 $spacing--tiny $spacing--tiny;
-//
-// 		//Student
-// 		&--student {
-//
-// 			border-bottom: solid 1px $grey--light;
-//
-// 		}
-//
-// 	}
-//
-// 	//Link
-// 	&__portal {
-//
-// 		color: $grey--lighter;
-// 		display: inline-block;
-// 		vertical-align: middle;
-// 		width: 100%;
-// 		position: relative;
-//
-// 		//Hover
-// 		&:hover {
-//
-// 			color: $white;
-//
-// 		}
-//
-// 	}
-//
-// }

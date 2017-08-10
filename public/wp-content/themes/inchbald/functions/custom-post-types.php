@@ -6,17 +6,17 @@
 
 	function createPostTypes() {
 
-		//Post type
+		//Post type - Events
 		create_post_type(
 			array(
-				'name' => NULL,
-				'singular_name' => NULL,
-				'has_archive' => FALSE,
+				'name' => 'Events',
+				'singular_name' => 'Event',
+				'has_archive' => true,
 				'rewrite' => array(
 					'slug' => NULL,
 					'with_front' => TRUE
 				),
-				'menu_icon' =>  'dashicons-admin-users',
+				'menu_icon' =>  'dashicons-admin-site',
 				'menu_position' => 5,
 				'supports' => array(
 					'title',

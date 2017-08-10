@@ -31,11 +31,7 @@
 
 					<!-- Logo -->
 					<div class="page-header__column page-header__column--logo">
-						<a href="<?php echo home_url(); ?>" class="inchbald-logo--link">
-							<svg class="icon icon--inchbald-logo">
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-inchbald"></use>
-							</svg>
-						</a>
+						<?php include 'partials/inchbald-logo.php'; ?>
 					</div>
 
 					<!-- Navigation -->
@@ -150,7 +146,7 @@
 
 							//Watch video
 							echo '<div class="o-hero-carousel__controls__column">';
-								echo '<a href="#">
+								echo '<a href="#video-model">
 								<svg class="icon">
 									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-play" viewBox="0 0 32 32"></use>
 								</svg>
@@ -158,7 +154,21 @@
 								</a>';
 							echo '</div>';
 						echo '</div>';
+					echo '</div>';
 
+					//Carousel CTA's
+					echo '<div class="o-hero-carousel__ctas">';
+						echo '<div class="u-max-width-container u-max-width-container--tiny o-hero-carousel__ctas-inner">';
+							echo '<a href="#" class="o-hero-carousel__cta o-hero-carousel__cta--garden-design">';
+								echo '<h2 class="o-hero-carousel__cta-title">Garden Design<br>Courses</h2>';
+								echo '<span class="o-hero-carousel__cta-link">View courses <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-arrow" viewBox="0 0 32 32"></use></svg></span>';
+							echo '</a>';
+
+							echo '<a href="#" class="o-hero-carousel__cta o-hero-carousel__cta--interior-design">';
+								echo '<h2 class="o-hero-carousel__cta-title">Garden Design<br>Courses</h2>';
+								echo '<span class="o-hero-carousel__cta-link">View courses <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-arrow" viewBox="0 0 32 32"></use></svg></span>';
+							echo '</a>';
+						echo '</div>';
 					echo '</div>';
 
 					//Hero carousel background image
@@ -174,6 +184,7 @@
 
 							endwhile;
 						endif;
+
 
 					echo '</div>';
 				echo '</div>';

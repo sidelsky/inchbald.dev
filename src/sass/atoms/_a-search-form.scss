@@ -10,7 +10,7 @@
         @include set-font-size(3rem, 3rem, 3rem);
         background-color: $grey--dark;
         border: 0;
-        border-bottom: solid 1px $grey--light;
+        border-bottom: solid 1px $stroke;
         color: $grey--lighter;
         font-family: $font-primary--light;
         height: 77px;

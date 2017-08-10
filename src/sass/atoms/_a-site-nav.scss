@@ -10,12 +10,12 @@
         .menu-item {
 
             lost-column: 1/4 flex 0px;
-            border-left: solid 1px $grey--light;
+            border-left: solid 1px $stroke;
             text-align: center;
 
             &:nth-child(n+5) {
 
-                border-top: solid 1px $grey--light;
+                border-top: solid 1px $stroke;
 
             }
 
