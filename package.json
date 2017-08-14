@@ -10,6 +10,7 @@
         "echo": "./bower_components/echojs/dist/echo.min.js",
         "slickJS": "./bower_components/slick-carousel/slick/slick.js",
         "remodal": "./bower_components/remodal/dist/remodal.js",
+        "dynamics": "./bower_components/dynamics.js/lib/dynamics.js",
         "froogaloop": "./bower_components/froogaloop2/froogaloop.js"
     },
     "browserify-shim": {
@@ -25,7 +26,9 @@
         "froogaloop": {
             "exports": "froogaloop"
         },
-
+        "dynamics": {
+            "exports": "dynamics"
+        },
         "remodal": {
             "exports": "remodal"
         },

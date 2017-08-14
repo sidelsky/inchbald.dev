@@ -62,25 +62,60 @@ table {
 }
 
 /* -----------------------------------------------------------------------------
-
-  HAMBURGER ICONS COMPONENT
-
+HAMBURGER ICONS COMPONENT
 ----------------------------------------------------------------------------- */
 /**
- * Toggle Switch Globals
- *
- * All switches should take on the class `c-hamburger` as well as their
- * variant that will give them unique properties. This class is an overview
- * class that acts as a reset for all versions of the icon.
- */
+* Toggle Switch Globals
+*
+* All switches should take on the class `c-hamburger` as well as their
+* variant that will give them unique properties. This class is an overview
+* class that acts as a reset for all versions of the icon.
+*/
+.c-hamburger__container {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c-hamburger__container::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  transition: all .3s ease;
+}
+
+@media (min-width: 1280px) {
+  .c-hamburger__container {
+    display: none;
+  }
+}
+
+body.is-active .c-hamburger__container::after {
+  transform: translate3d(-50%, -50%, 0) scale(7);
+  opacity: 1;
+}
+
 .c-hamburger {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
   display: block;
   position: relative;
   overflow: hidden;
-  margin: 0;
   padding: 0;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   font-size: 0;
   text-indent: -9999px;
   -webkit-appearance: none;
@@ -90,14 +125,15 @@ table {
   border-radius: none;
   border: 0;
   cursor: pointer;
+  z-index: 1;
   transition: background 0.3s;
 }
 
 .c-hamburger span {
-  background: white;
+  background: #fff;
   display: block;
   position: absolute;
-  top: 8px;
+  top: 11px;
   left: 0;
   right: 0;
   height: 2px;
@@ -107,8 +143,8 @@ table {
   outline: none;
 }
 
-.c-hamburger span::before,
-.c-hamburger span::after {
+.c-hamburger span::after,
+.c-hamburger span::before {
   position: absolute;
   display: block;
   left: 0;
@@ -119,19 +155,19 @@ table {
 }
 
 .c-hamburger span::before {
-  top: -6px;
+  top: -9px;
 }
 
 .c-hamburger span::after {
-  bottom: -6px;
+  bottom: -9px;
 }
 
 /**
- * Style 1
- *
- * Rotating hamburger icon (rot), that simply rotates 90 degrees when activated.
- * Nothing too fancy, simple transition.
- */
+* Style 1
+*
+* Rotating hamburger icon (rot), that simply rotates 90 degrees when activated.
+* Nothing too fancy, simple transition.
+*/
 .c-hamburger--rot {
   background-color: #28aadc;
 }
@@ -141,32 +177,27 @@ table {
 }
 
 /* active state, i.e. menu open */
-.c-hamburger--rot.is-active {
+.c-hamburger--rot.is_active {
   background-color: #166888;
 }
 
-.c-hamburger--rot.is-active span {
+.c-hamburger--rot.is_active span {
   transform: rotate(90deg);
 }
 
 /**
- * Style 2
- *
- * Hamburger to 'x' (htx). Takes on a hamburger shape, bars slide
- * down to center and transform into an 'x'.
- */
+* Style 2
+*
+* Hamburger to 'x' (htx). Takes on a hamburger shape, bars slide
+* down to center and transform into an 'x'.
+*/
 .c-hamburger--htx {
-  background-color: #ff3264;
+  background-color: transparent;
 }
 
-.c-hamburger--htx span {
-  transition: background 0s 0.3s;
-}
-
-.c-hamburger--htx span::before,
-.c-hamburger--htx span::after {
+.c-hamburger--htx span::after,
+.c-hamburger--htx span::before {
   transition-duration: 0.3s, 0.3s;
-  transition-delay: 0.3s, 0s;
 }
 
 .c-hamburger--htx span::before {
@@ -177,126 +208,31 @@ table {
   transition-property: bottom, transform;
 }
 
-/* active state, i.e. menu open */
-.c-hamburger--htx.is-active {
-  background-color: #cb0032;
+body.is-active {
+  /* active state, i.e. menu open */
 }
 
-.c-hamburger--htx.is-active span {
+body.is-active .c-hamburger--htx {
+  background-color: transparent;
+}
+
+body.is-active .c-hamburger--htx span {
   background: none;
 }
 
-.c-hamburger--htx.is-active span::before {
+body.is-active .c-hamburger--htx span::before {
   top: 0;
   transform: rotate(45deg);
 }
 
-.c-hamburger--htx.is-active span::after {
+body.is-active .c-hamburger--htx span::after {
   bottom: 0;
   transform: rotate(-45deg);
 }
 
-.c-hamburger--htx.is-active span::before,
-.c-hamburger--htx.is-active span::after {
+body.is-active .c-hamburger--htx span::after,
+body.is-active .c-hamburger--htx span::before {
   transition-delay: 0s, 0.3s;
-}
-
-/**
- * Style 3
- *
- * Hamburger to left-arrow (htla). Hamburger menu transforms to a left-pointing
- * arrow. Usually indicates an off canvas menu sliding in from left that
- * will be close on re-click of the icon.
- */
-.c-hamburger--htla {
-  background-color: #32dc64;
-}
-
-.c-hamburger--htla span {
-  transition: transform 0.3s;
-}
-
-.c-hamburger--htla span::before {
-  transform-origin: top right;
-  transition: transform 0.3s, width 0.3s, top 0.3s;
-}
-
-.c-hamburger--htla span::after {
-  transform-origin: bottom right;
-  transition: transform 0.3s, width 0.3s, bottom 0.3s;
-}
-
-/* active state, i.e. menu open */
-.c-hamburger--htla.is-active {
-  background-color: #19903c;
-}
-
-.c-hamburger--htla.is-active span {
-  transform: rotate(180deg);
-}
-
-.c-hamburger--htla.is-active span::before,
-.c-hamburger--htla.is-active span::after {
-  width: 50%;
-}
-
-.c-hamburger--htla.is-active span::before {
-  top: 0;
-  transform: translateX(11px) translateY(1px) rotate(45deg);
-}
-
-.c-hamburger--htla.is-active span::after {
-  bottom: 0;
-  transform: translateX(11px) translateY(-1px) rotate(-45deg);
-}
-
-/**
- * Style 4
- *
- * Hamburger to right-arrow (htra). Hamburger menu transforms to a
- * right-pointing arrow. Usually indicates an off canvas menu sliding in from
- * right that will be close on re-click of the icon.
- */
-.c-hamburger--htra {
-  background-color: #ff9650;
-}
-
-.c-hamburger--htra span {
-  transition: transform 0.3s;
-}
-
-.c-hamburger--htra span::before {
-  transform-origin: top left;
-  transition: transform 0.3s, width 0.3s, top 0.3s;
-}
-
-.c-hamburger--htra span::after {
-  transform-origin: bottom left;
-  transition: transform 0.3s, width 0.3s, bottom 0.3s;
-}
-
-/* active state, i.e. menu open */
-.c-hamburger--htra.is-active {
-  background-color: #e95d00;
-}
-
-.c-hamburger--htra.is-active span {
-  transform: rotate(180deg);
-}
-
-.c-hamburger--htra.is-active span::before,
-.c-hamburger--htra.is-active span::after {
-  width: 50%;
-}
-
-.c-hamburger--htra.is-active span::before {
-  top: 0;
-  transform: translateX(-2px) translateY(1px) rotate(-45deg);
-}
-
-.c-hamburger--htra.is-active span::after {
-  bottom: 0;
-  transform: translateX(-2px) translateY(-1px) rotate(45deg);
 }
 
 /* Slider */
@@ -1396,17 +1332,21 @@ a {
   width: 1em;
 }
 
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
 .page-header {
   background-color: rgba(77, 77, 77, 0.95);
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  lost-flex-container: row;
   flex-wrap: nowrap;
   font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
-  left: 0;
-  lost-flex-container: row;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 2;
+  height: 71px;
 }
 
 .page-header a {
@@ -1434,8 +1374,15 @@ a {
 }
 
 .page-header__column--logo {
-  padding: 0 2rem;
-  width: 60%;
+  padding: 0 0 0 2rem;
+  width: 80%;
+}
+
+@media (min-width: 1024px) {
+  .page-header__column--logo {
+    width: 60%;
+    padding: 0 2rem;
+  }
 }
 
 .page-header__column--logo a {
@@ -1463,7 +1410,19 @@ a {
   border-right: solid 1px #5A5A5A;
   position: relative;
   text-align: center;
-  width: 71px;
+  width: 20%;
+}
+
+@media (min-width: 768px) {
+  .page-header__column--search {
+    width: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-header__column--search {
+    width: 71px;
+  }
 }
 
 .page-header__column--search .search {
@@ -1669,6 +1628,105 @@ a {
 
 .social-navigation__item:last-child {
   margin-right: 0;
+}
+
+.primary-site-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .primary-site-nav {
+    display: block;
+  }
+}
+
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  background-color: red;
+  height: 100%;
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 5rem;
+  position: fixed;
+  /* Stay in place */
+  transform: translateX(-100%);
+  transition: all ease-in-out .3s;
+  /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+  width: 100%;
+  z-index: 2;
+  /* Sit on top */
+}
+
+@media (min-width: 540px) {
+  .overlay {
+    font-size: 2.5rem;
+  }
+  .overlay .button, .overlay input[type='submit'] {
+    font-size: 2.5rem;
+  }
+}
+
+.overlay__content {
+  position: relative;
+  width: 100%;
+  /* 100% width */
+  text-align: center;
+  /* Centered text/links */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.overlay .button, .overlay input[type='submit'] {
+  opacity: 0;
+  transition: opacity .3s ease-in-out .6s;
+  font-size: 2.8rem;
+}
+
+.mobile-navigation {
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+.mobile-navigation .menu-item {
+  border-top: solid 1px black;
+  display: block;
+  font-size: 5vw;
+  line-height: 3.5;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 540px) {
+  .mobile-navigation .menu-item {
+    font-size: 2.5rem;
+  }
+}
+
+.mobile-navigation .menu-item a {
+  color: #fff;
+  display: inline-block;
+}
+
+.mobile-navigation .menu-item--telephone, .mobile-navigation .menu-item--button {
+  display: none;
+  visibility: hidden;
+}
+
+.mobile-navigation .current-menu-item a {
+  font-weight: 700;
+}
+
+.mobile-navigation .current-menu-item a::after {
+  bottom: 0;
+}
+
+body.is-active .overlay {
+  transform: translateX(0);
+}
+
+body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
+  opacity: 1;
 }
 
 .a-site-nav__menu {

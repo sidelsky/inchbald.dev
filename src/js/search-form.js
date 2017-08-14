@@ -16,7 +16,7 @@ var $ = require('jquery'),
     }
 
     var visible = cssClasses.isVisible,
-        $searchIcon = $('#search-button'),
+        $searchIcon = $('[data-search-button]'),
         $searchForm = $('#search-form'),
         $headerWrapper = $('#header-wrapper'),
         $searchFormInput = $('#search-form input');
@@ -24,9 +24,11 @@ var $ = require('jquery'),
     function searchClick() {
 
         $searchIcon.on('click', function(event) {
+
             event.preventDefault();
             $headerWrapper.toggleClass(visible);
             $searchFormInput.focus();
+
         });
 
     }

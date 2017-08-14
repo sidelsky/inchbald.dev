@@ -22,6 +22,11 @@ require('./hero-carousel');
 require('./event-banner');
 
 /*------------------------------------*\
+	Mobile navigaton
+\*------------------------------------*/
+require('./mobile-navigation');
+
+/*------------------------------------*\
 	remodal
 \*------------------------------------*/
 require('./remodal');

@@ -1,15 +1,21 @@
+.header-wrapper {
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	box-shadow: 0 0 20px 0 rgba($black, .4);
+
+}
+
 .page-header {
 
 	background-color: rgba($grey--dark, .95);
-	box-shadow: 0 0 20px 0 rgba($black, .4);
+	lost-flex-container: row;
 	flex-wrap: nowrap;
 	font-family: $font-primary--regular;
-	left: 0;
-	lost-flex-container: row;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 2;
+	height: 71px;
 
 	a {
 
@@ -34,8 +40,15 @@
 		//Logo
 		&--logo {
 
-			padding: 0 $spacing--small;
-			width: 60%;
+			padding: 0 0 0 $spacing--small ;
+			width: 80%;
+
+			@include breakpoint($large) {
+
+				width: 60%;
+				padding: 0 $spacing--small;
+
+			}
 
 			a {
 
@@ -76,7 +89,19 @@
 			border-right: solid 1px $stroke;
 			position: relative;
 			text-align: center;
-			width: 71px;
+			width: 20%;
+
+			@include breakpoint($medium) {
+
+				width: 10%;
+
+			}
+
+			@include breakpoint($large) {
+
+				width: 71px;
+
+			}
 
 			.search {
 

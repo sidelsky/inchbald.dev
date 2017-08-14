@@ -1,0 +1,134 @@
+// Desktop navigation
+.primary-site-nav {
+
+    display: none;
+
+    // Desktop
+    @include breakpoint($large) {
+
+        display: block;
+
+    }
+
+}
+
+.overlay {
+
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    background-color: red;
+    height: 100%;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: $spacing--x-large;
+    position: fixed; /* Stay in place */
+    transform: translateX(-100%);
+    transition: all ease-in-out .3s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    width: 100%;
+    z-index: 2; /* Sit on top */
+
+    @include breakpoint($small) {
+        font-size: 2.5rem;
+
+        .button {
+
+            font-size: 2.5rem;
+
+        }
+
+    }
+
+
+    &__content {
+
+        position: relative;
+        width: 100%; /* 100% width */
+        text-align: center; /* Centered text/links */
+        @include vertical-align();
+
+    }
+
+    // cta button
+    .button {
+
+        opacity: 0;
+        transition: opacity .3s ease-in-out .6s;
+        font-size: 2.8rem;
+
+    }
+
+}
+
+
+
+// navigation
+.mobile-navigation {
+
+    margin-top: $spacing--small;
+
+    padding: 0 $spacing--small;
+
+    .menu-item {
+
+        border-top: solid 1px darken($black, 5%);
+        display: block;
+        font-size: 5vw;
+        line-height: 3.5;
+        margin: 0;
+        padding: 0;
+
+        @include breakpoint($small) {
+
+            font-size: 2.5rem;
+
+        }
+
+        a {
+
+            color: $white;
+            display: inline-block;
+
+        }
+
+        &--telephone, &--button {
+
+            display: none;
+            visibility: hidden;
+
+        }
+
+    }
+
+    .current-menu-item {
+
+        a {
+
+            font-weight: 700;
+
+            &::after {
+
+                bottom: 0;
+
+            }
+
+        }
+
+    }
+
+}
+
+
+// Is open
+body.is-active {
+
+    .overlay {
+
+        transform: translateX(0);
+
+        .button {
+
+            opacity: 1;
+
+        }
+
+    }
+
+}
