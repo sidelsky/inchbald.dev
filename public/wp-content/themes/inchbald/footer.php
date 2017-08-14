@@ -19,19 +19,28 @@
 
 			<div class="page-footer__column">
 				<nav class="social-navigation">
+					<!-- Social icon -->
 					<a href="#" class="social-navigation__item">
 						<svg class="icon">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-facebook" viewBox="0 0 32 32"></use>
 						</svg>
 					</a>
+					<!-- Social icon -->
 					<a href="#" class="social-navigation__item">
 						<svg class="icon">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-twitter" viewBox="0 0 32 32"></use>
 						</svg>
 					</a>
+					<!-- Social icon -->
 					<a href="#" class="social-navigation__item">
 						<svg class="icon">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-insta" viewBox="0 0 32 32"></use>
+						</svg>
+					</a>
+					<!-- Social icon -->
+					<a href="#" class="social-navigation__item">
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-pint" viewBox="0 0 32 32"></use>
 						</svg>
 					</a>
 				</nav>

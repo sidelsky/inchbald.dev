@@ -10,17 +10,52 @@ var slick = require('slickJS');
 
 (function($){
 
-    var $eventBanner = $('[data-event-banner]');
+    var $window = $(window),
+        slicked = null,
+        desktop = 1024,
+        tablet = 768,
+        mobile = 540;
+
+        function init() {
+            windowWidth();
+        }
+
 
         /**
         * Event banner
         */
-        $eventBanner.slick({
+        function createSlick(){
+            $('[data-event-banner]').not('.slick-initialized').slick({
                 infinite: true,
+                dots: false,
                 slidesToShow: 1,
                 slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                cssEase: 'linear',
                 prevArrow: '.o-event-banner__controls--prev',
                 nextArrow: '.o-event-banner__controls--next',
+
+                responsive: [
+                {
+                  breakpoint: 480,
+                  settings: {
+                    arrows: false,
+                    slidesToShow: 1,
+                    dots: true
+                  }
+                }
+              ]
+
             });
+        }
+
+
+        createSlick();
+
+        //Now it will not throw error, even if called multiple times.
+        $(window).on( 'resize', createSlick );
+
+
 
 }(jQuery));

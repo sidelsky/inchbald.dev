@@ -2,8 +2,15 @@
 
 	background-color: $grey--dark;
 	color: $white;
-	@include set-font-size(1.3rem, 1.3rem, 1.3rem);
+	@include set-font-size(1.6rem, 1.6rem, 1.6rem);
 	color: $grey--lighter;
+	padding: $spacing--small;
+
+	@include breakpoint($small) {
+
+		padding: 0 $spacing--small;
+
+	}
 
 
 	//Logo
@@ -39,7 +46,16 @@
 	//Column
 	&__column {
 
-		display: table-cell;
+		display: block;
+		text-align: center;
+
+		@include breakpoint($small) {
+
+			display: table-cell;
+			text-align: left;
+			width: 33.333%;
+
+		}
 
 	}
 
@@ -47,7 +63,7 @@
 
 		@include set-font-size(1.1rem, 1.1rem, 1.1rem);
 		border-top: solid 1px $stroke;
-		padding: $spacing--tiny;
+		padding: $spacing--small;
 		text-align: center;
 
 	}
@@ -57,6 +73,15 @@
 
 //Footer navigation
 .footer-navigation {
+
+	padding: $spacing--tiny 0;
+
+	@include breakpoint($small) {
+
+		padding: 0;
+		text-align: center;
+
+	}
 
 	//Item
 	&__item {
@@ -78,7 +103,14 @@
 .social-navigation {
 
 	@include set-font-size(1.6rem, 1.6rem, 1.6rem);
-	text-align: right;
+	text-align: center;
+	padding: $spacing--small;
+
+	@include breakpoint($small) {
+
+		text-align: right;
+
+	}
 
 	//Item
 	&__item {

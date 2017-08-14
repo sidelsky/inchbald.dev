@@ -25,6 +25,7 @@ var slick = require('slickJS');
                 autoplay: true,
                 autoplaySpeed: 4000,
                 cssEase: 'linear',
+                accessibility: false,
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',
                 nextArrow: '.o-hero-carousel__controls__navigation--next',
             });
@@ -38,6 +39,7 @@ var slick = require('slickJS');
             cssEase: 'linear',
             slidesToShow: 1,
             slidesToScroll: 1,
+            accessibility: false,
             asNavFor: $heroCarouselControls,
             arrows: false
         });

@@ -9,10 +9,16 @@
     &__background-image {
 
         overflow: hidden;
-        height: calc(100vh - 177px);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        height: 360px;
+
+        @include breakpoint($small) {
+
+            height: calc(100vh - 126px);
+
+        }
 
     }
 
@@ -24,13 +30,20 @@
 */
 .o-hero-carousel__content {
 
-    @include vertical-align(absolute, 30%);
-    background-color: rgba($grey--dark, .6);
+    background-color: $grey--dark;
     color: $white;
     left: $spacing--large;
     outline: 0;
-    width: 380px;
+    width: 100%;
     z-index: 1;
+
+    @include breakpoint($small) {
+
+        @include vertical-align(absolute, 30%);
+        background-color: rgba($grey--dark, .6);
+        width: 380px;
+
+    }
 
     //Inner
     &__inner {
@@ -145,10 +158,17 @@
 
     &__ctas {
 
-        @include vertical-align(absolute, 80%);
         color: $white;
-        z-index: 1;
+        padding: $spacing--small;
         width: 100%;
+        z-index: 1;
+
+        @include breakpoint($small) {
+
+            @include vertical-align(absolute, 80%);
+            padding: 0 $spacing--small;
+
+        }
 
     }
 
@@ -160,10 +180,10 @@
 
     &__cta {
 
-        lost-column: 6/12 flex;
+        lost-column: 12/12 flex;
         color: $white;
         padding: $spacing--small;
-        min-height: 140px;
+        min-height: 160px;
         position: relative;
         box-shadow: 0px 0px 20px 0px rgba($black, .4);
         transition: all .2s ease;
@@ -174,7 +194,7 @@
 
             &:hover {
 
-                background-color: $green--dark;
+                //background-color: $green--dark;
 
             }
 
@@ -186,7 +206,7 @@
 
             &:hover {
 
-                background-color: $blue--dark;
+                //background-color: $blue--dark;
 
             }
 
@@ -198,6 +218,24 @@
             .o-hero-carousel__cta-link {
 
                 transform: translateX(0px);
+
+            }
+
+        }
+
+        &:first-child {
+
+            margin-bottom: $spacing--small;
+
+        }
+
+        @include breakpoint($small) {
+
+            lost-column: 6/12 flex;
+
+            &:first-child {
+
+                margin-bottom: 0;
 
             }
 

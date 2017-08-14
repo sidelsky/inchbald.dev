@@ -1,14 +1,19 @@
 .page-header {
 
-	background-color: $grey--dark;
-	lost-flex-container: row;
+	background-color: rgba($grey--dark, .95);
+	box-shadow: 0 0 20px 0 rgba($black, .4);
 	flex-wrap: nowrap;
 	font-family: $font-primary--regular;
+	left: 0;
+	lost-flex-container: row;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 2;
 
 	a {
 
 		@include set-font-size(1.2rem, 1.2rem, 1.2rem);
-		text-transform: uppercase;
 		color: $grey--lighter;
 		transition: all .2s ease;
 		letter-spacing: 1px;

@@ -1,6 +1,275 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
+// Init style shamelessly stolen from jQuery http://jquery.com
+var Froogaloop = (function(){
+    // Define a local copy of Froogaloop
+    function Froogaloop(iframe) {
+        // The Froogaloop object is actually just the init constructor
+        return new Froogaloop.fn.init(iframe);
+    }
+
+    var eventCallbacks = {},
+        hasWindowEvent = false,
+        isReady = false,
+        slice = Array.prototype.slice,
+        playerOrigin = '*';
+
+    Froogaloop.fn = Froogaloop.prototype = {
+        element: null,
+
+        init: function(iframe) {
+            if (typeof iframe === "string") {
+                iframe = document.getElementById(iframe);
+            }
+
+            this.element = iframe;
+
+            return this;
+        },
+
+        /*
+         * Calls a function to act upon the player.
+         *
+         * @param {string} method The name of the Javascript API method to call. Eg: 'play'.
+         * @param {Array|Function} valueOrCallback params Array of parameters to pass when calling an API method
+         *                                or callback function when the method returns a value.
+         */
+        api: function(method, valueOrCallback) {
+            if (!this.element || !method) {
+                return false;
+            }
+
+            var self = this,
+                element = self.element,
+                target_id = element.id !== '' ? element.id : null,
+                params = !isFunction(valueOrCallback) ? valueOrCallback : null,
+                callback = isFunction(valueOrCallback) ? valueOrCallback : null;
+
+            // Store the callback for get functions
+            if (callback) {
+                storeCallback(method, callback, target_id);
+            }
+
+            postMessage(method, params, element);
+            return self;
+        },
+
+        /*
+         * Registers an event listener and a callback function that gets called when the event fires.
+         *
+         * @param eventName (String): Name of the event to listen for.
+         * @param callback (Function): Function that should be called when the event fires.
+         */
+        addEvent: function(eventName, callback) {
+            if (!this.element) {
+                return false;
+            }
+
+            var self = this,
+                element = self.element,
+                target_id = element.id !== '' ? element.id : null;
+
+
+            storeCallback(eventName, callback, target_id);
+
+            // The ready event is not registered via postMessage. It fires regardless.
+            if (eventName != 'ready') {
+                postMessage('addEventListener', eventName, element);
+            }
+            else if (eventName == 'ready' && isReady) {
+                callback.call(null, target_id);
+            }
+
+            return self;
+        },
+
+        /*
+         * Unregisters an event listener that gets called when the event fires.
+         *
+         * @param eventName (String): Name of the event to stop listening for.
+         */
+        removeEvent: function(eventName) {
+            if (!this.element) {
+                return false;
+            }
+
+            var self = this,
+                element = self.element,
+                target_id = element.id !== '' ? element.id : null,
+                removed = removeCallback(eventName, target_id);
+
+            // The ready event is not registered
+            if (eventName != 'ready' && removed) {
+                postMessage('removeEventListener', eventName, element);
+            }
+        }
+    };
+
+    /**
+     * Handles posting a message to the parent window.
+     *
+     * @param method (String): name of the method to call inside the player. For api calls
+     * this is the name of the api method (api_play or api_pause) while for events this method
+     * is api_addEventListener.
+     * @param params (Object or Array): List of parameters to submit to the method. Can be either
+     * a single param or an array list of parameters.
+     * @param target (HTMLElement): Target iframe to post the message to.
+     */
+    function postMessage(method, params, target) {
+        if (!target.contentWindow.postMessage) {
+            return false;
+        }
+
+        var data = JSON.stringify({
+            method: method,
+            value: params
+        });
+
+        target.contentWindow.postMessage(data, '*');
+    }
+
+    /**
+     * Event that fires whenever the window receives a message from its parent
+     * via window.postMessage.
+     */
+    function onMessageReceived(event) {
+        var data, method;
+
+        try {
+            data = JSON.parse(event.data);
+            method = data.event || data.method;
+        }
+        catch(e)  {
+            //fail silently... like a ninja!
+        }
+
+        if (method == 'ready' && !isReady) {
+            isReady = true;
+        }
+
+        // Handles messages from the vimeo player only
+        if (!(/^https?:\/\/player.vimeo.com/).test(event.origin)) {
+            return false;
+        }
+
+        if (playerOrigin === '*') {
+            playerOrigin = event.origin;
+        }
+
+        var value = data.value,
+            eventData = data.data,
+            target_id = target_id === '' ? null : data.player_id,
+
+            callback = getCallback(method, target_id),
+            params = [];
+
+        if (!callback) {
+            return false;
+        }
+
+        if (value !== undefined) {
+            params.push(value);
+        }
+
+        if (eventData) {
+            params.push(eventData);
+        }
+
+        if (target_id) {
+            params.push(target_id);
+        }
+
+        return params.length > 0 ? callback.apply(null, params) : callback.call();
+    }
+
+
+    /**
+     * Stores submitted callbacks for each iframe being tracked and each
+     * event for that iframe.
+     *
+     * @param eventName (String): Name of the event. Eg. api_onPlay
+     * @param callback (Function): Function that should get executed when the
+     * event is fired.
+     * @param target_id (String) [Optional]: If handling more than one iframe then
+     * it stores the different callbacks for different iframes based on the iframe's
+     * id.
+     */
+    function storeCallback(eventName, callback, target_id) {
+        if (target_id) {
+            if (!eventCallbacks[target_id]) {
+                eventCallbacks[target_id] = {};
+            }
+            eventCallbacks[target_id][eventName] = callback;
+        }
+        else {
+            eventCallbacks[eventName] = callback;
+        }
+    }
+
+    /**
+     * Retrieves stored callbacks.
+     */
+    function getCallback(eventName, target_id) {
+        if (target_id) {
+            return eventCallbacks[target_id][eventName];
+        }
+        else {
+            return eventCallbacks[eventName];
+        }
+    }
+
+    function removeCallback(eventName, target_id) {
+        if (target_id && eventCallbacks[target_id]) {
+            if (!eventCallbacks[target_id][eventName]) {
+                return false;
+            }
+            eventCallbacks[target_id][eventName] = null;
+        }
+        else {
+            if (!eventCallbacks[eventName]) {
+                return false;
+            }
+            eventCallbacks[eventName] = null;
+        }
+
+        return true;
+    }
+
+    function isFunction(obj) {
+        return !!(obj && obj.constructor && obj.call && obj.apply);
+    }
+
+    function isArray(obj) {
+        return toString.call(obj) === '[object Array]';
+    }
+
+    // Give the init function the Froogaloop prototype for later instantiation
+    Froogaloop.fn.init.prototype = Froogaloop.fn;
+
+    // Listens for the message event.
+    // W3C
+    if (window.addEventListener) {
+        window.addEventListener('message', onMessageReceived, false);
+    }
+    // IE
+    else {
+        window.attachEvent('onmessage', onMessageReceived);
+    }
+
+    // Expose froogaloop to the global object
+    return (window.Froogaloop = window.$f = Froogaloop);
+
+})();
+
+; browserify_shim__define__module__export__(typeof froogaloop != "undefined" ? froogaloop : window.froogaloop);
+
+}).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],2:[function(require,module,exports){
+(function (global){
+; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*
  *  Remodal - v1.1.1
  *  Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
@@ -792,7 +1061,7 @@
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*
@@ -3793,7 +4062,7 @@
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
@@ -13609,7 +13878,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -13638,7 +13907,7 @@ require('./event-banner');
 \*------------------------------------*/
 require('./remodal');
 
-},{"./event-banner":6,"./hero-carousel":7,"./remodal":8,"./search-form":9,"jquery":3}],5:[function(require,module,exports){
+},{"./event-banner":7,"./hero-carousel":8,"./remodal":9,"./search-form":10,"jquery":4}],6:[function(require,module,exports){
 /*------------------------------------*\
 	Site Config
 	All settings, configuration, event names, classes etc
@@ -13700,7 +13969,7 @@ var config = {
 
 module.exports = config;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -13713,22 +13982,57 @@ var slick = require('slickJS');
 
 (function($){
 
-    var $eventBanner = $('[data-event-banner]');
+    var $window = $(window),
+        slicked = null,
+        desktop = 1024,
+        tablet = 768,
+        mobile = 540;
+
+        function init() {
+            windowWidth();
+        }
+
 
         /**
         * Event banner
         */
-        $eventBanner.slick({
+        function createSlick(){
+            $('[data-event-banner]').not('.slick-initialized').slick({
                 infinite: true,
+                dots: false,
                 slidesToShow: 1,
                 slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4000,
+                cssEase: 'linear',
                 prevArrow: '.o-event-banner__controls--prev',
                 nextArrow: '.o-event-banner__controls--next',
+
+                responsive: [
+                {
+                  breakpoint: 480,
+                  settings: {
+                    arrows: false,
+                    slidesToShow: 1,
+                    dots: true
+                  }
+                }
+              ]
+
             });
+        }
+
+
+        createSlick();
+
+        //Now it will not throw error, even if called multiple times.
+        $(window).on( 'resize', createSlick );
+
+
 
 }(jQuery));
 
-},{"slickJS":2}],7:[function(require,module,exports){
+},{"slickJS":3}],8:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -13756,6 +14060,7 @@ var slick = require('slickJS');
                 autoplay: true,
                 autoplaySpeed: 4000,
                 cssEase: 'linear',
+                accessibility: false,
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',
                 nextArrow: '.o-hero-carousel__controls__navigation--next',
             });
@@ -13769,23 +14074,45 @@ var slick = require('slickJS');
             cssEase: 'linear',
             slidesToShow: 1,
             slidesToScroll: 1,
+            accessibility: false,
             asNavFor: $heroCarouselControls,
             arrows: false
         });
 
 }(jQuery));
 
-},{"slickJS":2}],8:[function(require,module,exports){
+},{"slickJS":3}],9:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
 /* jshint -W097 */
 
-"use strict";
 //Slick Slider
 var remodal = require('remodal');
+var froogaloop = require('froogaloop');
 
-},{"remodal":1}],9:[function(require,module,exports){
+(function(){
+
+    var iframe = $('.u-video-wrapper iframe')[0],
+        player = $f(iframe);
+
+        //Open model
+        $(document).on('opened', '.remodal', function () {
+
+            player.api('play');
+
+        });
+
+        //Close model
+        $(document).on('closed', '.remodal', function (e) {
+
+             player.api('pause');
+
+        });
+
+}());
+
+},{"froogaloop":1,"remodal":2}],10:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -13824,4 +14151,4 @@ var $ = require('jquery'),
 
 }());
 
-},{"./config":5,"jquery":3}]},{},[4]);
+},{"./config":6,"jquery":4}]},{},[5]);

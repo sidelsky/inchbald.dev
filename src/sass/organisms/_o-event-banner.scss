@@ -1,26 +1,65 @@
 .o-event-banner {
 
-    background-color: rgba($orange, .9);
-    color: $white;
     @include clearfix;
+    background-color: $orange;
+    color: $white;
     font-family: $font-primary--regular;
-    position: absolute;
-    z-index: 1;
+    padding: $spacing--medium;
     width: 100%;
-    margin-top: -63px;
+    z-index: 1;
+
+    @include breakpoint($large) {
+
+        background-color: rgba($orange, .9);
+        margin-top: -89px;
+        padding: $spacing--x-tiny $spacing--small;
+        position: absolute;
+
+    }
+
+    @include breakpoint($large) {}
 
     //Details
     &__details {
 
-        margin: 0;
         @include set-font-size(1.8rem, 1.8rem, 1.8rem);
-        padding: $spacing--small 0;
+        margin: 0;
+        padding: $spacing--tiny 0;
+
+        @include breakpoint($medium) {
+
+            padding: $spacing--tiny 0 0 0;
+
+        }
+
+        @include breakpoint($large) {
+
+            padding: $spacing--small 0;
+
+        }
+
     }
 
     //Title
     &__title {
 
-        //font-family: $font-primary--regular;
+        font-family: $font-primary--bold;
+        margin: 0;
+        display: block;
+
+        @include breakpoint($small) {
+
+            display: inline-block;
+
+        }
+
+        @include breakpoint($large) {
+
+            display: inline-block;
+            @include vertical-align(absolute);
+
+        }
+
 
     }
 
@@ -28,6 +67,22 @@
     &__date {
 
         //font-family: $font-primary--light;
+        display: block;
+        margin-bottom: $spacing--small;
+
+        @include breakpoint($small) {
+
+            display: inline-block;
+
+        }
+
+        @include breakpoint($large) {
+
+            display: inline-block;
+            margin-bottom: 0;
+
+        }
+
 
     }
 
@@ -35,8 +90,15 @@
     //Inner
     &__inner {
 
-        padding: 0 $spacing--large;
         text-align: center;
+        padding: 0 $spacing--large;
+
+    }
+
+    // Colums
+    &__columns {
+
+        lost-flex-container: row;
 
     }
 
@@ -48,15 +110,29 @@
         //Narrow
         &--narrow {
 
-            lost-column: 2/12 0 0px;
+            lost-column: 12/12 0 0px flex;
+            text-align: center;
+
+            @include breakpoint($large) {
+
+                lost-column: 2/12 0 0px;
+                text-align: left;
+
+            }
 
         }
 
         //Wide
         &--wide {
 
-            lost-column: 10/12 0 0px;
+            lost-column: 12/12 0 0px flex;
             position: relative;
+
+            @include breakpoint($large) {
+
+                lost-column: 10/12 0 0px;
+
+            }
 
         }
 
@@ -77,18 +153,29 @@
         display: inline-block;
         z-index: 1;
 
+        @include breakpoint($small) {
+
+            @include vertical-align(absolute, 30%);
+
+        }
+
+        @include breakpoint($medium) {
+
+            @include vertical-align(absolute, 50%);
+
+        }
+
         //Next
         &--next {
 
-            @include vertical-align(absolute, 50%);
             right: 0;
+            //transform: translateX(10%);
 
         }
 
         //Prev
         &--prev {
 
-            @include vertical-align(absolute, 50%);
 
         }
 
@@ -118,10 +205,23 @@
 
         border: solid 1px $white;
         padding: $spacing--x-tiny $spacing--small;
-        margin-left: $spacing--large;
         color: $white;
         @include set-font-size(1.3rem, 1.3rem, 1.3rem);
         position: relative;
+        padding: 1rem 2rem;
+        display: inline-block;
+
+        @include breakpoint($small) {
+
+            margin-left: $spacing--small;
+
+        }
+
+        @include breakpoint($large) {
+
+            margin-left: $spacing--large;
+
+        }
 
         .icon {
 
@@ -143,4 +243,82 @@
 
     }
 
+}
+
+
+/**
+* Slick dots
+*/
+$slick-font-path: "./fonts/" !default;
+$slick-font-family: "slick" !default;
+$slick-loader-path: "./" !default;
+$slick-arrow-color: white !default;
+$slick-dot-color: white !default;
+$slick-dot-color-active: $slick-dot-color !default;
+$slick-prev-character: "\2190" !default;
+$slick-next-character: "\2192" !default;
+$slick-dot-character: "\2022" !default;
+$slick-dot-size: 3rem !default;
+$slick-opacity-default: 0.75 !default;
+$slick-opacity-on-hover: 1 !default;
+$slick-opacity-not-active: 0.25 !default;
+
+.slick-dots {
+    position: absolute;
+    bottom: -20px;
+    list-style: none;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    left: 0;
+    li {
+        position: relative;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+        button {
+            border: 0;
+            background: transparent;
+            display: block;
+            height: 20px;
+            width: 20px;
+            outline: none;
+            line-height: 0px;
+            font-size: 0px;
+            color: transparent;
+            padding: 5px;
+            cursor: pointer;
+            &:hover, &:focus {
+                outline: none;
+                &:before {
+                    opacity: $slick-opacity-on-hover;
+                }
+            }
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: $slick-dot-character;
+                width: 20px;
+                height: 20px;
+                font-family: $slick-font-family;
+                font-size: $slick-dot-size;
+                line-height: 20px;
+                text-align: center;
+                color: $slick-dot-color;
+                opacity: $slick-opacity-not-active;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+        &.slick-active button:before {
+            color: $slick-dot-color-active;
+            opacity: $slick-opacity-default;
+        }
+    }
 }
