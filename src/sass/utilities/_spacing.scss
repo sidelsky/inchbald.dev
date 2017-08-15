@@ -7,8 +7,8 @@
 
     @include breakpoint($small) {
 
-        padding-bottom: $spacing--xx-large;
-        padding-top: $spacing--xx-large;
+        padding-bottom: $spacing--large-xx;
+        padding-top: $spacing--large-xx;
 
 
     }
@@ -49,7 +49,7 @@
 
         @include breakpoint($medium) {
 
-            padding-top: $spacing--xx-large;
+            padding-top: $spacing--large-xx;
 
         }
 

@@ -4,16 +4,16 @@
     background-color: $orange;
     color: $white;
     font-family: $font-primary--regular;
-    padding: $spacing--medium;
+    padding: $spacing--tiny $spacing--small $spacing--medium $spacing--small;
     width: 100%;
     z-index: 1;
 
     @include breakpoint($large) {
 
         background-color: rgba($orange, .9);
-        margin-top: -89px;
-        padding: $spacing--x-tiny $spacing--small;
+        margin-top: -65px;
         position: absolute;
+        padding-bottom: $spacing--tiny;
 
     }
 
@@ -22,7 +22,7 @@
     //Details
     &__details {
 
-        @include set-font-size(1.8rem, 1.8rem, 1.8rem);
+        @include set-font-size(1.6rem, 1.6rem, 1.6rem);
         margin: 0;
         padding: $spacing--tiny 0;
 
@@ -34,7 +34,7 @@
 
         @include breakpoint($large) {
 
-            padding: $spacing--small 0;
+            padding: $spacing--x-tiny 0;
 
         }
 
@@ -46,6 +46,7 @@
         font-family: $font-primary--bold;
         margin: 0;
         display: block;
+        @include set-font-size(1.8rem, 1.8rem, 1.8rem);
 
         @include breakpoint($small) {
 
@@ -208,7 +209,7 @@
         color: $white;
         @include set-font-size(1.3rem, 1.3rem, 1.3rem);
         position: relative;
-        padding: 1rem 2rem;
+        padding: .8rem 2rem;
         display: inline-block;
 
         @include breakpoint($small) {

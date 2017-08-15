@@ -17,7 +17,7 @@
     $class = $args['class'];
 
     echo '<div class="o-hero-carousel__ctas ' . $class . '">';
-        echo '<div class="u-max-width-container u-max-width-container--small o-hero-carousel__ctas-inner">';
+        echo '<div class="u-max-width-container u-max-width-container--tiny o-hero-carousel__ctas-inner">';
             echo '<a href="#" class="o-hero-carousel__cta o-hero-carousel__cta--garden-design">';
                 echo '<h2 class="o-hero-carousel__cta-title">Garden Design<br>Courses</h2>';
                 echo '<span class="o-hero-carousel__cta-link">View courses <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-arrow" viewBox="0 0 32 32"></use></svg></span>';

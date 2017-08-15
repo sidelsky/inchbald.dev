@@ -1499,7 +1499,7 @@ a {
   color: #fff;
   font-size: 1.6rem;
   color: #cdcdcd;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
 }
 
 @media (min-width: 768px) {
@@ -1516,14 +1516,17 @@ a {
 
 @media (min-width: 540px) {
   .page-footer {
-    padding: 0 2rem;
+    padding: 2rem;
   }
 }
 
 .page-footer .icon--inchbald-logo {
   width: 130px;
   height: 61px;
-  margin: 0.5rem 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
 }
 
 .page-footer a {
@@ -1555,9 +1558,9 @@ a {
 
 .page-footer__copyright {
   font-size: 1.1rem;
-  border-top: solid 1px #5A5A5A;
-  padding: 2rem;
+  padding: 1.5rem 0;
   text-align: center;
+  display: block;
 }
 
 @media (min-width: 768px) {
@@ -1585,7 +1588,7 @@ a {
 
 .footer-navigation__item {
   color: #fff;
-  margin-right: 2rem;
+  margin: 0 1rem;
 }
 
 .footer-navigation__item:hover {
@@ -1595,7 +1598,10 @@ a {
 .social-navigation {
   font-size: 1.6rem;
   text-align: center;
-  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
 }
 
 @media (min-width: 768px) {
@@ -1646,7 +1652,7 @@ a {
   height: 100%;
   overflow-x: hidden;
   /* Disable horizontal scroll */
-  padding-top: 5rem;
+  padding-top: 3.5rem;
   position: fixed;
   /* Stay in place */
   transform: translateX(-100%);
@@ -1829,7 +1835,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 @media (min-width: 540px) {
   .o-hero-carousel__background-image {
-    height: calc(100vh - 126px);
+    height: calc(100vh - 105px);
   }
 }
 
@@ -1839,7 +1845,9 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 .o-hero-carousel__content {
   background-color: #4D4D4D;
   color: #fff;
+  font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
   left: 4rem;
+  line-height: 1.5;
   outline: 0;
   width: 100%;
   z-index: 1;
@@ -1850,7 +1858,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
     position: absolute;
     top: 30%;
     transform: translateY(-30%);
-    background-color: rgba(77, 77, 77, 0.6);
+    background-color: rgba(77, 77, 77, 0.65);
     width: 380px;
   }
 }
@@ -1940,12 +1948,17 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   z-index: 1;
 }
 
-@media (min-width: 540px) {
+@media (min-width: 768px) {
   .o-hero-carousel__ctas {
     position: absolute;
-    top: 80%;
-    transform: translateY(-80%);
+    bottom: 40px;
     padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-hero-carousel__ctas {
+    bottom: 100px;
   }
 }
 
@@ -1957,18 +1970,18 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   lost-column: 12/12 flex;
   color: #fff;
   padding: 2rem;
-  min-height: 160px;
+  min-height: 140px;
   position: relative;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
   transition: all .2s ease;
 }
 
 .o-hero-carousel__cta--garden-design {
-  background-color: #87C242;
+  background-color: rgba(135, 194, 66, 0.9);
 }
 
 .o-hero-carousel__cta--interior-design {
-  background-color: #55BAEE;
+  background-color: rgba(85, 186, 238, 0.9);
 }
 
 .o-hero-carousel__cta:hover .o-hero-carousel__cta-link {
@@ -1990,18 +2003,18 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 .o-hero-carousel__cta-title {
   margin: 0;
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
 @media (min-width: 768px) {
   .o-hero-carousel__cta-title {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .o-hero-carousel__cta-title {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 }
 
@@ -2047,7 +2060,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   background-color: #F7931E;
   color: #fff;
   font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
-  padding: 3rem;
+  padding: 1rem 2rem 3rem 2rem;
   width: 100%;
   z-index: 1;
 }
@@ -2061,27 +2074,27 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 @media (min-width: 1024px) {
   .o-event-banner {
     background-color: rgba(247, 147, 30, 0.9);
-    margin-top: -89px;
-    padding: 0.5rem 2rem;
+    margin-top: -65px;
     position: absolute;
+    padding-bottom: 1rem;
   }
 }
 
 .o-event-banner__details {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin: 0;
   padding: 1rem 0;
 }
 
 @media (min-width: 768px) {
   .o-event-banner__details {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 
 @media (min-width: 1024px) {
   .o-event-banner__details {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -2093,7 +2106,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 @media (min-width: 1024px) {
   .o-event-banner__details {
-    padding: 2rem 0;
+    padding: 0.5rem 0;
   }
 }
 
@@ -2101,6 +2114,19 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   font-family: "roboto-bold-webfont", Helvetica, Arial, sans-serif;
   margin: 0;
   display: block;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .o-event-banner__title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-event-banner__title {
+    font-size: 1.8rem;
+  }
 }
 
 @media (min-width: 540px) {
@@ -2229,7 +2255,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   color: #fff;
   font-size: 1.3rem;
   position: relative;
-  padding: 1rem 2rem;
+  padding: .8rem 2rem;
   display: inline-block;
 }
 

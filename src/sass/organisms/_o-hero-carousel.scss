@@ -16,7 +16,7 @@
 
         @include breakpoint($small) {
 
-            height: calc(100vh - 126px);
+            height: calc(100vh - 105px);
 
         }
 
@@ -32,7 +32,9 @@
 
     background-color: $grey--dark;
     color: $white;
+    font-family: $font-primary--regular;
     left: $spacing--large;
+    line-height: 1.5;
     outline: 0;
     width: 100%;
     z-index: 1;
@@ -40,7 +42,7 @@
     @include breakpoint($small) {
 
         @include vertical-align(absolute, 30%);
-        background-color: rgba($grey--dark, .6);
+        background-color: rgba($grey--dark, .65);
         width: 380px;
 
     }
@@ -163,10 +165,17 @@
         width: 100%;
         z-index: 1;
 
-        @include breakpoint($small) {
+        @include breakpoint($medium) {
 
-            @include vertical-align(absolute, 80%);
+            position: absolute;
+            bottom: 40px;
             padding: 0 $spacing--small;
+
+        }
+
+        @include breakpoint($large) {
+
+            bottom: 100px;
 
         }
 
@@ -183,14 +192,14 @@
         lost-column: 12/12 flex;
         color: $white;
         padding: $spacing--small;
-        min-height: 160px;
+        min-height: 140px;
         position: relative;
         box-shadow: 0px 0px 20px 0px rgba($black, .4);
         transition: all .2s ease;
 
         &--garden-design {
 
-            background-color: $green;
+            background-color: rgba($green, .9);
 
             &:hover {
 
@@ -202,7 +211,7 @@
 
         &--interior-design {
 
-            background-color: $blue;
+            background-color: rgba($blue, .9);
 
             &:hover {
 
@@ -247,7 +256,7 @@
     &__cta-title {
 
         margin: 0;
-        @include set-font-size(2.4rem, 2.4rem, 2.4rem);
+        @include set-font-size(2.0rem, 2.0rem, 2.0rem);
 
     }
 

@@ -23,7 +23,7 @@ var slick = require('slickJS');
                 asNavFor: $heroCarouselBackgroundImage,
                 fade: true,
                 autoplay: true,
-                autoplaySpeed: 4000,
+                autoplaySpeed: 7000,
                 cssEase: 'linear',
                 accessibility: false,
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',

@@ -15,6 +15,9 @@
 					<a href="#" class="footer-navigation__item">Visit Inchbald</a>
 					<a href="#" class="footer-navigation__item">Contact</a>
 				</nav>
+				<span class="page-footer__copyright">
+					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>
+				</span>
 			</div>
 
 			<div class="page-footer__column">
@@ -47,10 +50,6 @@
 			</div>
 
 		</div>
-	</div>
-
-	<div class="page-footer__copyright">
-		&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>
 	</div>
 
 </footer>

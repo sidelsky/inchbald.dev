@@ -23,8 +23,8 @@
             if( have_rows('hero_carousel')) :
                 while( have_rows('hero_carousel')): the_row();
 
-                $hero_carousel_title = get_sub_field('hero_carousel_title');
-                $hero_carousel_paragraph = get_sub_field('hero_carousel_paragraph');
+                    $hero_carousel_title = get_sub_field('hero_carousel_title');
+                    $hero_carousel_paragraph = get_sub_field('hero_carousel_paragraph');
 
                         echo '<div class="o-hero-carousel__content__wrapper">';
                             echo '<h1 class="o-hero-carousel__content__title">' . $hero_carousel_title . '</h1>';
