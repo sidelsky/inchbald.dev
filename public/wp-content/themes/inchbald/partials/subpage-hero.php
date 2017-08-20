@@ -11,17 +11,47 @@
         $thumbnail = get_the_post_thumbnail_url();
         // Get post title
         $main_title = get_the_title();
+        $current = $post->ID;
+        $parent = $post->post_parent;
+        $grandparent_get = get_post($parent);
+        $grandparent = $grandparent_get->post_parent;
 
         echo '<section class="o-subpage-hero" style="background-image: url(' . $thumbnail . ')" data-subpage-hero>';
             echo '<div class="o-subpage-hero__inner">';
                 echo '<div class="u-max-width-container">';
                     echo '<ul class="o-subpage-hero__bread">';
-                        echo '<li class="o-subpage-hero__crumbs">' . $main_title . '</li>';
-                        echo '<li class="o-subpage-hero__crumbs">Courses</li>';
+
+                        /**
+                        * Display Parent Page Title
+                        * https://www.fldtrace.com/how-to-display-parent-page-title-in-wordpress
+                        */
+
+                        // Parent title
+                        $class = ( $parent ) ? '' : 'o-subpage-hero__crumbs__main-title';
+
+                        echo '<li class="o-subpage-hero__crumbs ' . $class . '">';
+                            echo get_the_title($parent);
+                        echo '</li>';
+
+                        if($parent) {
+
+                            // Parent title
+                            echo '<li class="o-subpage-hero__crumbs o-subpage-hero__crumbs__main-title">';
+                                echo $main_title;
+                            echo '</li>';
+                        }
+
                     echo '</ul>';
                 echo '</div>';
             echo '</div>';
         echo '</section>';
+
+
+
+        echo '<ul class="side-menu">';
+            echo wpb_list_child_pages();
+        echo '</ul>';
+
 
     }
 

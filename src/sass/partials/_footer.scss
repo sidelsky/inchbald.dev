@@ -8,7 +8,7 @@
 
 	@include breakpoint($small) {
 
-		padding: 0 $spacing--small;
+		//padding: $spacing--tiny;
 
 	}
 
@@ -18,7 +18,12 @@
 
 		width: 130px;
 		height: 61px;
-		margin: $spacing--x-tiny 0;
+
+		@include breakpoint($small) {
+
+			@include vertical-align(absolute);
+
+		}
 
 	}
 
@@ -62,7 +67,7 @@
 	&__copyright {
 
 		@include set-font-size(1.1rem, 1.1rem, 1.1rem);
-		padding: $spacing--small;
+		//padding: $spacing--small;
 		text-align: center;
 		margin: 0 auto;
 		display: block;
@@ -75,12 +80,10 @@
 //Footer navigation
 .footer-navigation {
 
-	padding: $spacing--tiny 0;
-
+	padding: 0 0 $spacing--tiny;
 
 	@include breakpoint($small) {
 
-		padding: 0;
 		text-align: center;
 
 	}
@@ -111,6 +114,8 @@
 	@include breakpoint($small) {
 
 		text-align: right;
+		@include vertical-align(absolute);
+		right: 0;
 
 	}
 

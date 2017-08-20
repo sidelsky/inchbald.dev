@@ -30,6 +30,7 @@
   "devDependencies": {
     "slick-carousel": "^1.7.1",
     "remodal": "^1.1.1",
-    "dynamics.js": "^1.1.1"
+    "dynamics.js": "^1.1.1",
+    "isotope": "isotope-layout#^3.0.4"
   }
 }

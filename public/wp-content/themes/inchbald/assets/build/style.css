@@ -1514,16 +1514,17 @@ a {
   }
 }
 
-@media (min-width: 540px) {
-  .page-footer {
-    padding: 0 2rem;
-  }
-}
-
 .page-footer .icon--inchbald-logo {
   width: 130px;
   height: 61px;
-  margin: 0.5rem 0;
+}
+
+@media (min-width: 540px) {
+  .page-footer .icon--inchbald-logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .page-footer a {
@@ -1555,7 +1556,6 @@ a {
 
 .page-footer__copyright {
   font-size: 1.1rem;
-  padding: 2rem;
   text-align: center;
   margin: 0 auto;
   display: block;
@@ -1574,12 +1574,11 @@ a {
 }
 
 .footer-navigation {
-  padding: 1rem 0;
+  padding: 0 0 1rem;
 }
 
 @media (min-width: 540px) {
   .footer-navigation {
-    padding: 0;
     text-align: center;
   }
 }
@@ -1614,6 +1613,10 @@ a {
 @media (min-width: 540px) {
   .social-navigation {
     text-align: right;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
   }
 }
 
@@ -1750,7 +1753,8 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   padding: 1rem;
 }
 
-.a-site-nav__menu .current-menu-item a {
+.a-site-nav__menu .current-menu-item a,
+.a-site-nav__menu .current-page-ancestor a {
   background-color: #3e3e3e;
   color: #fff;
 }
@@ -2390,7 +2394,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   display: inline-block;
   margin-right: 1rem;
   padding: 1rem 1.5rem;
-  background-color: #F7931E;
+  background-color: #4D4D4D;
   color: #fff;
   font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
   font-size: 2.4rem;
@@ -2408,6 +2412,6 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   }
 }
 
-.o-subpage-hero__crumbs:first-child {
-  background-color: #4D4D4D;
+.o-subpage-hero__crumbs__main-title {
+  background-color: #F7931E;
 }
