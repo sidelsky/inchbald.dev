@@ -11,9 +11,9 @@
     @include breakpoint($large) {
 
         background-color: rgba($orange, .9);
-        margin-top: -65px;
+        margin-top: -55px;
         position: absolute;
-        padding-bottom: $spacing--tiny;
+        padding: $spacing--x-tiny $spacing--small;
 
     }
 

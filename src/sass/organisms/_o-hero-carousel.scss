@@ -16,7 +16,7 @@
 
         @include breakpoint($small) {
 
-            height: calc(100vh - 105px);
+            height: calc(100vh - 80px);
 
         }
 
@@ -33,7 +33,7 @@
     background-color: $grey--dark;
     color: $white;
     font-family: $font-primary--regular;
-    left: $spacing--large;
+    left: $spacing--small;
     line-height: 1.5;
     outline: 0;
     width: 100%;
@@ -165,7 +165,7 @@
         width: 100%;
         z-index: 1;
 
-        @include breakpoint($medium) {
+        @include breakpoint($small) {
 
             position: absolute;
             bottom: 40px;

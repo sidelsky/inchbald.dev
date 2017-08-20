@@ -1499,7 +1499,7 @@ a {
   color: #fff;
   font-size: 1.6rem;
   color: #cdcdcd;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -1516,17 +1516,14 @@ a {
 
 @media (min-width: 540px) {
   .page-footer {
-    padding: 2rem;
+    padding: 0 2rem;
   }
 }
 
 .page-footer .icon--inchbald-logo {
   width: 130px;
   height: 61px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
+  margin: 0.5rem 0;
 }
 
 .page-footer a {
@@ -1558,8 +1555,9 @@ a {
 
 .page-footer__copyright {
   font-size: 1.1rem;
-  padding: 1.5rem 0;
+  padding: 2rem;
   text-align: center;
+  margin: 0 auto;
   display: block;
 }
 
@@ -1598,10 +1596,7 @@ a {
 .social-navigation {
   font-size: 1.6rem;
   text-align: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
+  padding: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -1835,7 +1830,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 @media (min-width: 540px) {
   .o-hero-carousel__background-image {
-    height: calc(100vh - 105px);
+    height: calc(100vh - 80px);
   }
 }
 
@@ -1846,7 +1841,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   background-color: #4D4D4D;
   color: #fff;
   font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
-  left: 4rem;
+  left: 2rem;
   line-height: 1.5;
   outline: 0;
   width: 100%;
@@ -1948,7 +1943,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   z-index: 1;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 540px) {
   .o-hero-carousel__ctas {
     position: absolute;
     bottom: 40px;
@@ -2074,9 +2069,9 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 @media (min-width: 1024px) {
   .o-event-banner {
     background-color: rgba(247, 147, 30, 0.9);
-    margin-top: -65px;
+    margin-top: -55px;
     position: absolute;
-    padding-bottom: 1rem;
+    padding: 0.5rem 2rem;
   }
 }
 
@@ -2372,4 +2367,47 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 .slick-dots li.slick-active button:before {
   color: white;
   opacity: 0.75;
+}
+
+.o-subpage-hero {
+  background-color: #4D4D4D;
+  min-height: 400px;
+  position: relative;
+}
+
+.o-subpage-hero .o-subpage-hero__inner {
+  bottom: 0;
+  padding: 0 2rem;
+  position: absolute;
+  width: 100%;
+}
+
+.o-subpage-hero__bread {
+  padding-bottom: 2rem;
+}
+
+.o-subpage-hero__crumbs {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: #F7931E;
+  color: #fff;
+  font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
+  font-size: 2.4rem;
+}
+
+@media (min-width: 768px) {
+  .o-subpage-hero__crumbs {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-subpage-hero__crumbs {
+    font-size: 2.4rem;
+  }
+}
+
+.o-subpage-hero__crumbs:first-child {
+  background-color: #4D4D4D;
 }

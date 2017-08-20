@@ -24,10 +24,10 @@ var slick = require('slickJS');
                 fade: true,
                 autoplay: true,
                 autoplaySpeed: 7000,
-                cssEase: 'linear',
                 accessibility: false,
+                arrow: false,
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',
-                nextArrow: '.o-hero-carousel__controls__navigation--next',
+                nextArrow: '.o-hero-carousel__controls__navigation--next'
             });
 
         /**
@@ -40,8 +40,11 @@ var slick = require('slickJS');
             slidesToShow: 1,
             slidesToScroll: 1,
             accessibility: false,
+            arrow: false,
             asNavFor: $heroCarouselControls,
-            arrows: false
+            prevArrow: '.o-hero-carousel__controls__navigation--prev',
+            nextArrow: '.o-hero-carousel__controls__navigation--next'
         });
+
 
 }(jQuery));

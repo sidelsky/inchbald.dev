@@ -30,3 +30,8 @@ require('./mobile-navigation');
 	remodal
 \*------------------------------------*/
 require('./remodal');
+
+/*------------------------------------*\
+	Subpahe hero paralax
+\*------------------------------------*/
+require('./subpage-hero-paralax');

@@ -4,11 +4,11 @@
 	color: $white;
 	@include set-font-size(1.6rem, 1.6rem, 1.6rem);
 	color: $grey--lighter;
-	padding: $spacing--x-small $spacing--small;
+	padding: $spacing--small;
 
 	@include breakpoint($small) {
 
-		padding: $spacing--small;
+		padding: 0 $spacing--small;
 
 	}
 
@@ -18,9 +18,7 @@
 
 		width: 130px;
 		height: 61px;
-		//margin: $spacing--x-tiny 0;
-		@include vertical-align(absolute);
-		left: 0;
+		margin: $spacing--x-tiny 0;
 
 	}
 
@@ -64,9 +62,9 @@
 	&__copyright {
 
 		@include set-font-size(1.1rem, 1.1rem, 1.1rem);
-		//border-top: solid 1px $stroke;
-		padding: $spacing--x-small 0;
+		padding: $spacing--small;
 		text-align: center;
+		margin: 0 auto;
 		display: block;
 
 	}
@@ -78,6 +76,7 @@
 .footer-navigation {
 
 	padding: $spacing--tiny 0;
+
 
 	@include breakpoint($small) {
 
@@ -107,9 +106,7 @@
 
 	@include set-font-size(1.6rem, 1.6rem, 1.6rem);
 	text-align: center;
-	//padding: $spacing--small;
-	@include vertical-align(absolute);
-	right: 0;
+	padding: $spacing--small;
 
 	@include breakpoint($small) {
 

@@ -15981,7 +15981,12 @@ require('./mobile-navigation');
 \*------------------------------------*/
 require('./remodal');
 
-},{"./event-banner":8,"./hero-carousel":9,"./mobile-navigation":10,"./remodal":11,"./search-form":12,"jquery":5}],7:[function(require,module,exports){
+/*------------------------------------*\
+	Subpahe hero paralax
+\*------------------------------------*/
+require('./subpage-hero-paralax');
+
+},{"./event-banner":8,"./hero-carousel":9,"./mobile-navigation":10,"./remodal":11,"./search-form":12,"./subpage-hero-paralax":13,"jquery":5}],7:[function(require,module,exports){
 /*------------------------------------*\
 	Site Config
 	All settings, configuration, event names, classes etc
@@ -16132,10 +16137,10 @@ var slick = require('slickJS');
                 fade: true,
                 autoplay: true,
                 autoplaySpeed: 7000,
-                cssEase: 'linear',
                 accessibility: false,
+                arrow: false,
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',
-                nextArrow: '.o-hero-carousel__controls__navigation--next',
+                nextArrow: '.o-hero-carousel__controls__navigation--next'
             });
 
         /**
@@ -16148,9 +16153,12 @@ var slick = require('slickJS');
             slidesToShow: 1,
             slidesToScroll: 1,
             accessibility: false,
+            arrow: false,
             asNavFor: $heroCarouselControls,
-            arrows: false
+            prevArrow: '.o-hero-carousel__controls__navigation--prev',
+            nextArrow: '.o-hero-carousel__controls__navigation--next'
         });
+
 
 }(jQuery));
 
@@ -16333,4 +16341,62 @@ var $ = require('jquery'),
 
 }());
 
-},{"./config":7,"jquery":5}]},{},[6]);
+},{"./config":7,"jquery":5}],13:[function(require,module,exports){
+
+function homeParallax() {
+
+    var top = $(this).scrollTop(),
+        $subpageHero = $('[data-subpage-hero]'),
+        $containerTop = $subpageHero.scrollTop();
+        //$exclude = $('.m-cta-text-module--white-background, .m-cta-text-module--background-color'),
+        //$hero_content = $('[data-hero-content]').not($exclude);
+
+    //jQuery('.home #homeBanner #bannerText').css('transform', 'translateY(' + (-top/3) + 'px)');
+    // $hero.css({
+    //     'background-position': 'center ' + (-top / 2) + "px"
+    // });
+
+    $subpageHero.css({
+        'background-position': 'center ' + (-top / 2) + "px"
+    });
+
+    // $hero_content.css({
+    //     'opacity' : 1 - (top/500),
+    //     'transform' : 'translateY(' + (+ top/6) + 'px)'
+    // });
+
+    // $hero_content.css({
+    //     'opacity' : 1 - (top/500),
+    //     'transform' : 'translateY(' + (+ top/6) + 'px)'
+    // });
+
+
+}
+
+
+//Scroll events
+function isMobile(){
+    return (
+        (navigator.userAgent.match(/Android/i)) ||
+		(navigator.userAgent.match(/webOS/i)) ||
+		(navigator.userAgent.match(/iPhone/i)) ||
+		(navigator.userAgent.match(/iPod/i)) ||
+		(navigator.userAgent.match(/iPad/i)) ||
+		(navigator.userAgent.match(/BlackBerry/))
+    );
+}
+
+if(!isMobile() && $(window).width() > 768){
+    homeParallax();
+}
+
+//Scroll events
+$(window).scroll(function() {
+
+    if(!isMobile() && $(window).width() > 768){
+        homeParallax();
+    }
+
+});
+
+},{}]},{},[6]);

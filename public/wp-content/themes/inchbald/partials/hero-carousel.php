@@ -3,48 +3,54 @@
     /**
     * Hero carousel
     */
-    echo '<div class="o-hero-carousel" data-hero-carousel >';
 
-        //Hero title and controls
-        $hero_carousel_content_args = array(
-            'class' => 'u-hide-below--small',
-        );
-        include ('hero-carousel-content.php');
+    // Check if is home page (Front page)
+    if( is_front_page() ) {
 
-        //Carousel CTA's
-        $hero_carousel_ctas_args = array(
-            'class' => 'u-hide-below--small',
-        );
-        include ('hero-carousel-ctas.php');
+        echo '<div class="o-hero-carousel" data-hero-carousel >';
 
-        //Hero carousel background image
-        echo '<div class="o-hero-carousel__inner">';
+            //Hero title and controls
+            $hero_carousel_content_args = array(
+                'class' => 'u-hide-below--small',
+            );
+            include ('hero-carousel-content.php');
 
-            if( have_rows('hero_carousel')) :
-                while( have_rows('hero_carousel')): the_row();
+            //Carousel CTA's
+            $hero_carousel_ctas_args = array(
+                'class' => 'u-hide-below--small',
+            );
+            include ('hero-carousel-ctas.php');
 
-                $hero_carousel_image = get_sub_field('hero_carousel_image');
+            //Hero carousel background image
+            echo '<div class="o-hero-carousel__inner">';
 
-                    echo '<div class="o-hero-carousel__background-image" style="background-image: url('. $hero_carousel_image['url'] .')">';
-                    echo '</div>';
+                if( have_rows('hero_carousel')) :
+                    while( have_rows('hero_carousel')): the_row();
 
-                endwhile;
-            endif;
+                    $hero_carousel_image = get_sub_field('hero_carousel_image');
+
+                        echo '<div class="o-hero-carousel__background-image" style="background-image: url('. $hero_carousel_image['url'] .')">';
+                        echo '</div>';
+
+                    endwhile;
+                endif;
+
+            echo '</div>';
+
+                //Hero content & controls
+                $hero_carousel_content_args = array(
+                    'class' => 'u-hide-above--small',
+                );
+                include ('hero-carousel-content.php');
+
+                //Carousel CTA's
+                $hero_carousel_ctas_args = array(
+                    'class' => 'u-hide-above--small',
+                );
+                include ('hero-carousel-ctas.php');
 
         echo '</div>';
 
-        //Hero title and controls
-        $hero_carousel_content_args = array(
-            'class' => 'u-hide-above--small',
-        );
-        include ('hero-carousel-content.php');
-
-        //Carousel CTA's
-        $hero_carousel_ctas_args = array(
-            'class' => 'u-hide-above--small',
-        );
-        include ('hero-carousel-ctas.php');
-
-    echo '</div>';
+    }
 
  ?>

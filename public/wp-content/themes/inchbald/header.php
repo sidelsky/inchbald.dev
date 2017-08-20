@@ -127,4 +127,6 @@
 
 			<?php
 				include('partials/hero-carousel.php');
+
+				include('partials/subpage-hero.php');
 			 ?>
