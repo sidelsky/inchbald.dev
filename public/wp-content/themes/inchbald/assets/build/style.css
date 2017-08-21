@@ -802,6 +802,8 @@ html.hidden {
 }
 
 .u-video-wrapper iframe {
+  bottom: 0;
+  right: 0;
   height: 100%;
   left: 0;
   position: absolute;
