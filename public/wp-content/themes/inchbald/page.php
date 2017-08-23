@@ -75,26 +75,9 @@
 					 ?>
 
 					<?php
-						courseFilter('course-subject');
+						courseFilter('Course Subject', 'course-subject');
+						courseFilter('Course Type', 'course-type');
 					 ?>
-
-					<div class="l-lost-column--six-twelfths o-course-filter__container" data-filter-select>
-						<div class="o-course-filter__title"><span>Course type</span>
-							<ul tabindex="0" class="o-course-filter__select-menu">
-								<?php
-									$taxonomy = 'course-type';
-									$terms = get_terms([
-									    'taxonomy' => $taxonomy
-									]);
-
-									foreach ($terms as $term) {
-										echo '<li class="o-course-filter__item" rel="' . $term->term_id . '">' . $term->name . '</li>';
-									};
-								?>
-							</ul>
-						</div>
-					</div>
-
 				</div>
 			</div>
 

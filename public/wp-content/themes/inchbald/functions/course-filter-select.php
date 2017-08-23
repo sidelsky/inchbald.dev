@@ -1,12 +1,12 @@
 <?php
 
 
-    function courseFilter($taxonomy) {
+    function courseFilter($course_type, $taxonomy) {
 
-        $taxonomy = 'course-subject';
+        //$taxonomy = 'course-subject';
 
         echo '<div class="l-lost-column--six-twelfths o-course-filter__container" data-filter-select>';
-            echo '<div class="o-course-filter__title"><span>Course subject</span>';
+            echo '<div class="o-course-filter__title"><span>' . $course_type . '</span>';
                 echo '<ul tabindex="0" class="o-course-filter__select-menu">';
 
                     $terms = get_terms([
