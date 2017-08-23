@@ -1,34 +1,20 @@
 // padding top & bottom
-.u-section-spacing--x-large {
 
-    padding-bottom: $spacing--small;
-    padding-top: $spacing--small;
+.u-section-padding-tb {
 
+    padding-bottom: $spacing--medium;
+    padding-top: $spacing--medium;
 
     @include breakpoint($small) {
 
-        padding-bottom: $spacing--large-xx;
-        padding-top: $spacing--large-xx;
+        padding-bottom: $spacing--medium;
+        padding-top: $spacing--medium;
 
-
-    }
-
-    &--no-padding-bottom {
-
-        padding-bottom: 0;
 
     }
 
 }
 
-
-// padding top & bottom - used in the footer
-.u-section-spacing--small {
-
-    padding-bottom: $spacing--small;
-    padding-top: $spacing--small;
-
-}
 
 // padding left & right
 .u-section-side-spacing {
@@ -42,6 +28,8 @@
 
     margin: 0 auto;
     max-width: 1280px; //1280px
+    padding-left: $spacing--small;
+    padding-right: $spacing--small;
     position: relative;
 
 

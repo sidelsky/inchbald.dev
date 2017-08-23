@@ -739,25 +739,16 @@ html.hidden {
   }
 }
 
-.u-section-spacing--x-large {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+.u-section-padding-tb {
+  padding-bottom: 3rem;
+  padding-top: 3rem;
 }
 
 @media (min-width: 540px) {
-  .u-section-spacing--x-large {
-    padding-bottom: 6rem;
-    padding-top: 6rem;
+  .u-section-padding-tb {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
   }
-}
-
-.u-section-spacing--x-large--no-padding-bottom {
-  padding-bottom: 0;
-}
-
-.u-section-spacing--small {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
 }
 
 .u-section-side-spacing {
@@ -768,6 +759,8 @@ html.hidden {
 .u-max-width-container {
   margin: 0 auto;
   max-width: 1280px;
+  padding-left: 2rem;
+  padding-right: 2rem;
   position: relative;
 }
 
@@ -2416,4 +2409,247 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 .o-subpage-hero__crumbs__main-title {
   background-color: #F7931E;
+}
+
+/**
+* Side navigation
+*/
+.o-side-navigation__inner li {
+  border-bottom: solid 1px #fff;
+}
+
+.o-side-navigation__inner li a {
+  background-color: #808080;
+  display: block;
+  color: #fff;
+  padding: 1rem;
+  transition: all .2s ease;
+}
+
+.o-side-navigation__inner li a:hover {
+  background-color: #4D4D4D;
+}
+
+.o-side-navigation__inner li.current_page_item a {
+  background-color: #4D4D4D;
+}
+
+.o-side-navigation__inner li:last-child {
+  border: 0;
+}
+
+/**
+* Course filter
+*/
+.o-course-filter {
+  background-color: #cdcdcd;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.o-course-filter__title {
+  font-size: 1.4rem;
+  background-color: #fff;
+  border: solid 1px #bfbfbf;
+  color: #4D4D4D;
+  position: relative;
+  transition: all .2s ease;
+}
+
+@media (min-width: 768px) {
+  .o-course-filter__title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course-filter__title {
+    font-size: 1.4rem;
+  }
+}
+
+.o-course-filter__title span {
+  bottom: 0;
+  display: block;
+  left: 0;
+  padding: 1.2rem 1rem;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+
+.o-course-filter__title::after {
+  background-color: currentColor;
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%208%208%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M2.9103%205.604V1.2496c0-.382.31-.693.693-.693.383%200%20.694.311.694.693V5.589L5.8886%203.998c.136-.136.312-.203.49-.203s.355.067.491.203c.271.271.271.71%200%20.982l-2.776%202.775c-.1507.15-.3533.2168-.55.2-.1628-.0103-.3227-.0776-.4474-.202L.3212%204.978c-.271-.271-.271-.71%200-.982.136-.135.313-.203.491-.203.177%200%20.354.068.49.203l1.608%201.6082z%22%20fill%3D%22%23fff%22%20fill-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+  background-position: center center;
+  background-repeat: no-repeat;
+  bottom: 0;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 42px;
+}
+
+.o-course-filter__title:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.o-course-filter__title:hover::after {
+  background-color: currentColor;
+}
+
+.o-course-filter__select-menu {
+  background-color: #fff;
+  border-bottom: solid 1px #bfbfbf;
+  border-left: solid 1px #bfbfbf;
+  border-right: solid 1px #bfbfbf;
+  display: none;
+  left: -1px;
+  position: absolute;
+  top: 42px;
+  width: calc(100% - 42px + 2px);
+}
+
+.o-course-filter__item {
+  font-size: 1.4rem;
+  padding: 1rem 0;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .o-course-filter__item {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course-filter__item {
+    font-size: 1.4rem;
+  }
+}
+
+.o-course-filter__item:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+/**
+* Active state
+*/
+.o-course-filter__container {
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .o-course-filter__container {
+    margin-bottom: 0;
+  }
+}
+
+.o-course-filter__container.is-open .o-course-filter__title {
+  background-color: #f3f3f3;
+  color: #000;
+}
+
+.o-course-filter__container.is-open .o-course-filter__title::after {
+  background-color: #F7931E;
+  transform: rotate(180deg);
+}
+
+.o-course-filter__container.is-open .o-course-filter__select-menu {
+  display: block;
+  z-index: 2;
+}
+
+.o-course-filter__container.is-open .o-course-filter__item {
+  color: #000;
+}
+
+.o-course-filter__container.is-open .o-course-filter__item:hover {
+  background-color: #fef2e3;
+}
+
+.l-lost-grid {
+  lost-utility: clearfix;
+}
+
+.l-lost-grid--flex {
+  lost-flex-container: row;
+}
+
+@media (min-width: 768px) {
+  .l-lost-column--one-twelfths {
+    lost-column: 1/12;
+  }
+  .l-lost-column--one-twelfths--flex {
+    lost-column: 1/12 flex;
+  }
+  .l-lost-column--two-twelfths {
+    lost-column: 2/12;
+  }
+  .l-lost-column--two-twelfths--flex {
+    lost-column: 2/12 flex;
+  }
+  .l-lost-column--three-twelfths {
+    lost-column: 3/12;
+  }
+  .l-lost-column--three-twelfths--flex {
+    lost-column: 3/12 flex;
+  }
+  .l-lost-column--four-twelfths {
+    lost-column: 4/12;
+  }
+  .l-lost-column--four-twelfths--flex {
+    lost-column: 4/12 flex;
+  }
+  .l-lost-column--five-twelfths {
+    lost-column: 5/12;
+  }
+  .l-lost-column--five-twelfths--flex {
+    lost-column: 5/12 flex;
+  }
+  .l-lost-column--six-twelfths {
+    lost-column: 6/12;
+  }
+  .l-lost-column--six-twelfths--flex {
+    lost-column: 6/12 flex;
+  }
+  .l-lost-column--seven-twelfths {
+    lost-column: 7/12;
+  }
+  .l-lost-column--seven-twelfths--flex {
+    lost-column: 7/12 flex;
+  }
+  .l-lost-column--eight-twelfths {
+    lost-column: 7/12;
+  }
+  .l-lost-column--eight-twelfths--flex {
+    lost-column: 8/12 flex;
+  }
+  .l-lost-column--nine-twelfths {
+    lost-column: 9/12;
+  }
+  .l-lost-column--nine-twelfths--flex {
+    lost-column: 9/12 flex;
+  }
+  .l-lost-column--ten-twelfths {
+    lost-column: 10/12;
+  }
+  .l-lost-column--ten-twelfths--flex {
+    lost-column: 10/12 flex;
+  }
+  .l-lost-column--eleven-twelfths {
+    lost-column: 11/12;
+  }
+  .l-lost-column--eleven-twelfths--flex {
+    lost-column: 11/12 flex;
+  }
+  .l-lost-column--twelve-twelfths {
+    lost-column: 12/12;
+  }
+  .l-lost-column--twelve-twelfths--flex {
+    lost-column: 12/12 flex;
+  }
 }

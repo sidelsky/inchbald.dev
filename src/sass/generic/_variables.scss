@@ -33,6 +33,8 @@ $primary-font-size: 16px;
 $primary-font-weight: normal;
 $primary-link-color: $black;
 
+$border-color: lighten($grey, 15%);
+
 //Font faces
 $font-name: 'roboto';
 $font-primary--light: '#{$font-name}-light-webfont', Helvetica, Arial, sans-serif;

@@ -66,13 +66,13 @@ var mobileNavigation = (function() {
         // Animate each line individually
         for (var i = 0; i < items.length; i++) {
 
-            var item = items[i]
+            var item = items[i];
 
             // Define initial properties
             dynamics.css(item, {
                 opacity: 0,
                 translateX: 20
-            })
+            });
 
             // Animate to final properties
             dynamics.animate(item, {
@@ -85,7 +85,7 @@ var mobileNavigation = (function() {
                 duration: 1000,
                 delay: 250 + i * 40,
 
-            })
+            });
         }
 
     }

@@ -1,0 +1,178 @@
+// Grid wrapper
+.l-lost-grid {
+
+    lost-utility: clearfix;
+
+    // Flex row
+    &--flex {
+
+        lost-flex-container: row;
+
+    }
+
+}
+
+@include breakpoint($medium) {
+
+    .l-lost-column {
+
+        // One twelfths
+        &--one-twelfths {
+
+            lost-column: 1/12;
+
+            &--flex {
+
+                lost-column: 1/12 flex;
+
+            }
+
+        }
+
+        // Two twelfths
+        &--two-twelfths {
+
+            lost-column: 2/12;
+
+            &--flex {
+
+                lost-column: 2/12 flex;
+
+            }
+
+        }
+
+        // Three twelfths
+        &--three-twelfths {
+
+            lost-column: 3/12;
+
+            &--flex {
+
+                lost-column: 3/12 flex;
+
+            }
+
+        }
+
+        // Four twelfths
+        &--four-twelfths {
+
+            lost-column: 4/12;
+
+            &--flex {
+
+                lost-column: 4/12 flex;
+
+            }
+
+        }
+
+        // Five twelfths
+        &--five-twelfths {
+
+            lost-column: 5/12;
+
+            &--flex {
+
+                lost-column: 5/12 flex;
+
+            }
+
+        }
+
+        // Six twelfths
+        &--six-twelfths {
+
+            lost-column: 6/12;
+
+            &--flex {
+
+                lost-column: 6/12 flex;
+
+            }
+
+        }
+
+        // Seven twelfths
+        &--seven-twelfths {
+
+            lost-column: 7/12;
+
+            &--flex {
+
+                lost-column: 7/12 flex;
+
+            }
+
+        }
+
+        // Eight twelfths
+        &--eight-twelfths {
+
+            lost-column: 7/12;
+
+            &--flex {
+
+                lost-column: 8/12 flex;
+
+            }
+
+        }
+
+        // Nine twelfths
+        &--nine-twelfths {
+
+            lost-column: 9/12;
+
+            &--flex {
+
+                lost-column: 9/12 flex;
+
+            }
+
+        }
+
+        // Ten twelfths
+        &--ten-twelfths {
+
+            lost-column: 10/12;
+
+            &--flex {
+
+                lost-column: 10/12 flex;
+
+            }
+
+        }
+
+        // Eleven twelfths
+        &--eleven-twelfths {
+
+            lost-column: 11/12;
+
+            &--flex {
+
+                lost-column: 11/12 flex;
+
+            }
+
+        }
+
+        // Twelve twelfths
+        &--twelve-twelfths {
+
+            lost-column: 12/12;
+
+            &--flex {
+
+                lost-column: 12/12 flex;
+
+            }
+
+        }
+
+
+    }
+
+}

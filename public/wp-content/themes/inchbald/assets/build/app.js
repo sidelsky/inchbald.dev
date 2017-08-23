@@ -15986,7 +15986,22 @@ require('./remodal');
 \*------------------------------------*/
 require('./subpage-hero-paralax');
 
-},{"./event-banner":8,"./hero-carousel":9,"./mobile-navigation":10,"./remodal":11,"./search-form":12,"./subpage-hero-paralax":13,"jquery":5}],7:[function(require,module,exports){
+/*------------------------------------*\
+	Filter select
+\*------------------------------------*/
+var $filterSelect = $('[data-filter-select]');
+
+    if ($filterSelect.length) {
+
+        var FilterSelect = require('./filter-select');
+
+        $filterSelect.each(function(i, elem) {
+            new FilterSelect($(elem));
+        });
+
+    }
+
+},{"./event-banner":8,"./filter-select":9,"./hero-carousel":10,"./mobile-navigation":11,"./remodal":12,"./search-form":13,"./subpage-hero-paralax":14,"jquery":5}],7:[function(require,module,exports){
 /*------------------------------------*\
 	Site Config
 	All settings, configuration, event names, classes etc
@@ -16111,6 +16126,65 @@ var slick = require('slickJS');
 }(jQuery));
 
 },{"slickJS":4}],9:[function(require,module,exports){
+/**
+* Table data
+*/
+
+var cssClasses = require('./config').cssClasses;
+
+var FilterSelect = function FilterSelect($elem) {
+
+    this.$elem = $elem;
+    this.$open = cssClasses.isOpen;
+    this.$title = $('.o-course-filter__title span', this.$elem);
+    this.$menu = $('.o-course-filter__select-menu', this.$elem);
+    this.$item = $('.o-course-filter__item', this.$elem);
+
+    this._attachHandlers();
+
+};
+
+
+/*  Attach handler event
+ -----------------------------------*/
+FilterSelect.prototype._attachHandlers = function($elem) {
+
+    var _this = this;
+
+    _this.$title.on('click', function() {
+        _this.$elem.toggleClass(_this.$open);
+    });
+
+    _this.$item.on('click', function() {
+        var $itemContent = $(this).text();
+        _this.$title.text($itemContent);
+        _this.$elem.toggleClass(_this.$open);
+    });
+
+    _this.$menu.on('mouseleave', function(){
+
+        if(_this.$elem.hasClass(_this.$open)) {
+
+            console.log('has class');
+            _this.$elem.toggleClass(_this.$open);
+
+        } else {
+
+            console.log('does not');
+
+        }
+
+    });
+
+
+};
+
+
+/*  Returns a constructor
+ -----------------------------------*/
+module.exports = FilterSelect;
+
+},{"./config":7}],10:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -16162,7 +16236,7 @@ var slick = require('slickJS');
 
 }(jQuery));
 
-},{"slickJS":4}],10:[function(require,module,exports){
+},{"slickJS":4}],11:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -16231,13 +16305,13 @@ var mobileNavigation = (function() {
         // Animate each line individually
         for (var i = 0; i < items.length; i++) {
 
-            var item = items[i]
+            var item = items[i];
 
             // Define initial properties
             dynamics.css(item, {
                 opacity: 0,
                 translateX: 20
-            })
+            });
 
             // Animate to final properties
             dynamics.animate(item, {
@@ -16250,7 +16324,7 @@ var mobileNavigation = (function() {
                 duration: 1000,
                 delay: 250 + i * 40,
 
-            })
+            });
         }
 
     }
@@ -16269,7 +16343,7 @@ var mobileNavigation = (function() {
 
 }());
 
-},{"./config":7,"dynamics":1}],11:[function(require,module,exports){
+},{"./config":7,"dynamics":1}],12:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -16300,7 +16374,7 @@ var froogaloop = require('froogaloop');
 
 }());
 
-},{"froogaloop":2,"remodal":3}],12:[function(require,module,exports){
+},{"froogaloop":2,"remodal":3}],13:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -16341,7 +16415,7 @@ var $ = require('jquery'),
 
 }());
 
-},{"./config":7,"jquery":5}],13:[function(require,module,exports){
+},{"./config":7,"jquery":5}],14:[function(require,module,exports){
 
 function homeParallax() {
 

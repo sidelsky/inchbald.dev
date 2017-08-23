@@ -35,3 +35,18 @@ require('./remodal');
 	Subpahe hero paralax
 \*------------------------------------*/
 require('./subpage-hero-paralax');
+
+/*------------------------------------*\
+	Filter select
+\*------------------------------------*/
+var $filterSelect = $('[data-filter-select]');
+
+    if ($filterSelect.length) {
+
+        var FilterSelect = require('./filter-select');
+
+        $filterSelect.each(function(i, elem) {
+            new FilterSelect($(elem));
+        });
+
+    }

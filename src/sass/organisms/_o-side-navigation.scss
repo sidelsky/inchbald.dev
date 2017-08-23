@@ -1,0 +1,50 @@
+/**
+* Side navigation
+*/
+.o-side-navigation {
+
+    &__inner {
+
+        li {
+
+            border-bottom: solid 1px $white;
+
+            a {
+
+                background-color: $grey--light;
+                display: block;
+                color: $white;
+                padding: $spacing--tiny;
+                transition: all .2s ease;
+
+                &:hover {
+
+                    background-color: $grey--dark;
+
+                }
+
+            }
+
+            // Current page item
+            &.current_page_item {
+
+                a {
+
+                    background-color: $grey--dark;
+
+                }
+
+            }
+
+            // Last item on the list
+            &:last-child {
+
+                border: 0;
+
+            }
+
+        }
+
+    }
+
+}

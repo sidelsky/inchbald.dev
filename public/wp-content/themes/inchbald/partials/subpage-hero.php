@@ -46,13 +46,6 @@
             echo '</div>';
         echo '</section>';
 
-
-
-        echo '<ul class="side-menu">';
-            echo wpb_list_child_pages();
-        echo '</ul>';
-
-
     }
 
  ?>
