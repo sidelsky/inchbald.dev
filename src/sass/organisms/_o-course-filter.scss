@@ -29,6 +29,7 @@ $dimentions: 42px;
             position: relative;
             right: 0;
             top: 0;
+            z-index: 1;
 
         }
 
@@ -47,6 +48,7 @@ $dimentions: 42px;
             right: 0;
             top: 0;
             width: $dimentions;
+            z-index: 0;
 
         }
 

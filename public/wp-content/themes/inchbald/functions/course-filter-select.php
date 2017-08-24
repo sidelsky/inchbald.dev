@@ -1,26 +1,33 @@
 <?php
 
-
+    /**
+    * Course filter
+    */
     function courseFilter($course_type, $taxonomy) {
 
-        //$taxonomy = 'course-subject';
-
-        echo '<div class="l-lost-column--six-twelfths o-course-filter__container" data-filter-select>';
+        echo '<div class="l-lost-column--six-twelfths o-course-filter__container filters" data-filter-select>';
             echo '<div class="o-course-filter__title"><span>' . $course_type . '</span>';
-                echo '<ul tabindex="0" class="o-course-filter__select-menu">';
+                echo '<ul tabindex="0" class="button-group o-course-filter__select-menu">';
 
                     $terms = get_terms([
                         'taxonomy' => $taxonomy
                     ]);
 
-                    foreach ($terms as $term) {
-                        echo '<li class="o-course-filter__item" rel="' . $term->term_id . '">' . $term->name . '</li>';
+                    $count = count($terms);
+
+                    if ( $count > 0 ){
+
+                        foreach ($terms as $term) {
+                            $termname = strtolower($term->name);
+                            $termname = str_replace(' ', '-', $termname);
+                            echo '<li data-filter=".' . $termname . '" class="o-course-filter__item item ' . $termname . '" rel="' . $term->term_id . '">' . $term->name . '</li>';
+                        };
+
                     };
 
                 echo '</ul>';
             echo '</div>';
         echo '</div>';
-
 
     };
 

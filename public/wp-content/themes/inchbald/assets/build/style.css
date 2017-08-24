@@ -2476,6 +2476,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   position: relative;
   right: 0;
   top: 0;
+  z-index: 1;
 }
 
 .o-course-filter__title::after {
@@ -2490,6 +2491,7 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   right: 0;
   top: 0;
   width: 42px;
+  z-index: 0;
 }
 
 .o-course-filter__title:hover {
@@ -2569,6 +2571,98 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 .o-course-filter__container.is-open .o-course-filter__item:hover {
   background-color: #fef2e3;
+}
+
+/**** Isotope filtering ****/
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.course-list {
+  padding-top: 3rem;
+}
+
+.course-item {
+  font-size: 1.4rem;
+  background-color: #4D4D4D;
+  color: #fff;
+  height: 200px;
+  lost-column: 3/12 0 0;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .course-item {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-item {
+    font-size: 1.4rem;
+  }
+}
+
+.course-item::before, .course-item::after {
+  content: '';
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+}
+
+.course-item::before {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+}
+
+.course-item::after {
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+}
+
+.course-item__title {
+  font-size: 1.5rem;
+  font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .course-item__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-item__title {
+    font-size: 1.5rem;
+  }
+}
+
+.course-item__duration {
+  background-color: red;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .course-item__duration {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-item__duration {
+    font-size: 1.2rem;
+  }
 }
 
 .l-lost-grid {

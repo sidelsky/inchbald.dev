@@ -37,12 +37,7 @@ FilterSelect.prototype._attachHandlers = function($elem) {
 
         if(_this.$elem.hasClass(_this.$open)) {
 
-            console.log('has class');
             _this.$elem.toggleClass(_this.$open);
-
-        } else {
-
-            console.log('does not');
 
         }
 

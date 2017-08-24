@@ -37,6 +37,11 @@ require('./remodal');
 require('./subpage-hero-paralax');
 
 /*------------------------------------*\
+	Subpahe hero paralax
+\*------------------------------------*/
+require('./isotope-filter');
+
+/*------------------------------------*\
 	Filter select
 \*------------------------------------*/
 var $filterSelect = $('[data-filter-select]');

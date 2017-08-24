@@ -1,0 +1,73 @@
+/**** Isotope filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+.course-list {
+
+    padding-top: $spacing--medium;
+
+}
+
+.course-item {
+
+    @include set-font-size(1.4rem, 1.4rem, 1.4rem);
+    background-color: $grey--dark;
+    color: $white;
+    height: 200px;
+    lost-column: 3/12 0 0;
+    padding: $spacing--small;
+
+    &::before, &::after {
+
+        content: '';
+        display: block;
+        background-color: $white;
+        position: absolute;
+        z-index: 1;
+
+    }
+
+    &::before {
+
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+
+    }
+
+    &::after {
+
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+
+    }
+
+    // Title
+    &__title {
+
+        @include set-font-size(1.5rem, 1.5rem, 1.5rem);
+        font-family: $font-primary--regular;
+
+    }
+
+    // Duration
+    &__duration {
+
+        background-color: red;
+        padding: $spacing--x-tiny $spacing--tiny;
+        @include set-font-size(1.2rem, 1.2rem, 1.2rem);
+
+    }
+
+}

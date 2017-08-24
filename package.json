@@ -9,7 +9,7 @@
         "ease": "./bower_components/segment/js/ease.min.js",
         "echo": "./bower_components/echojs/dist/echo.min.js",
         "slickJS": "./bower_components/slick-carousel/slick/slick.js",
-        "isotope": "./bower_components/isotope/js/isotope.js",
+        "isotope": "./bower_components/isotope/dist/isotope.pkgd.js",
         "remodal": "./bower_components/remodal/dist/remodal.js",
         "dynamics": "./bower_components/dynamics.js/lib/dynamics.js",
         "froogaloop": "./bower_components/froogaloop2/froogaloop.js"
