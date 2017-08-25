@@ -45,7 +45,6 @@
 					'title',
 					'editor',
 					'thumbnail',
-					'excerpt',
 					'revisions'
 				),
 			)

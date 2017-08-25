@@ -21,15 +21,37 @@
     @include set-font-size(1.4rem, 1.4rem, 1.4rem);
     background-color: $grey--dark;
     color: $white;
-    height: 200px;
-    lost-column: 3/12 0 0;
+    height: 220px;
+    lost-column: 12/12 0 0;
     padding: $spacing--small;
+    position: relative;
+
+    @include breakpoint($small) {
+
+        height: 250px;
+        lost-column: 3/12 0 0;
+
+    }
+
+    @include breakpoint($medium) {
+
+        height: 250px;
+        lost-column: 4/12 0 0;
+
+    }
+
+    @include breakpoint($large) {
+
+        height: 250px;
+        lost-column: 3/12 0 0;
+
+    }
 
     &::before, &::after {
 
+        background-color: $white;
         content: '';
         display: block;
-        background-color: $white;
         position: absolute;
         z-index: 1;
 
@@ -37,19 +59,19 @@
 
     &::before {
 
-        top: 0;
         bottom: 0;
         right: 0;
+        top: 0;
         width: 1px;
 
     }
 
     &::after {
 
-        left: 0;
         bottom: 0;
-        right: 0;
         height: 1px;
+        left: 0;
+        right: 0;
 
     }
 
@@ -61,12 +83,89 @@
 
     }
 
+    // Meta
+    &__meta {
+
+        bottom: $spacing--x-medium;
+        position: absolute;
+
+    }
+
+
+    // Details
+    &__details {
+
+        margin-bottom: $spacing--small;
+
+        p {
+
+            @include set-font-size(1.4rem, 1.4rem, 1.4rem);
+            margin-bottom: $spacing--tiny;
+
+        }
+
+    }
+
     // Duration
     &__duration {
 
-        background-color: red;
         padding: $spacing--x-tiny $spacing--tiny;
         @include set-font-size(1.2rem, 1.2rem, 1.2rem);
+
+    }
+
+}
+
+
+.garden-design,
+.interior-design {
+
+    transition: background-color .1s ease-in;
+
+}
+
+
+// Garden design
+.garden-design {
+
+    .course-item__duration {
+
+        background-color: $green;
+
+    }
+
+    &:hover {
+
+        background-color: $green;
+
+        .course-item__duration {
+
+            background-color: $green--dark;
+
+        }
+
+    }
+
+}
+
+// Interior design
+.interior-design {
+
+    .course-item__duration {
+
+        background-color: $blue;
+
+    }
+
+    &:hover {
+
+        background-color: $blue;
+
+        .course-item__duration {
+
+            background-color: $blue--dark;
+
+        }
 
     }
 

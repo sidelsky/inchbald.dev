@@ -2591,9 +2591,10 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   font-size: 1.4rem;
   background-color: #4D4D4D;
   color: #fff;
-  height: 200px;
-  lost-column: 3/12 0 0;
+  height: 220px;
+  lost-column: 12/12 0 0;
   padding: 2rem;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -2608,26 +2609,47 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   }
 }
 
+@media (min-width: 540px) {
+  .course-item {
+    height: 250px;
+    lost-column: 3/12 0 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .course-item {
+    height: 250px;
+    lost-column: 4/12 0 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-item {
+    height: 250px;
+    lost-column: 3/12 0 0;
+  }
+}
+
 .course-item::before, .course-item::after {
+  background-color: #fff;
   content: '';
   display: block;
-  background-color: #fff;
   position: absolute;
   z-index: 1;
 }
 
 .course-item::before {
-  top: 0;
   bottom: 0;
   right: 0;
+  top: 0;
   width: 1px;
 }
 
 .course-item::after {
-  left: 0;
   bottom: 0;
-  right: 0;
   height: 1px;
+  left: 0;
+  right: 0;
 }
 
 .course-item__title {
@@ -2647,8 +2669,33 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   }
 }
 
+.course-item__meta {
+  bottom: 2.5rem;
+  position: absolute;
+}
+
+.course-item__details {
+  margin-bottom: 2rem;
+}
+
+.course-item__details p {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .course-item__details p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-item__details p {
+    font-size: 1.4rem;
+  }
+}
+
 .course-item__duration {
-  background-color: red;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
 }
@@ -2663,6 +2710,35 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   .course-item__duration {
     font-size: 1.2rem;
   }
+}
+
+.garden-design,
+.interior-design {
+  transition: background-color .1s ease-in;
+}
+
+.garden-design .course-item__duration {
+  background-color: #87C242;
+}
+
+.garden-design:hover {
+  background-color: #87C242;
+}
+
+.garden-design:hover .course-item__duration {
+  background-color: #6d9e33;
+}
+
+.interior-design .course-item__duration {
+  background-color: #55BAEE;
+}
+
+.interior-design:hover {
+  background-color: #55BAEE;
+}
+
+.interior-design:hover .course-item__duration {
+  background-color: #27a7e9;
 }
 
 .l-lost-grid {

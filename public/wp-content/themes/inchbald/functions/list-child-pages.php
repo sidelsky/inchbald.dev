@@ -5,7 +5,7 @@
         global $post;
         $string = '';
 
-        if ( is_page() && $post->post_parent ) {
+        if ( is_page() && $post->post_parent || is_post_type_archive() && $post->post_parent ) {
 
             $child_pages = wp_list_pages(array(
                 'title_li' => null,
