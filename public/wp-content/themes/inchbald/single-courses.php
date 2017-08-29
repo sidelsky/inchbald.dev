@@ -66,7 +66,7 @@
 						// Display a sub field value
 						$tab_title = get_sub_field('tab_title');
 
-						echo '<span class="o-accordion__tab__title">' . $tab_title . '</span>';
+						echo '<a href="#" class="o-accordion__tab__title">' . $tab_title . '</a>';
 
 						// Tabe content
 						if( have_rows( $tab_content ) ) :

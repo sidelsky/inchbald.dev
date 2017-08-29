@@ -55,7 +55,7 @@
                 // If is CPT Courses
                 if ( is_singular( 'courses' ) ) {
                     $output .= '<ul class="o-side-navigation__inner">';
-                        $output .= '<li class="page_item page-item-82"><a href="/academics/courses">Courses</a></li>';
+                        $output .= '<li class="page_item page-item-82"><a href="/academics/courses/">Courses</a></li>';
                     $output .= '</ul>';
                 }
 
