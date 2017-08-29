@@ -45,3 +45,24 @@
     }
 
 }
+
+
+
+body {
+
+    &.single-courses {
+
+        .a-site-nav__menu .menu-item-26 {
+
+            a {
+
+                background-color: $grey--darker;
+                color: $white;
+
+            }
+
+        }
+
+    }
+
+}

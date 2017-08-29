@@ -1754,6 +1754,11 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
   color: #fff;
 }
 
+body.single-courses .a-site-nav__menu .menu-item-26 a {
+  background-color: #3e3e3e;
+  color: #fff;
+}
+
 .a-search-form {
   max-height: 0;
   position: relative;
@@ -2376,7 +2381,6 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 .o-subpage-hero .o-subpage-hero__inner {
   bottom: 0;
-  padding: 0 2rem;
   position: absolute;
   width: 100%;
 }
@@ -2414,6 +2418,10 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 /**
 * Side navigation
 */
+.o-side-navigation {
+  margin-bottom: 2rem;
+}
+
 .o-side-navigation__inner li {
   border-bottom: solid 1px #fff;
 }
@@ -2432,10 +2440,6 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 .o-side-navigation__inner li.current_page_item a {
   background-color: #4D4D4D;
-}
-
-.o-side-navigation__inner li:last-child {
-  border: 0;
 }
 
 /**
@@ -2739,6 +2743,231 @@ body.is-active .overlay .button, body.is-active .overlay input[type='submit'] {
 
 .interior-design:hover .course-item__duration {
   background-color: #27a7e9;
+}
+
+.o-course__title {
+  margin-bottom: 0;
+  font-size: 2.6rem;
+  font-family: "roboto-medium-webfont", Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .o-course__title {
+    font-size: 2.6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course__title {
+    font-size: 2.6rem;
+  }
+}
+
+.o-course__term {
+  font-size: 1.4rem;
+  display: block;
+  position: relative;
+  text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+  .o-course__term {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course__term {
+    font-size: 1.4rem;
+  }
+}
+
+.o-course__term::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin: 2rem 0;
+  width: 30px;
+}
+
+.o-course__term--interior-design::after {
+  background-color: #55BAEE;
+}
+
+.o-course__term--garden-design::after {
+  background-color: #87C242;
+}
+
+.o-course__sub-title {
+  font-size: 2rem;
+  font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .o-course__sub-title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course__sub-title {
+    font-size: 2rem;
+  }
+}
+
+.o-course__course-intro {
+  margin-bottom: 2rem;
+}
+
+.o-course__cta {
+  color: #fff;
+  display: table;
+  padding: 1.5rem 2rem;
+  width: 100%;
+}
+
+.o-course__cta p {
+  font-size: 2.2rem;
+}
+
+@media (min-width: 768px) {
+  .o-course__cta p {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course__cta p {
+    font-size: 2.2rem;
+  }
+}
+
+.o-course__cta a {
+  font-size: 1.4rem;
+  border: solid 1px currentColor;
+  color: currentColor;
+  display: block;
+  font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
+  padding: 1rem 0.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .o-course__cta a {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-course__cta a {
+    font-size: 1.4rem;
+  }
+}
+
+.o-course__cta a:hover {
+  background-color: #fff;
+  color: #55BAEE;
+}
+
+.o-course__cta--interior-design {
+  background-color: #55BAEE;
+}
+
+.o-course__cta--garden-design {
+  background-color: #87C242;
+}
+
+.o-course__cta__col {
+  display: table-cell;
+}
+
+.o-accordion__tab {
+  border-bottom: solid 2px #fff;
+}
+
+.o-accordion__tab__title {
+  background-color: #cdcdcd;
+  display: block;
+  line-height: 3;
+  padding: 0 2rem;
+  position: relative;
+  color: #000;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .o-accordion__tab__title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .o-accordion__tab__title {
+    font-size: 1.8rem;
+  }
+}
+
+.o-accordion__tab__title::before, .o-accordion__tab__title::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: currentColor;
+  content: '';
+  display: block;
+  right: 2rem;
+}
+
+.o-accordion__tab__title::before {
+  height: 21px;
+  right: 2.4rem;
+  width: 1px;
+}
+
+.o-accordion__tab__title::after {
+  height: 1px;
+  right: 1.4rem;
+  width: 21px;
+}
+
+.o-accordion__tab__title:hover {
+  background-color: #808080;
+  cursor: pointer;
+  transition: all .2s ease;
+  color: #fff;
+}
+
+.o-accordion__paragraph-content {
+  padding: 2rem;
+}
+
+.o-accordion__inner {
+  display: none;
+}
+
+.o-accordion__row {
+  display: table;
+  width: 100%;
+  padding: 2rem;
+}
+
+.o-accordion__row:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+.o-accordion__table-title {
+  display: table-cell;
+  padding-right: 2rem;
+  width: 35%;
+}
+
+.o-accordion__table-description {
+  display: table-cell;
+  font-family: "roboto-regular-webfont", Helvetica, Arial, sans-serif;
+  width: 65%;
+}
+
+.o-accordion__tab.is-open .o-accordion__tab__title:before {
+  width: 0;
 }
 
 .l-lost-grid {

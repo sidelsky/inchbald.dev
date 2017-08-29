@@ -1,0 +1,130 @@
+.o-course {
+
+    // Title
+    &__title {
+
+        margin-bottom: 0;
+        @include set-font-size(2.6rem, 2.6rem, 2.6rem);
+        font-family: $font-primary--medium;
+
+    }
+
+    // Term
+    &__term {
+
+        @include set-font-size(1.4rem, 1.4rem, 1.4rem);
+        display: block;
+        position: relative;
+        text-transform: capitalize;
+
+        &::after {
+
+            content: '';
+            display: block;
+            height: 1px;
+            margin: $spacing--small 0;
+            width: 30px;
+
+        }
+
+        // Interior design
+        &--interior-design {
+
+            &::after {
+
+                background-color: $blue;
+
+            }
+
+        }
+
+        // Garden design
+        &--garden-design {
+
+            &::after {
+
+                background-color: $green;
+
+            }
+
+        }
+
+
+    }
+
+
+    // Sub title
+    &__sub-title {
+
+        @include set-font-size(2.0rem, 2.0rem, 2.0rem);
+        font-family: $font-primary--regular;
+
+    }
+
+
+    // Course intro
+    &__course-intro {
+
+        margin-bottom: $spacing--small;
+
+    }
+
+
+    // Course
+    &__cta {
+
+        color: $white;
+        display: table;
+        padding: $spacing--x-small $spacing--small;
+        width: 100%;
+
+        p {
+
+            @include set-font-size(2.2rem, 2.2rem, 2.2rem);
+
+        }
+
+        a {
+
+            @include set-font-size(1.4rem, 1.4rem, 1.4rem);
+            border: solid 1px currentColor;
+            color: currentColor;
+            display: block;
+            font-family: $font-primary--regular;
+            padding: $spacing--tiny $spacing--x-tiny;
+            text-align: center;
+
+            &:hover {
+
+                background-color: $white;
+                color: $blue;
+            }
+
+        }
+
+        // Interior design
+        &--interior-design {
+
+            background-color: $blue;
+
+        }
+
+        // Garden design
+        &--garden-design {
+
+            background-color: $green;
+
+        }
+
+        &__col {
+
+            display: table-cell;
+
+        }
+
+
+    }
+
+
+
+}

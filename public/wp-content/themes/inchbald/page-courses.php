@@ -53,7 +53,11 @@
 					*/
 					if ($loop->have_posts()) {
 
+						$count = 0;
+
 						while ($loop->have_posts()) : $loop->the_post();
+
+						$count++;
 
 							/**
 							* Get slug from Course subject taxonomy

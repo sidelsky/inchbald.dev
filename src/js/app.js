@@ -55,3 +55,19 @@ var $filterSelect = $('[data-filter-select]');
         });
 
     }
+
+
+    /*------------------------------------*\
+    	Accordion
+    \*------------------------------------*/
+    var $accordion = $('[data-accordion]');
+
+        if ($accordion.length) {
+
+            var Accordion = require('./accordion');
+
+            $accordion.each(function(i, elem) {
+                new Accordion($(elem));
+            });
+
+        }

@@ -13,7 +13,7 @@ function homeParallax() {
     // });
 
     $subpageHero.css({
-        'background-position': 'center ' + (-top / 2) + "px"
+        'background-position': 'center ' + (-top / 5) + "px"
     });
 
     // $hero_content.css({

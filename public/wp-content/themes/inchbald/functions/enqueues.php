@@ -46,4 +46,8 @@
      wp_enqueue_style('theme_css', get_template_directory_uri() . '/assets/build/style.min.css');
 
   }
+
+
+
+  //add_theme_support( 'yoast-seo-breadcrumbs' );
 ?>

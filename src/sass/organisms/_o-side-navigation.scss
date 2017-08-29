@@ -3,6 +3,8 @@
 */
 .o-side-navigation {
 
+    margin-bottom: $spacing--small;
+
     &__inner {
 
         li {
@@ -39,7 +41,7 @@
             // Last item on the list
             &:last-child {
 
-                border: 0;
+                //border: 0;
 
             }
 

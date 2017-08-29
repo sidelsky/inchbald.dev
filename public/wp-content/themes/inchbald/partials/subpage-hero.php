@@ -29,6 +29,25 @@
                         // Parent title
                         $class = ( $parent ) ? '' : 'o-subpage-hero__crumbs__main-title';
 
+                        // $uri = $_SERVER['REQUEST_URI'];
+                        // $name = str_replace('/', '<li class="o-subpage-hero__crumbs ' . $class . '">', $uri);
+                        // echo $name . '</li>';
+
+
+
+                        //If is courses
+                        if(is_singular('courses')) {
+
+                            // echo '<li class="o-subpage-hero__crumbs">';
+                            //     echo 'Academics';
+                            // echo '</li>';
+
+                            echo '<li class="o-subpage-hero__crumbs">';
+                                echo 'Courses';
+                            echo '</li>';
+
+                        }
+
                         echo '<li class="o-subpage-hero__crumbs ' . $class . '">';
                             echo get_the_title($parent);
                         echo '</li>';

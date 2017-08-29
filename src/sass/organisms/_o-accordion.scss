@@ -1,0 +1,134 @@
+.o-accordion {
+
+    // Tab
+    &__tab {
+
+        border-bottom: solid 2px $white;
+
+        // Tab title
+        &__title {
+
+            background-color: $grey--lighter;
+            display: block;
+            line-height: 3;
+            padding: 0 $spacing--small;
+            position: relative;
+            color: $black;
+            @include set-font-size(1.8rem, 1.8rem, 1.8rem);
+
+            &::before,
+            &::after {
+
+                @include vertical-align(absolute);
+                background-color: currentColor;
+                content: '';
+                display: block;
+                right: $spacing--small;
+
+            }
+
+            &::before {
+
+                height: 21px;
+                right: $spacing--small  + .4;
+                width: 1px;
+
+            }
+
+            &::after {
+
+                height: 1px;
+                right: $spacing--small - .6;
+                width: 21px;
+
+                //transform: rotate(90deg);
+
+            }
+
+            &:hover {
+
+                background-color: $grey--light;
+                cursor: pointer;
+                transition: all .2s ease;
+                color: $white;
+
+            }
+
+        }
+
+    }
+
+
+    // Paragraph content
+    &__paragraph-content {
+
+        padding: $spacing--small;
+
+    }
+
+    // Inner
+    &__inner {
+
+        display: none;
+
+    }
+
+    // Row
+    &__row {
+
+        display: table;
+        width: 100%;
+        padding: $spacing--small;
+
+        &:nth-child(even) {
+
+            background-color: $grey--lighter-x;
+
+        }
+
+    }
+
+
+    // Paragraph content
+    &__table-title {
+
+        display: table-cell;
+        padding-right: $spacing--small;
+        width: 35%;
+
+    }
+
+
+    // Paragraph content
+    &__table-description {
+
+        display: table-cell;
+        font-family: $font-primary--regular;
+        width: 65%;
+
+    }
+
+
+}
+
+
+
+// Open tab
+.o-accordion__tab {
+
+    &.is-open {
+
+        .o-accordion__tab__title {
+
+            &:before {
+
+                width: 0;
+
+            }
+
+        }
+
+    }
+
+
+}

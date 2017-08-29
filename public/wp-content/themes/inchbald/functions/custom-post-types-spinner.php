@@ -26,10 +26,11 @@
 					'view_item' => __('View ' . $args['singular_name'], $title_slug),
 					'search_items' => __('Search ' . $args['name'], $title_slug),
 					'not_found' => __('No ' . $args['name'] . ' found', $title_slug),
-					'not_found_in_trash' => __('No ' . $args['name'] . ' found in Trash', $title_slug)
+					'not_found_in_trash' => __('No ' . $args['name'] . ' found in Trash', $title_slug),
+					'capability_type' => $args['capability_type']
 				),
 				'public' => true,
-				'hierarchical' => true,
+				'hierarchical' => $args['hierarchical'],
 				'has_archive' => $args['has_archive'],
 				'rewrite' => $args['rewrite'],
 				'menu_icon' =>  $args['menu_icon'],

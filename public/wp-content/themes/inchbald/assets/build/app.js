@@ -19515,6 +19515,52 @@ return jQuery;
 }));
 
 },{}],7:[function(require,module,exports){
+/**
+* Table data
+*/
+
+var cssClasses = require('./config').cssClasses;
+
+var Accordion = function Accordion($elem) {
+
+    this.$elem = $elem;
+    this.$open = cssClasses.isOpen;
+    this.$tab = $('.o-accordion__tab', this.$elem);
+    this.$panel = $('.o-accordion__inner', this.$elem);
+
+    this._attachHandlers();
+
+};
+
+
+/*  Attach handler event
+ -----------------------------------*/
+Accordion.prototype._attachHandlers = function($elem) {
+
+    var _this = this;
+
+    _this.$tab.on('click', function(event) {
+
+        event.preventDefault();
+
+        $this = $(this);
+
+        $this.find(_this.$panel).slideToggle(200);
+
+        $this.toggleClass(_this.$open);
+
+
+    });
+
+
+};
+
+
+/*  Returns a constructor
+ -----------------------------------*/
+module.exports = Accordion;
+
+},{"./config":9}],8:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -19573,7 +19619,23 @@ var $filterSelect = $('[data-filter-select]');
 
     }
 
-},{"./event-banner":9,"./filter-select":10,"./hero-carousel":11,"./isotope-filter":12,"./mobile-navigation":13,"./remodal":14,"./search-form":15,"./subpage-hero-paralax":16,"jquery":6}],8:[function(require,module,exports){
+
+    /*------------------------------------*\
+    	Accordion
+    \*------------------------------------*/
+    var $accordion = $('[data-accordion]');
+
+        if ($accordion.length) {
+
+            var Accordion = require('./accordion');
+
+            $accordion.each(function(i, elem) {
+                new Accordion($(elem));
+            });
+
+        }
+
+},{"./accordion":7,"./event-banner":10,"./filter-select":11,"./hero-carousel":12,"./isotope-filter":13,"./mobile-navigation":14,"./remodal":15,"./search-form":16,"./subpage-hero-paralax":17,"jquery":6}],9:[function(require,module,exports){
 /*------------------------------------*\
 	Site Config
 	All settings, configuration, event names, classes etc
@@ -19635,7 +19697,7 @@ var config = {
 
 module.exports = config;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -19697,7 +19759,7 @@ var slick = require('slickJS');
 
 }(jQuery));
 
-},{"slickJS":5}],10:[function(require,module,exports){
+},{"slickJS":5}],11:[function(require,module,exports){
 /**
 * Table data
 */
@@ -19751,7 +19813,7 @@ FilterSelect.prototype._attachHandlers = function($elem) {
  -----------------------------------*/
 module.exports = FilterSelect;
 
-},{"./config":8}],11:[function(require,module,exports){
+},{"./config":9}],12:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -19803,7 +19865,7 @@ var slick = require('slickJS');
 
 }(jQuery));
 
-},{"slickJS":5}],12:[function(require,module,exports){
+},{"slickJS":5}],13:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -19860,7 +19922,7 @@ function concatValues( obj ) {
 
 }(jQuery));
 
-},{"isotope":3}],13:[function(require,module,exports){
+},{"isotope":3}],14:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -19967,7 +20029,7 @@ var mobileNavigation = (function() {
 
 }());
 
-},{"./config":8,"dynamics":1}],14:[function(require,module,exports){
+},{"./config":9,"dynamics":1}],15:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -19998,7 +20060,7 @@ var froogaloop = require('froogaloop');
 
 }());
 
-},{"froogaloop":2,"remodal":4}],15:[function(require,module,exports){
+},{"froogaloop":2,"remodal":4}],16:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -20039,7 +20101,7 @@ var $ = require('jquery'),
 
 }());
 
-},{"./config":8,"jquery":6}],16:[function(require,module,exports){
+},{"./config":9,"jquery":6}],17:[function(require,module,exports){
 
 function homeParallax() {
 
@@ -20055,7 +20117,7 @@ function homeParallax() {
     // });
 
     $subpageHero.css({
-        'background-position': 'center ' + (-top / 2) + "px"
+        'background-position': 'center ' + (-top / 5) + "px"
     });
 
     // $hero_content.css({
@@ -20097,4 +20159,4 @@ $(window).scroll(function() {
 
 });
 
-},{}]},{},[7]);
+},{}]},{},[8]);
