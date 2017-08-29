@@ -1,0 +1,81 @@
+
+/* ---- grid ---- */
+.masonry-grid {
+
+  max-width: 1200px;
+  margin-top: -2px;
+  margin-right: -2px;
+
+}
+
+/* clear fix */
+.grid:after {
+
+  clear: both;
+  content: '';
+  display: block;
+
+}
+
+/* ---- .grid-item ---- */
+
+.masonry-grid {
+
+    &__item {
+
+        $dimensions: 305px;
+        background: $grey--lighter;
+        border: 2px solid $white;
+        float: left;
+        height: $dimensions;
+        width: $dimensions;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &--width2 {
+
+            width: $dimensions * 2;
+
+        }
+
+        &--height2     {
+
+            height: $dimensions * 2;
+
+        }
+
+    }
+
+    // Title
+    &__title {
+
+        background-color: rgba($grey--dark, .9);
+        color: $white;
+        @include set-font-size(1.4rem, 1.6rem, 1.8rem);
+        padding: $spacing--tiny;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        transition: background-color .1.5s ease;
+
+    }
+
+}
+
+
+.masonry-grid__item {
+
+    &:hover {
+
+        .masonry-grid__title {
+
+            background-color: rgba($orange, .8);
+
+        }
+
+    }
+
+}

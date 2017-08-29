@@ -19605,6 +19605,11 @@ require('./subpage-hero-paralax');
 require('./isotope-filter');
 
 /*------------------------------------*\
+	Masonry
+\*------------------------------------*/
+require('./masonry');
+
+/*------------------------------------*\
 	Filter select
 \*------------------------------------*/
 var $filterSelect = $('[data-filter-select]');
@@ -19635,7 +19640,7 @@ var $filterSelect = $('[data-filter-select]');
 
         }
 
-},{"./accordion":7,"./event-banner":10,"./filter-select":11,"./hero-carousel":12,"./isotope-filter":13,"./mobile-navigation":14,"./remodal":15,"./search-form":16,"./subpage-hero-paralax":17,"jquery":6}],9:[function(require,module,exports){
+},{"./accordion":7,"./event-banner":10,"./filter-select":11,"./hero-carousel":12,"./isotope-filter":13,"./masonry":14,"./mobile-navigation":15,"./remodal":16,"./search-form":17,"./subpage-hero-paralax":18,"jquery":6}],9:[function(require,module,exports){
 /*------------------------------------*\
 	Site Config
 	All settings, configuration, event names, classes etc
@@ -19928,6 +19933,29 @@ function concatValues( obj ) {
 /* global site_data */
 /* jshint -W097 */
 
+var $ = require('isotope');
+
+(function($){
+
+    var $masonryGrid = $('[data-masonry-grid]'),
+        $masonryGridItem = ( '.masonry-grid__item', $masonryGridItem),
+        $dimensions = 305;
+
+    $masonryGrid.isotope({
+      itemSelector: $masonryGridItem,
+      masonry: {
+        columnWidth: $dimensions
+      }
+    });
+
+}(jQuery));
+
+},{"isotope":3}],15:[function(require,module,exports){
+/* global require */
+/* global window */
+/* global site_data */
+/* jshint -W097 */
+
 var waypoints = require('dynamics');
 
 var mobileNavigation = (function() {
@@ -20029,7 +20057,7 @@ var mobileNavigation = (function() {
 
 }());
 
-},{"./config":9,"dynamics":1}],15:[function(require,module,exports){
+},{"./config":9,"dynamics":1}],16:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -20060,7 +20088,7 @@ var froogaloop = require('froogaloop');
 
 }());
 
-},{"froogaloop":2,"remodal":4}],16:[function(require,module,exports){
+},{"froogaloop":2,"remodal":4}],17:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -20101,7 +20129,7 @@ var $ = require('jquery'),
 
 }());
 
-},{"./config":9,"jquery":6}],17:[function(require,module,exports){
+},{"./config":9,"jquery":6}],18:[function(require,module,exports){
 
 function homeParallax() {
 

@@ -42,6 +42,11 @@ require('./subpage-hero-paralax');
 require('./isotope-filter');
 
 /*------------------------------------*\
+	Masonry
+\*------------------------------------*/
+require('./masonry');
+
+/*------------------------------------*\
 	Filter select
 \*------------------------------------*/
 var $filterSelect = $('[data-filter-select]');
