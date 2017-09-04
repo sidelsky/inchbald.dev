@@ -5,9 +5,9 @@
     */
     function courseFilter($course_type, $taxonomy) {
 
-        echo '<div class="l-lost-column--six-twelfths o-course-filter__container filters" data-filter-select>';
+        echo '<div class="l-lost-column--six-twelfths o-course-filter__container filters" data-filter-select >';
             echo '<div class="o-course-filter__title"><span>' . $course_type . '</span>';
-                echo '<ul tabindex="0" class="button-group o-course-filter__select-menu">';
+                echo '<ul tabindex="0" class="button-group o-course-filter__select-menu" data-filter-group="' . $course_type . '">';
 
                     $terms = get_terms([
                         'taxonomy' => $taxonomy
@@ -20,7 +20,7 @@
                         foreach ($terms as $term) {
                             $termname = strtolower($term->name);
                             $termname = str_replace(' ', '-', $termname);
-                            echo '<li data-filter=".' . $termname . '" class="o-course-filter__item item ' . $termname . '" rel="' . $term->term_id . '">' . $term->name . '</li>';
+                            echo '<li data-filter=".' . $termname . '" class="o-course-filter__item item" rel="' . $term->term_id . '">' . $term->name . '</li>';
                         };
 
                     };

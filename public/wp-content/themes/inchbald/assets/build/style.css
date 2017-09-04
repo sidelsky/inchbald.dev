@@ -2971,12 +2971,6 @@ body.single-courses .a-site-nav__menu .menu-item-26 a {
 }
 
 /* ---- grid ---- */
-.masonry-grid {
-  max-width: 1200px;
-  margin-top: -2px;
-  margin-right: -2px;
-}
-
 /* clear fix */
 .grid:after {
   clear: both;
@@ -2985,15 +2979,20 @@ body.single-courses .a-site-nav__menu .menu-item-26 a {
 }
 
 /* ---- .grid-item ---- */
+.masonry-grid {
+  max-width: 1200px;
+  margin-top: -2px;
+  margin-right: -2px;
+}
+
 .masonry-grid__item {
   background: #cdcdcd;
   border: 2px solid #fff;
   float: left;
   height: 305px;
+  position: relative;
   width: 305px;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .masonry-grid__item--width2 {
@@ -3004,17 +3003,32 @@ body.single-courses .a-site-nav__menu .menu-item-26 a {
   height: 610px;
 }
 
-.masonry-grid__title {
-  background-color: rgba(77, 77, 77, 0.9);
-  color: #fff;
-  font-size: 1.4rem;
-  padding: 1rem;
-  position: absolute;
+.masonry-grid__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   bottom: 0;
   left: 0;
+  position: absolute;
   right: 0;
-  width: 100%;
+  top: 0;
+  transform: scale(1);
+  transition: all .2s ease-in-out;
+  z-index: 0;
+}
+
+.masonry-grid__title {
+  font-size: 1.4rem;
+  background-color: rgba(77, 77, 77, 0.9);
+  bottom: 0;
+  color: #fff;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
   transition: background-color 0.1 0.5s ease;
+  width: 100%;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -3027,6 +3041,11 @@ body.single-courses .a-site-nav__menu .menu-item-26 a {
   .masonry-grid__title {
     font-size: 1.8rem;
   }
+}
+
+.masonry-grid__item:hover .masonry-grid__image {
+  transform: scale(1.05);
+  outline: solid 2px red;
 }
 
 .masonry-grid__item:hover .masonry-grid__title {

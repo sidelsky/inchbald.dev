@@ -34,8 +34,29 @@
 				echo '</div>';
 			 ?>
 
+			<?php /*
+			<div class="filters">
+				<div class="ui-group">
+					<h3>Subject</h3>
+					<div class="button-group js-radio-button-group" data-filter-group="subject">
+						<button class="button" data-filter=".all-course-subjects">all-course-subjects</button>
+						<button class="button" data-filter=".interior-design">interior-design</button>
+						<button class="button" data-filter=".garden-design">garden-design</button>
+					</div>
 
-			<div class="l-lost-grid o-course-listing course-list" data-isotope>
+					<h3>Type</h3>
+					<div class="button-group js-radio-button-group" data-filter-group="type">
+						<button class="button" data-filter=".all-course-types">all-course-types</button>
+						<button class="button" data-filter=".online">online</button>
+						<button class="button" data-filter=".part-time">part-time</button>
+						<button class="button" data-filter=".full-time">full-time</button>
+						<button class="button" data-filter=".short">short</button>
+					</div>
+				</div>
+			</div>
+			*/ ?>
+
+			<div class="l-lost-grid o-course-listing course-list" data-isotope >
 
 				<?php
 

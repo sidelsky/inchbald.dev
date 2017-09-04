@@ -6,6 +6,8 @@
 
 	include('header.php');
 
+	$notice = '<p>Sorry, nothing to display — please add some content!</p>';
+
 ?>
 
 
@@ -40,11 +42,17 @@
 						if( $masonry_item_width ) {
 							$width = 'masonry-grid__item--width2';
 						}
-						echo '<a href="' . $masonry_item_link . '" class="masonry-grid__item ' . $height . ' ' . $width . '" style="background-image:url(' . $masonry_item_image['url'] . ')">';
+						echo '<a href="' . $masonry_item_link . '" class="masonry-grid__item ' . $height . ' ' . $width . '">';
 							echo '<div class="masonry-grid__title">' . $masonry_item_title . '</div>';
+							echo '<div class="masonry-grid__image" style="background-image:url(' . $masonry_item_image['url'] . ')"></div>';
 						echo '</a>';
 
 					endwhile;
+
+					else :
+
+					// No rows found
+					echo $notice;
 
 				endif;
 

@@ -1,13 +1,5 @@
 
 /* ---- grid ---- */
-.masonry-grid {
-
-  max-width: 1200px;
-  margin-top: -2px;
-  margin-right: -2px;
-
-}
-
 /* clear fix */
 .grid:after {
 
@@ -21,6 +13,10 @@
 
 .masonry-grid {
 
+    max-width: 1200px;
+    margin-top: -2px;
+    margin-right: -2px;
+
     &__item {
 
         $dimensions: 305px;
@@ -28,10 +24,9 @@
         border: 2px solid $white;
         float: left;
         height: $dimensions;
+        position: relative;
         width: $dimensions;
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
+        overflow: hidden;
 
         &--width2 {
 
@@ -47,19 +42,37 @@
 
     }
 
+    // IMage
+    &__image {
+
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scale(1);
+        transition: all .2s ease-in-out;
+        z-index: 0;
+
+    }
+
     // Title
     &__title {
 
-        background-color: rgba($grey--dark, .9);
-        color: $white;
         @include set-font-size(1.4rem, 1.6rem, 1.8rem);
+        background-color: rgba($grey--dark, .9);
+        bottom: 0;
+        color: $white;
+        left: 0;
         padding: $spacing--tiny;
         position: absolute;
-        bottom: 0;
-        left: 0;
         right: 0;
-        width: 100%;
         transition: background-color .1.5s ease;
+        width: 100%;
+        z-index: 1;
 
     }
 
@@ -70,6 +83,15 @@
 
     &:hover {
 
+        // Image
+        .masonry-grid__image {
+
+            transform: scale(1.05);
+            outline: solid 2px red;
+
+        }
+
+        // Title
         .masonry-grid__title {
 
             background-color: rgba($orange, .8);
