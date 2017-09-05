@@ -20,7 +20,7 @@
                         foreach ($terms as $term) {
                             $termname = strtolower($term->name);
                             $termname = str_replace(' ', '-', $termname);
-                            echo '<li data-filter=".' . $termname . '" class="o-course-filter__item item" rel="' . $term->term_id . '">' . $term->name . '</li>';
+                            echo '<li data-filter=".' . $termname . '" class="o-course-filter__item item">' . $term->name . '</li>';
                         };
 
                     };

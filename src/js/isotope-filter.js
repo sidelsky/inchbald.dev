@@ -4,112 +4,106 @@
 /* jshint -W097 */
 
 var $ = require('isotope');
+var $ = require('bbq');
 
 (function($) {
 
     // init Isotope
-    var $grid = $('[data-isotope]').isotope({
+    // var $grid = $('[data-isotope]').isotope({
+    //
+    //     itemSelector: '.filter-item',
+    //
+    // });
+    var $container = $('[data-isotope]');
 
-      itemSelector: '.filter-item',
+    var initialOptions = {
 
-    });
+      itemSelector : '.filter-item'
+    //   masonry: {
+    //     columnWidth: 80
+    //   },
+    //   getSortData: {
+    //     subject: function( $elem ) {
+    //       return $elem.attr('data-subject');
+    //     },
+    //     type: function( $elem ) {
+    //       return $elem.attr('data-type');
+    //     }
+    //   }
+
+    };
+
+    // build a hash for all our options
+    var options = {
+      // special hash for combination filters
+      comboFilters: {}
+    };
 
     // store filter for each group
-    var filters = {};
+    //var filters = {};
 
-    $('.filters').on( 'click', '.item', function() {
+    $('.filters').on( 'click', '.item', function(event) {
 
-      var $this = $(this);
+        event.preventDefault();
 
-      // get group key
-      var $buttonGroup = $this.parents('.button-group');
-      var filterGroup = $buttonGroup.attr('data-filter-group');
+        var $this = $(this);
 
-      // set filter for group
-      filters[ filterGroup ] = $this.attr('data-filter');
+        // get group key
+        var $buttonGroup = $this.parents('.button-group');
+        var filterGroup = $buttonGroup.attr('data-filter-group');
 
-      // combine filters
-      var filterValue = concatValues( filters );
-
-      // set filter for Isotope
-      $grid.isotope({ filter: filterValue });
+        options.comboFilters[ filterGroup ] = $this.attr('data-filter');
+        $.bbq.pushState( options );
 
     });
 
-    // change is-checked class on buttons
-    $('.button-group').each( function( i, buttonGroup ) {
+    var location = window.location;
+    var $comboFilterOptionSets = $('.filters .button-group');
 
-      var $buttonGroup = $( buttonGroup );
 
-      $buttonGroup.on( 'click', 'button', function() {
+    function getComboFilterSelector( comboFilters ) {
+      // build filter
+      var isoFilters = [];
+      var filterValue, $link, $optionSet;
+      for ( var prop in comboFilters ) {
+        filterValue = comboFilters[ prop ];
+        isoFilters.push( filterValue );
+        // change selected combo filter link
+        $optionSet = $comboFilterOptionSets.filter('[data-filter-group="' + prop + '"]');
+        $link = $optionSet.find('a[data-filter-value="' + filterValue + '"]');
 
-        $buttonGroup.find('.is-checked').removeClass('is-checked');
-        $( this ).addClass('is-checked');
-
-      });
-
-    });
-
-    // flatten object by concatting values
-    function concatValues( obj ) {
-      var value = '';
-      for ( var prop in obj ) {
-        value += obj[ prop ];
       }
-      return value;
+      var selector = isoFilters.join('');
+      return selector;
     }
 
-// // init Isotope
-// var $grid = $('[data-isotope]').isotope({
-//
-//     itemSelector: '.filter-item',
-//     masonry: {
-//         columnWidth: 10
-//     }
-//
-// });
-//
-// // store filter for each group
-// var filters = {};
-//
-// $('.filters').on( 'click', '.item', function() {
-//
-//   var $this = $(this);
-//
-//   // get group key
-//   var $buttonGroup = $this.parents('.button-group');
-//
-//   var $filterGroup = $buttonGroup.attr('data-filter-group');
-//
-//   // set filter for group
-//   filters[ $filterGroup ] = $this.attr('data-filter');
-//
-//   // combine filters
-//   var filterValue = concatValues( filters );
-//
-//   // set filter for Isotope
-//   $grid.isotope({ filter: filterValue });
-// });
-//
-//
-// // flatten object by concatting values
-// function concatValues( obj ) {
-//   var value = '';
-//   for ( var prop in obj ) {
-//     value += obj[ prop ];
-//   }
-//   return value;
-// }
 
+    $( window ).on( 'hashchange', function() {
 
+        function callWindowLoad() {
 
+            // get options from hash
+            if ( location.hash ) {
+              $.extend( options, $.deparam.fragment( location.hash, true ) );
+            }
+            // build options from hash and initial options
+            var isoOptions = $.extend( {}, initialOptions, options );
 
-/////
-// external js: isotope.pkgd.js
+            if ( options.comboFilters ) {
+              isoOptions.filter = getComboFilterSelector( options.comboFilters );
+            }
 
+            // change selected link for sortBy
+            if ( options.sortBy ) {
+              var $link = $sortBy.find('a[data-option-value="' + options.sortBy + '"]');
+            }
 
+            $container.isotope( isoOptions );
 
+        }
 
+        setTimeout(callWindowLoad, 100);
 
+    }).trigger( 'hashchange' ); // trigger hashchange to capture initial hash options
 
 }(jQuery));

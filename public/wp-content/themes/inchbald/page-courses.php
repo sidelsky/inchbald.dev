@@ -22,6 +22,7 @@
 
 		<div class="l-lost-column--nine-twelfths">
 
+
 			<?php
 				/**
 				* Couse filters
@@ -33,28 +34,6 @@
 					echo '</div>';
 				echo '</div>';
 			 ?>
-
-			<?php /*
-			<div class="filters">
-				<div class="ui-group">
-					<h3>Subject</h3>
-					<div class="button-group js-radio-button-group" data-filter-group="subject">
-						<button class="button" data-filter=".all-course-subjects">all-course-subjects</button>
-						<button class="button" data-filter=".interior-design">interior-design</button>
-						<button class="button" data-filter=".garden-design">garden-design</button>
-					</div>
-
-					<h3>Type</h3>
-					<div class="button-group js-radio-button-group" data-filter-group="type">
-						<button class="button" data-filter=".all-course-types">all-course-types</button>
-						<button class="button" data-filter=".online">online</button>
-						<button class="button" data-filter=".part-time">part-time</button>
-						<button class="button" data-filter=".full-time">full-time</button>
-						<button class="button" data-filter=".short">short</button>
-					</div>
-				</div>
-			</div>
-			*/ ?>
 
 			<div class="l-lost-grid o-course-listing course-list" data-isotope >
 
@@ -102,7 +81,7 @@
 							$post_url = get_the_permalink();
 							$post_title = get_the_title();
 
-							echo '<a href="' . $post_url . '" class="filter-item course-item ' . $course_subject_slug . ' ' . $course_type_slug . '">';
+							echo '<a href="' . $post_url . '" class="filter-item course-item ' . $course_subject_slug . ' ' . $course_type_slug . '" data-subject="' . $course_subject_slug . '" data-type="' . $course_type_slug . '">';
 								echo '<h3 class="course-item__title">' . $post_title . '</h3>';
 								echo '<div class="course-item__meta">';
 									echo '<div class="course-item__details">' . $course_details . '</div>';

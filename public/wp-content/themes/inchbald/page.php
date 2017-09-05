@@ -5,10 +5,16 @@
 
 ?>
 
-	<section role="main" class="u-max-width-container l-lost-grid u-section-padding-tb">
+<section role="main" class="u-max-width-container l-lost-grid u-section-padding-tb">
 
-	page
+	<div class="l-lost-column--three-twelfths">
+		<?php echo list_child_pages(); ?>
+	</div>
 
-	</section>
+	<div class="l-lost-column--nine-twelfths">
+		Page content here...
+	</div>
+	
+</section>
 
 <?php include('footer.php'); ?>
