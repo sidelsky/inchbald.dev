@@ -6,8 +6,6 @@
 
 	include('header.php');
 
-	$notice = '<p>Sorry, nothing to display — please add some content!</p>';
-
 ?>
 
 
@@ -52,7 +50,7 @@
 					else :
 
 					// No rows found
-					echo $notice;
+					echo '<p>' . $lang['notice'] . '</p>';
 
 				endif;
 

@@ -2,20 +2,18 @@
     <ul class="login">
 
         <li class="login__item login__item--student">
-            <a href="#" class="login__portal">
-                <svg class="icon icon--lock">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-lock" viewBox="0 0 32 32"></use>
-                </svg>
-                Student Portal
+            <a href="<?php echo $lang['portal_login']['student']['url'] ?>" class="login__portal">
+                <?php
+                    echo $lang['portal_login']['icon'] . ' ' . $lang['portal_login']['student']['title'];
+                ?>
             </a>
         </li>
 
         <li class="login__item">
-            <a href="#" class="login__portal">
-                <svg class="icon icon--lock">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-lock" viewBox="0 0 32 32"></use>
-                </svg>
-                Alumni Portal
+            <a href="<?php echo $lang['portal_login']['alumni']['url'] ?>" class="login__portal">
+                <?php
+                    echo $lang['portal_login']['icon'] . ' ' . $lang['portal_login']['alumni']['title'];
+                ?>
             </a>
         </li>
 

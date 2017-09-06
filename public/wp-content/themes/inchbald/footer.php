@@ -12,8 +12,8 @@
 
 			<div class="page-footer__column">
 				<nav class="footer-navigation">
-					<a href="#" class="footer-navigation__item">Visit Inchbald</a>
-					<a href="#" class="footer-navigation__item">Contact</a>
+					<a href="<?php echo $lang['footer_navigation']['visit']['url']; ?>" class="footer-navigation__item"><?php echo $lang['footer_navigation']['visit']['title']; ?></a>
+					<a href="<?php echo $lang['footer_navigation']['contact']['url']; ?>" class="footer-navigation__item"><?php echo $lang['footer_navigation']['contact']['title']; ?></a>
 				</nav>
 				<span class="page-footer__copyright">
 					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>
@@ -22,30 +22,15 @@
 
 			<div class="page-footer__column">
 				<nav class="social-navigation">
-					<!-- Social icon -->
-					<a href="#" class="social-navigation__item">
-						<svg class="icon">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-facebook" viewBox="0 0 32 32"></use>
-						</svg>
-					</a>
-					<!-- Social icon -->
-					<a href="#" class="social-navigation__item">
-						<svg class="icon">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-twitter" viewBox="0 0 32 32"></use>
-						</svg>
-					</a>
-					<!-- Social icon -->
-					<a href="#" class="social-navigation__item">
-						<svg class="icon">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-insta" viewBox="0 0 32 32"></use>
-						</svg>
-					</a>
-					<!-- Social icon -->
-					<a href="#" class="social-navigation__item">
-						<svg class="icon">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-pint" viewBox="0 0 32 32"></use>
-						</svg>
-					</a>
+					<?php
+						/**
+						* Solcial icons
+						*/
+						foreach ($lang['social'] as $key => $value) {
+							echo '<a href="' . $value['url'] . '" class="social-navigation__item">' . $value['icon'] . '</a>';
+						}
+ 					?>
+
 				</nav>
 			</div>
 
