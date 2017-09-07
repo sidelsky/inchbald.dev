@@ -189,38 +189,27 @@
 
     &__cta {
 
-        lost-column: 12/12 flex;
-        color: $white;
-        padding: $spacing--small;
-        min-height: 140px;
-        position: relative;
         box-shadow: 0px 0px 20px 0px rgba($black, .4);
+        color: $white;
+        lost-column: 12/12 flex;
+        min-height: 140px;
+        padding: $spacing--small;
+        position: relative;
         transition: all .2s ease;
+        //margin-bottom: $spacing--small;
 
-        &--garden-design {
+        &:nth-of-type(1) {
+
+            background-color: rgba($blue, .9);
+            margin-bottom: $spacing--small;
+
+        }
+
+        &:nth-of-type(2) {
 
             background-color: rgba($green, .9);
 
-            &:hover {
-
-                //background-color: $green--dark;
-
-            }
-
         }
-
-        &--interior-design {
-
-            background-color: rgba($blue, .9);
-
-            &:hover {
-
-                //background-color: $blue--dark;
-
-            }
-
-        }
-
 
         &:hover {
 
@@ -232,17 +221,11 @@
 
         }
 
-        &:first-child {
-
-            margin-bottom: $spacing--small;
-
-        }
-
         @include breakpoint($small) {
 
             lost-column: 6/12 flex;
 
-            &:first-child {
+            &:nth-of-type(1) {
 
                 margin-bottom: 0;
 

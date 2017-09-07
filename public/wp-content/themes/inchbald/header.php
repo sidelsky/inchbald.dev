@@ -26,7 +26,7 @@
 			/*
 			* Language
 			*/
-			include('language/en.php');
+			include('content/en.php');
 
 
 		?>

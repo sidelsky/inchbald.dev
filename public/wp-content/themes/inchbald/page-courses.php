@@ -41,9 +41,7 @@
 
 					$args = array(
 			            'post_type' => 'courses',
-			            'posts_per_page' => -1,
-			            'orderby' => 'post_date',
-			            'order' => 'DEC'
+			            'posts_per_page' => -1
 			        );
 
 					$loop = new WP_Query($args);

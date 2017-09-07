@@ -50,7 +50,7 @@
 					else :
 
 					// No rows found
-					echo '<p>' . $lang['notice'] . '</p>';
+					echo '<p>' . $content['notice'] . '</p>';
 
 				endif;
 

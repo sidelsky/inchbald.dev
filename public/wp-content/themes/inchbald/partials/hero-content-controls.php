@@ -19,9 +19,16 @@
             echo '</span>';
         echo '</div>';
 
-        //Watch video
+        // Watch video
+        $svg_icon_args = array(
+            'icon' => $content['hero_content']['watch_video']['icon'],
+        );
+
         echo '<div class="o-hero-carousel__controls__column watch-video">';
-            echo '<a href="' . $lang['hero_content']['watch_video']['url'] . '">' . $lang['hero_content']['watch_video']['icon'] . ' ' . $lang['hero_content']['watch_video']['title'] . '</a>';
+            echo '<a href="' . $content['hero_content']['watch_video']['url'] . '">';
+            svgIcon($svg_icon_args);
+            echo $content['hero_content']['watch_video']['title'];
+            echo '</a>';
         echo '</div>';
         echo '</div>';
     echo '</div>';

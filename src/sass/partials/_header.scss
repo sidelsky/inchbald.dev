@@ -201,7 +201,7 @@
 		}
 
 		//Student
-		&--student {
+		&:first-child {
 
 			border-bottom: solid 1px $stroke;
 

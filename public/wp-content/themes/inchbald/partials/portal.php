@@ -1,21 +1,25 @@
-<div class="page-header__column page-header__column--portal">
-    <ul class="login">
+<?php
+    /**
+    * Portal login
+    */
+    echo '<div class="page-header__column page-header__column--portal">';
+    echo '<ul class="login">';
 
-        <li class="login__item login__item--student">
-            <a href="<?php echo $lang['portal_login']['student']['url'] ?>" class="login__portal">
-                <?php
-                    echo $lang['portal_login']['icon'] . ' ' . $lang['portal_login']['student']['title'];
-                ?>
-            </a>
-        </li>
+        foreach ($content['portal_login'] as $key => $value) {
 
-        <li class="login__item">
-            <a href="<?php echo $lang['portal_login']['alumni']['url'] ?>" class="login__portal">
-                <?php
-                    echo $lang['portal_login']['icon'] . ' ' . $lang['portal_login']['alumni']['title'];
-                ?>
-            </a>
-        </li>
+            $svg_icon_args = array(
+                'icon' => $value['icon'],
+            );
 
-    </ul>
-</div>
+            echo '<li class="login__item">';
+                echo '<a href="' . $value['url'] . '">';
+                    svgIcon($svg_icon_args);
+                    echo ' ' . $value['title'];
+                echo '</a>';
+            echo '</li>';
+        }
+
+    echo '</ul>';
+    echo '</div>';
+
+?>

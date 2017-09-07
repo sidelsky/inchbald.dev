@@ -17,6 +17,10 @@
 
 				<?php
 
+					$svg_icon_args = array(
+						'icon' => $content['event_banner_cta']['icon'],
+					);
+
 					$args = array(
 					  'post_type' => 'events',
 					  'posts_per_page' => -1,
@@ -30,8 +34,10 @@
 						$to_date = get_field('to_date');
 
 						echo '<div class="o-event-banner__event">';
-							echo '<h3 class="o-event-banner__details">' . '<span>' . get_the_title() . '</span>' . ' <span class="u-hide-below--small">-</span> ' . '<span class="o-event-banner__date">' . $from_date . ' - ' . $to_date . '</span>' . '<a href="' . get_the_permalink() . '" class="o-event-banner__button">' . $lang['event_banner_cta'] . '  <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-arrow"></use>
-	</svg></a>' . '</h3>';
+							echo '<h3 class="o-event-banner__details">' . '<span>' . get_the_title() . '</span>' . ' <span class="u-hide-below--small">-</span> ' . '<span class="o-event-banner__date">' . $from_date . ' - ' . $to_date . '</span>' . '<a href="' . get_the_permalink() . '" class="o-event-banner__button">';
+								echo  $content['event_banner_cta']['title'];
+								svgIcon($svg_icon_args);
+							echo '</a></h3>';
 						echo '</div>';
 
 					endwhile;

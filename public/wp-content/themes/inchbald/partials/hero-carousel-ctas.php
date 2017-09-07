@@ -13,21 +13,26 @@
 
     $args = wp_parse_args( $args, $defaults );
 
-    // this variable to item
+    // This variable to item
     $class = $args['class'];
 
     echo '<div class="o-hero-carousel__ctas ' . $class . '">';
         echo '<div class="u-max-width-container u-max-width-container--tiny o-hero-carousel__ctas-inner">';
 
-            echo '<a href="' . $lang['course_titles']['garden']['url'] . '" class="o-hero-carousel__cta o-hero-carousel__cta--interior-design">';
-                echo '<h2 class="o-hero-carousel__cta-title">' . $lang['course_titles']['interior']['title'] . '</h2>';
-                echo '<span class="o-hero-carousel__cta-link">View courses <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-arrow" viewBox="0 0 32 32"></use></svg></span>';
-            echo '</a>';
-
-            echo '<a href="' . $lang['course_titles']['garden']['url'] . '" class="o-hero-carousel__cta o-hero-carousel__cta--garden-design">';
-                echo '<h2 class="o-hero-carousel__cta-title">' . $lang['course_titles']['garden']['title'] . '</h2>';
-                echo '<span class="o-hero-carousel__cta-link">View courses <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-arrow" viewBox="0 0 32 32"></use></svg></span>';
-            echo '</a>';
+            /**
+            * Hero CTA's
+            */
+            foreach ($content['course_titles'] as $key => $value) {
+                echo '<a href="' . $value['url'] . '" class="o-hero-carousel__cta">';
+                    echo '<h2 class="o-hero-carousel__cta-title">' . $value['title'] . '</h2>';
+                        echo '<span class="o-hero-carousel__cta-link">' . $value['link_title'] . '';
+                            $svg_icon_args = array(
+                                'icon' => $value['icon']
+                            );
+                            svgIcon($svg_icon_args);
+                        echo '</span>';
+                echo '</a>';
+            }
 
         echo '</div>';
     echo '</div>';

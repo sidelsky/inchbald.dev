@@ -46,3 +46,15 @@ blockquote {
   @include set-font-size(2rem, 2rem, 2rem);
   margin: 0;
 }
+
+p {
+
+    margin-bottom: $spacing--small;
+
+    &:last-child {
+
+        margin-bottom: 0;
+
+    }
+    
+}

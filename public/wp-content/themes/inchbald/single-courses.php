@@ -123,14 +123,14 @@
 				}
 
 				echo '<div class="o-course__cta ' . $class_name . '">';
-					echo '<div class="o-course__cta__col"><p>Interested? Apply for this course</p></div>';
-					echo '<div class="o-course__cta__col"><a href="#">Addmissions</a></div>';
+					echo '<div class="o-course__cta__col"><p>' . $content['course_application']['title'] . '</p></div>';
+					echo '<div class="o-course__cta__col"><a href="' . $content['course_application']['url'] . '">' . $content['course_application']['button_title'] . '</a></div>';
 				echo '</div>';
 
 			else :
 
 			// No rows found
-			echo '<p>' . $lang['notice'] . '</p>';
+			echo '<p>' . $content['notice'] . '</p>';
 
 			endif;
 

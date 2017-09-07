@@ -64,6 +64,15 @@
 
         padding: $spacing--small;
 
+
+        a {
+
+            color: currentColor;
+            text-decoration: underline;
+
+        }
+
+
     }
 
     // Inner
@@ -95,6 +104,7 @@
         display: table-cell;
         padding-right: $spacing--small;
         width: 35%;
+        font-family: $font-primary--regular;
 
     }
 
@@ -103,8 +113,14 @@
     &__table-description {
 
         display: table-cell;
-        font-family: $font-primary--regular;
         width: 65%;
+
+        a {
+
+            color: currentColor;
+            text-decoration: underline;
+
+        }
 
     }
 
