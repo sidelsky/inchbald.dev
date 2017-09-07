@@ -6,7 +6,7 @@
     </div>
 
     <!-- Navigation -->
-    <div class="page-header__column page-header__column--navigation">
+    <div class="page-header__column page-header__column--navigation u-hide-below--large">
         <nav class="a-site-nav">
             <?php
                 //Nav Menu
@@ -20,11 +20,12 @@
         </nav>
     </div>
 
+
     <!-- Search and Portal-->
-    <div class="page-header__column page-header__column--search-portal">
+    <div class="page-header__column page-header__column--search-portal u-hide-below--large">
 
         <div class="page-header__column page-header__column--search">
-            <a href="#" class="search" id="search-button">
+            <a href="#" class="search" data-search-button>
 
                 <svg class="icon icon--search" id="search-icon">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shape-search" viewBox="0 0 32 32"></use>
@@ -37,9 +38,18 @@
             </a>
         </div>
 
-        <?php include('portal.php'); ?>
 
-    </div>
+        <div class="page-header__column page-header__column--search u-hide-above--large">
+
+            <div class="c-hamburger__container">
+                <div class="c-hamburger c-hamburger--htx" data-hamburger-menu>
+                    <span></span>
+                </div>
+            </div>
+
+            <?php include('portal.php'); ?>
+
+        </div>
 
 
 </header>

@@ -2,7 +2,7 @@
     /**
     * Portal login
     */
-    echo '<div class="page-header__column page-header__column--portal">';
+    echo '<div class="page-header__column page-header__column--portal u-hide-below--large">';
     echo '<ul class="login">';
 
         foreach ($content['portal_login'] as $key => $value) {
