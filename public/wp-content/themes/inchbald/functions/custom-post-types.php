@@ -57,6 +57,35 @@
 		//End post type
 
 
+		//Post type - Videos
+		create_post_type(
+
+			array(
+				'name' => 'Videos',
+				'singular_name' => 'Video',
+				'has_archive' => false,
+				'capability_type' => 'page',
+				'menu_icon' =>  'dashicons-video-alt2',
+				'menu_position' => 5,
+				'hierarchical' => true,
+				'rewrite' => array(
+					'slug' => 'media/videos',
+					'with_front' => TRUE
+				),
+				'supports' => array(
+					'page-attributes',
+					'title',
+					'editor',
+					'thumbnail',
+					'excerpt',
+					'revisions'
+				)
+			)
+		);
+		//End post type
+
+
+
 	}
 
 	add_action('init', 'createPostTypes');

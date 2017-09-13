@@ -1,5 +1,4 @@
 <?php
-
     /**
     * English language
     */
@@ -54,6 +53,12 @@
                 'icon' => 'lock'
             )
         ),
+        // Video thumbnails
+        'video_thumbnail' => array(
+            'cta' => 'Play video',
+            'icon' => 'right-chevron'
+        ),
+        // Footer navigation
         'footer_navigation' => array(
             'visit' => array(
                 'title' => 'Visit Inchbald',
@@ -64,6 +69,7 @@
                 'url' => '#'
             )
         ),
+        // Social navigation
         'social' => array(
             'facebook' => array(
                 'title' => 'facebook',

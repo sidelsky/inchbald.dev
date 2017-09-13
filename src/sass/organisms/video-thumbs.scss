@@ -1,0 +1,74 @@
+.o-video-thumbs {
+
+    color: $grey--darker;
+    transition: all .2s ease-in-out;
+    position: relative;
+
+    &:hover {
+
+        background-color: $grey--lighter-x;
+        color: $orange;
+
+    }
+
+    &__thumbnail {
+
+        height: 170px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @include breakpoint($small) {
+
+            height: 270px;
+
+        }
+
+        @include breakpoint($medium) {
+
+            height: 170px;
+
+        }
+
+        @include breakpoint($large) {
+
+            height: 170px;
+
+        }
+
+    }
+
+    &__title {
+
+        @include set-font-size(1.8rem, 1.8rem, 1.8rem);
+        color: currentColor;
+        padding: $spacing--medium $spacing--small;
+
+        @include breakpoint($medium) {
+
+            padding: $spacing--large $spacing--medium;
+
+        }
+
+    }
+
+    &__cta {
+
+        @include set-font-size(1.1rem, 1.1rem, 1.1rem);
+        bottom: 0;
+        color: currentColor;
+        padding: $spacing--small;
+        position: absolute;
+        text-align: right;
+        text-transform: capitalize;
+        width: 100%;
+
+        svg {
+
+            width: 7px;
+
+        }
+
+    }
+
+}

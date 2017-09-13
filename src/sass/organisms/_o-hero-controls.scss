@@ -1,0 +1,78 @@
+/**
+* Hero carousel controls
+*/
+.o-hero-carousel__controls {
+
+    @include set-font-size(1.1rem, 1.1rem, 1.1rem);
+    border-top: solid 1px $stroke--light;
+    color: $white;
+    display: table;
+    text-align: center;
+    text-transform: uppercase;
+
+
+    &__column {
+
+        display: table-cell;
+        width: 100%;
+
+        a {
+
+            color: currentColor;
+            display: block;
+            padding: $spacing--tiny $spacing--small;
+
+            &:hover {
+
+                background-color: $grey--dark;
+                color: $white;
+
+            }
+
+            .icon {
+
+                margin-right: $spacing--x-tiny;
+
+            }
+
+        }
+
+        &--arrow {
+
+            width: 30px;
+            border-right: solid 1px $stroke--light;
+
+        }
+
+        span {
+
+            display: block;
+            color: currentColor;
+            padding: $spacing--tiny $spacing--small;
+
+            &:hover {
+
+                cursor: pointer;
+                background-color: $grey--dark;
+                color: $white;
+
+            }
+
+            &:active, &:focus {
+
+                outline: 0;
+
+            }
+
+        }
+
+    }
+
+}
+
+//Prev button
+.o-hero-carousel__controls__navigation--prev {
+
+    transform: rotate(180deg);
+
+}

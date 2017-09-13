@@ -38,6 +38,16 @@
                 'echo' => 0
             ));
 
+        } elseif (  is_singular( 'videos' ) ) {
+
+            $child_pages = wp_list_pages(array(
+                'post_type'   => 'videos',
+                'sort_column' => 'menu_order',
+                'title_li'    => null,
+                'child_of' => $post->post_parent,
+                'echo' => 0
+            ));
+
         } else {
 
             $child_pages = wp_list_pages(array(
@@ -50,12 +60,22 @@
 
         if ( $child_pages ) {
 
-            $output .= '<nav class="o-side-navigation">';
+            $output .= '<input type="checkbox" id="sub-menu" class="sub-menu u-hide-above--medium" role="button">';
+            $output .= '<label for="sub-menu" class="sub-menu__label u-hide-above--medium"></label>';
+
+            $output .= '<nav class="o-side-navigation" id="sub-menu">';
 
                 // If is CPT Courses
                 if ( is_singular( 'courses' ) ) {
                     $output .= '<ul class="o-side-navigation__inner">';
-                        $output .= '<li class="page_item page-item-82"><a href="/academics/courses/">Courses</a></li>';
+                        $output .= '<li class="page_item"><a href="/academics/courses/">Courses</a></li>';
+                    $output .= '</ul>';
+                }
+
+                // If is CPT Courses
+                if ( is_singular( 'videos' ) ) {
+                    $output .= '<ul class="o-side-navigation__inner">';
+                        $output .= '<li class="page_item"><a href="/media/videos/">Videos</a></li>';
                     $output .= '</ul>';
                 }
 

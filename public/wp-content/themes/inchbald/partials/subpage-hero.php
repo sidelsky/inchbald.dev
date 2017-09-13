@@ -16,7 +16,13 @@
         $grandparent_get = get_post($parent);
         $grandparent = $grandparent_get->post_parent;
 
-        echo '<section class="o-subpage-hero" style="background-image: url(' . $thumbnail . ')" data-subpage-hero>';
+        if($thumbnail) {
+            $class = '';
+        } else {
+            $class = 'o-subpage-hero--shallow';
+        }
+
+        echo '<section class="o-subpage-hero ' . $class . '" style="background-image: url(' . $thumbnail . ')" data-subpage-hero>';
             echo '<div class="o-subpage-hero__inner">';
                 echo '<div class="u-max-width-container">';
                     echo '<ul class="o-subpage-hero__bread">';

@@ -38,13 +38,6 @@
 		</div>
 	</div>
 
-
-
-	<?php
-
-
- ?>
-
 </footer>
 
 </div> <!-- page-wrap END -->
