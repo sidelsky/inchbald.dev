@@ -31,8 +31,10 @@ $button-transistion-duration: .3s;     // The transition duration
 
 .c-hamburger__container {
 
-    width: 70px;
-    height: 70px;
+    @include absolute-center;
+
+    width: 40px;
+    height: 40px;
     //background-color: darken($white, 10%);
     position: absolute;
     right: 0;

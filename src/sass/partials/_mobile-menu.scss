@@ -15,7 +15,7 @@
 .overlay {
 
     /* Height & width depends on how you want to reveal the overlay (see JS below) */
-    background-color: red;
+    background-color: $white;
     height: 100%;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: $spacing--x-large;
@@ -68,12 +68,18 @@
 
     .menu-item {
 
-        border-top: solid 1px darken($black, 5%);
+        border-top: solid 1px $grey--lighter;
         display: block;
         font-size: 5vw;
         line-height: 3.5;
         margin: 0;
         padding: 0;
+
+        &:first-child {
+
+            border: 0;
+
+        }
 
         @include breakpoint($small) {
 
@@ -83,7 +89,7 @@
 
         a {
 
-            color: $white;
+            color: $grey--dark;
             display: inline-block;
 
         }

@@ -17,7 +17,7 @@
 				'menu_position' => 5,
 				'hierarchical' => false,
 				'rewrite' => array(
-					'slug' => NULL,
+					'slug' => 'event',
 					'with_front' => TRUE
 				),
 				'supports' => array(

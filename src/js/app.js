@@ -42,6 +42,11 @@ require('./subpage-hero-paralax');
 require('./isotope-filter');
 
 /*------------------------------------*\
+	Show application form
+\*------------------------------------*/
+require('./application-form');
+
+/*------------------------------------*\
 	Masonry
 \*------------------------------------*/
 require('./masonry');

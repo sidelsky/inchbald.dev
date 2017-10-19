@@ -14,13 +14,13 @@
         'course_titles' => array(
             'interior' => array(
                 'title' => 'Interior Design<br>Courses',
-                'url' => '/academics/courses/#comboFilters%5BCourse+subject%5D=.interior-design',
+                'url' => '/inchbald.co.uk/academics/courses/#comboFilters%5BCourse+subject%5D=.interior-design',
                 'icon' => 'arrow',
                 'link_title' => 'View courses'
             ),
             'garden' => array(
                 'title' => 'Garden Design<br>Courses',
-                'url' => '/academics/courses/#comboFilters%5BCourse+subject%5D=.garden-design',
+                'url' => '/inchbald.co.uk/academics/courses/#comboFilters%5BCourse+subject%5D=.garden-design',
                 'icon' => 'arrow',
                 'link_title' => 'View courses'
             )
@@ -28,7 +28,7 @@
         // Courses
         'course_application' => array(
             'title' => 'Interested? Apply for this course',
-            'button_title' => 'Addmissions',
+            'button_title' => 'Contact Us',
             'url' => '#',
             'icon' => 'arrow'
         ),
@@ -68,6 +68,22 @@
                 'title' => 'Contact',
                 'url' => '#'
             )
+        ),
+        // Footer navigation
+        'telephone' => array(
+            'interior_school' => array(
+                'title' => 'Interior school',
+                'tel' => '+44(0)20 7730 5508'
+            ),
+            'garden_school' => array(
+                'title' => 'Garden school',
+                'tel' => '+44(0)20 7630 9011'
+            )
+        ),
+        // Apply for course text
+        'apply_details' => array(
+            'title' => 'I would like to get more information about: ',
+            'icon' => 'close'
         ),
         // Social navigation
         'social' => array(

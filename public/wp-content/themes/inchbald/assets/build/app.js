@@ -20706,7 +20706,7 @@ Accordion.prototype._attachHandlers = function($elem) {
  -----------------------------------*/
 module.exports = Accordion;
 
-},{"./config":10}],9:[function(require,module,exports){
+},{"./config":11}],9:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -20751,6 +20751,11 @@ require('./subpage-hero-paralax');
 require('./isotope-filter');
 
 /*------------------------------------*\
+	Show application form
+\*------------------------------------*/
+require('./application-form');
+
+/*------------------------------------*\
 	Masonry
 \*------------------------------------*/
 require('./masonry');
@@ -20786,7 +20791,42 @@ var $filterSelect = $('[data-filter-select]');
 
         }
 
-},{"./accordion":8,"./event-banner":11,"./filter-select":12,"./hero-carousel":13,"./isotope-filter":14,"./masonry":15,"./mobile-navigation":16,"./remodal":17,"./search-form":18,"./subpage-hero-paralax":19,"jquery":7}],10:[function(require,module,exports){
+},{"./accordion":8,"./application-form":10,"./event-banner":12,"./filter-select":13,"./hero-carousel":14,"./isotope-filter":15,"./masonry":16,"./mobile-navigation":17,"./remodal":18,"./search-form":19,"./subpage-hero-paralax":20,"jquery":7}],10:[function(require,module,exports){
+/* global require */
+/* global window */
+/* global site_data */
+/* jshint -W097 */
+
+
+(function($){
+
+    var $button = $('[data-apply-button]'),
+        $form = $('[data-application-form]'),
+        time = 250,
+        $formID = $("#form"),
+        $body = $('html, body'),
+        $close = $('[data-close-icon]');
+
+        $button.on('click', function(event){
+            event.preventDefault();
+            $form.slideToggle(time);
+
+            $body.animate({
+                scrollTop: $formID.offset().top -200
+            }, 1000);
+
+        });
+
+        $close.on('click', function(event){
+            event.preventDefault();
+
+            $form.slideUp(time);
+
+        });
+
+}(jQuery));
+
+},{}],11:[function(require,module,exports){
 /*------------------------------------*\
 	Site Config
 	All settings, configuration, event names, classes etc
@@ -20848,7 +20888,7 @@ var config = {
 
 module.exports = config;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -20910,7 +20950,7 @@ var slick = require('slickJS');
 
 }(jQuery));
 
-},{"slickJS":6}],12:[function(require,module,exports){
+},{"slickJS":6}],13:[function(require,module,exports){
 /**
 * Table data
 */
@@ -20964,7 +21004,7 @@ FilterSelect.prototype._attachHandlers = function($elem) {
  -----------------------------------*/
 module.exports = FilterSelect;
 
-},{"./config":10}],13:[function(require,module,exports){
+},{"./config":11}],14:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -20990,7 +21030,7 @@ var slick = require('slickJS');
                 asNavFor: $heroCarouselBackgroundImage,
                 fade: true,
                 autoplay: true,
-                autoplaySpeed: 7000,
+                autoplaySpeed: 4000,
                 accessibility: false,
                 arrow: false,
                 prevArrow: '.o-hero-carousel__controls__navigation--prev',
@@ -21016,7 +21056,7 @@ var slick = require('slickJS');
 
 }(jQuery));
 
-},{"slickJS":6}],14:[function(require,module,exports){
+},{"slickJS":6}],15:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -21127,7 +21167,7 @@ var $ = require('bbq');
 
 }(jQuery));
 
-},{"bbq":4,"isotope":3}],15:[function(require,module,exports){
+},{"bbq":4,"isotope":3}],16:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -21150,7 +21190,7 @@ var $ = require('isotope');
 
 }(jQuery));
 
-},{"isotope":3}],16:[function(require,module,exports){
+},{"isotope":3}],17:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -21257,7 +21297,7 @@ var mobileNavigation = (function() {
 
 }());
 
-},{"./config":10,"dynamics":1}],17:[function(require,module,exports){
+},{"./config":11,"dynamics":1}],18:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -21288,7 +21328,7 @@ var froogaloop = require('froogaloop');
 
 }());
 
-},{"froogaloop":2,"remodal":5}],18:[function(require,module,exports){
+},{"froogaloop":2,"remodal":5}],19:[function(require,module,exports){
 /* global require */
 /* global window */
 /* global site_data */
@@ -21329,7 +21369,7 @@ var $ = require('jquery'),
 
 }());
 
-},{"./config":10,"jquery":7}],19:[function(require,module,exports){
+},{"./config":11,"jquery":7}],20:[function(require,module,exports){
 
 function homeParallax() {
 

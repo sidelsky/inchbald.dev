@@ -6,6 +6,7 @@
         margin-bottom: 0;
         @include set-font-size(2.6rem, 2.6rem, 2.6rem);
         font-family: $font-primary--medium;
+        text-transform: capitalize;
 
     }
 
@@ -49,6 +50,17 @@
 
         }
 
+        // Garden design
+        &--other {
+
+            &::after {
+
+                background-color: $orange;
+
+            }
+
+        }
+
 
     }
 
@@ -59,6 +71,12 @@
         @include set-font-size(2.0rem, 2.0rem, 2.0rem);
         font-family: $font-primary--regular;
         margin-bottom: 0;
+
+        strong {
+
+            text-transform: uppercase;
+            
+        }
 
     }
 
@@ -82,6 +100,7 @@
         p {
 
             @include set-font-size(2.2rem, 2.2rem, 2.2rem);
+            margin-bottom: 0;
 
         }
 
@@ -99,6 +118,8 @@
 
                 background-color: $white;
                 color: $blue;
+                cursor: pointer;
+
             }
 
         }
@@ -117,9 +138,32 @@
 
         }
 
+        // Garden design
+        &--other {
+
+            background-color: $orange;
+
+        }
+
         &__col {
 
-            display: table-cell;
+            &:first-child {
+
+                margin-bottom: $spacing--tiny;
+
+                @include breakpoint($small) {
+
+                    margin-bottom: 0;
+
+                }
+
+            }
+
+            @include breakpoint($small) {
+
+                display: table-cell;
+
+            }
 
         }
 

@@ -1,44 +1,73 @@
-<footer class="page-footer" role="contentinfo">
+	<?php
 
-	<div class="u-max-width-container">
-		<div class="page-footer__columns">
+		/**
+		* Footer
+		*/
 
-			<div class="page-footer__column">
-				<?php include 'partials/inchbald-logo.php'; ?>
-			</div>
+	 ?>
+	 
+	<footer class="page-footer" role="contentinfo">
 
-			<div class="page-footer__column">
-				<nav class="footer-navigation">
-					<a href="<?php echo $content['footer_navigation']['visit']['url']; ?>" class="footer-navigation__item"><?php echo $content['footer_navigation']['visit']['title']; ?></a>
-					<a href="<?php echo $content['footer_navigation']['contact']['url']; ?>" class="footer-navigation__item"><?php echo $content['footer_navigation']['contact']['title']; ?></a>
-				</nav>
-				<span class="page-footer__copyright">
-					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>
-				</span>
-			</div>
+		<div class="u-max-width-container">
+			<div class="page-footer__columns">
 
-			<div class="page-footer__column">
-				<nav class="social-navigation">
+				<div class="page-footer__column">
+					<?php include 'partials/inchbald-logo.php'; ?>
+				</div>
+
+				<div class="page-footer__column">
+					<nav class="footer-navigation">
+						<?php
+							/**
+							* Footer links
+							*/
+							foreach ($content['footer_navigation'] as $key => $value) {
+								echo '<a href="' . $value['url'] . '" class="footer-navigation__item">' . $value['title'] . '</a>';
+							}
+						?>
+					</nav>
+
+					<nav class="footer-navigation">
 					<?php
+
 						/**
-						* Social icons
+						* Telephone
 						*/
-						foreach ($content['social'] as $key => $value) {
-							echo '<a href="' . $value['url'] . '" class="social-navigation__item">';
-							$svg_icon_args = array(
-								'icon' => $value['icon'],
-							);
-							svgIcon($svg_icon_args);
+						foreach ($content['telephone'] as $key => $value) {
+							echo '<a href="' . $value['tel'] . '" class="footer-navigation__item">';
+								echo $value['title'] . ':' . ' ' . $value['tel'];
 							echo '</a>';
 						}
-					?>
-				</nav>
+
+					 ?>
+					 </nav>
+					<span class="page-footer__copyright">
+						&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>
+					</span>
+				</div>
+
+				<div class="page-footer__column">
+					<nav class="social-navigation">
+						<?php
+							/**
+							* Social icons
+							*/
+							foreach ($content['social'] as $key => $value) {
+								echo '<a href="' . $value['url'] . '" class="social-navigation__item">';
+								$svg_icon_args = array(
+									'icon' => $value['icon'],
+								);
+								svgIcon($svg_icon_args);
+								echo '</a>';
+							}
+						?>
+					</nav>
+				</div>
+
 			</div>
-
 		</div>
-	</div>
 
-</footer>
+	</footer>
 
 </div> <!-- page-wrap END -->
 

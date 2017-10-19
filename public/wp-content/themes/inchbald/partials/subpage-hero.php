@@ -16,6 +16,10 @@
         $grandparent_get = get_post($parent);
         $grandparent = $grandparent_get->post_parent;
 
+        if( is_single() ) {
+            $thumbnail = NULL;
+        }
+
         if($thumbnail) {
             $class = '';
         } else {
@@ -39,24 +43,48 @@
                         // $name = str_replace('/', '<li class="o-subpage-hero__crumbs ' . $class . '">', $uri);
                         // echo $name . '</li>';
 
-
-
                         //If is courses
-                        if(is_singular('courses')) {
+                        if( is_home() ) {
 
-                            // echo '<li class="o-subpage-hero__crumbs">';
-                            //     echo 'Academics';
-                            // echo '</li>';
-
-                            echo '<li class="o-subpage-hero__crumbs">';
-                                echo 'Courses';
+                            echo '<li class="o-subpage-hero__crumbs o-subpage-hero__crumbs__main-title">';
+                                echo '<a href="/media/school-blog/">';
+                                    echo 'School blog';
+                                echo '</a>';
                             echo '</li>';
 
                         }
 
-                        echo '<li class="o-subpage-hero__crumbs ' . $class . '">';
-                            echo get_the_title($parent);
-                        echo '</li>';
+                        //If is courses
+                        if( is_singular('courses') ) {
+
+                            echo '<li class="o-subpage-hero__crumbs">';
+                                echo '<a href="/inchbald.co.uk/courses">';
+                                    echo 'Courses';
+                                echo '</a>';
+                            echo '</li>';
+
+                        }
+
+                        //If is single
+                        if( is_single() && !is_singular('courses') ) {
+
+                            echo '<li class="o-subpage-hero__crumbs">';
+                                echo '<a href="/media/school-blog/">';
+                                    echo 'School blog';
+                                echo '</a>';
+                            echo '</li>';
+
+                        }
+
+                        if( !is_home() ) {
+
+                            echo '<li class="o-subpage-hero__crumbs ' . $class . '">';
+                                echo '<a href="' . get_the_permalink($parent) . '">';
+                                    echo get_the_title($parent);
+                                echo '</a>';
+                            echo '</li>';
+
+                        }
 
                         if($parent) {
 

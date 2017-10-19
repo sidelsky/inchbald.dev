@@ -1,0 +1,156 @@
+.o-posts {
+
+    // Title
+    &__title {
+
+        @include set-font-size(2rem, 2rem, 2rem);
+        font-family: $font-primary--regular;
+        margin-bottom: $spacing--x-tiny;
+
+        a {
+
+            color: $black;
+
+            &:hover {
+
+                color: $orange;
+
+            }
+
+        }
+
+    }
+
+    // Meta
+    &__meta {
+
+        @include set-font-size(1.3rem, 1.3rem, 1.3rem);
+
+    }
+
+    // Term
+    &__term {
+
+        color: $black;
+
+    }
+
+    // Image
+    &__image {
+
+        margin-bottom: $spacing--tiny;
+        display: block;
+
+        img {
+
+            width: 100%;
+            display: block;
+
+        }
+
+    }
+
+    // Date
+    &__date {
+
+        display: block;
+        margin-bottom: $spacing--medium;
+        color: $black;
+
+    }
+
+    // Author
+    &__author {
+
+        display: block;
+        margin-bottom: $spacing--small;
+        color: $black;
+
+    }
+
+    // Excerpt
+    &__excerpt {
+
+        padding: 0 0 $spacing--small 0;
+        line-height: 1.4;
+        //margin-bottom: $spacing--small;
+
+    }
+
+}
+
+
+.read-more {
+
+    color: $orange;
+
+    a {
+
+        color: currentColor;
+        font-family: $font-primary--medium;
+
+        &:hover {
+
+            text-decoration: underline;
+
+        }
+
+    }
+
+}
+
+
+/**
+* Single posts
+*/
+.single-post {
+
+    .o-posts__term, .o-posts__date, .o-posts__author {
+
+        display: inline-block;
+        margin-right: $spacing--tiny;
+        margin-bottom: $spacing--small;
+
+        &:after {
+
+            display: none;
+
+        }
+
+    }
+
+}
+
+
+/**
+* Related posts
+*/
+.related-posts {
+
+    //Main title
+    &__main-title {
+
+        @include set-font-size(1.8rem, 1.8rem, 1.8rem);
+        font-family: $font-primary--regular;
+        text-align: center;
+
+        &:before {
+            content: '';
+            display: block;
+            height: 1px;
+            margin: 2rem auto;
+            width: 30px;
+            background-color: $orange;
+        }
+
+    }
+
+    // Post title
+    .o-posts__title {
+
+        @include set-font-size(1.5rem, 1.5rem, 1.5rem);
+        font-family: $font-primary--light;
+
+    }
+
+}

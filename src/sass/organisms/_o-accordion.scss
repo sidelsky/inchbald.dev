@@ -10,11 +10,12 @@
 
             background-color: $grey--lighter;
             display: block;
-            line-height: 3;
-            padding: 0 $spacing--small;
+            //line-height: 3;
+            padding: $spacing--x-small;
             position: relative;
             color: $black;
             @include set-font-size(1.8rem, 1.8rem, 1.8rem);
+            text-transform: capitalize;
 
             &::before,
             &::after {
@@ -105,6 +106,7 @@
         padding-right: $spacing--small;
         width: 35%;
         font-family: $font-primary--regular;
+        text-transform: capitalize;
 
     }
 

@@ -1,0 +1,76 @@
+.o-application-form {
+
+    -webkit-transition: max-height 1s;
+    display: none;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 1s;
+
+    .o-course__sub-title {
+
+        margin-top: $spacing--small;
+
+    }
+
+    .close-icon {
+
+        display: block;
+        font-size: 15px;
+        position: absolute;
+        right: $spacing--small;
+        top: $spacing--small;
+        z-index: 100;
+
+    }
+
+    .gform_button {
+
+        color: $white;
+        font-size: 18px!important;
+        padding: $spacing--x-small $spacing--x-medium;
+        text-transform: uppercase;
+    }
+
+}
+
+
+.download {
+
+    @include set-font-size(1.8rem, 2rem, 2.2rem);
+    color: $white;
+    display: inline-block;
+    padding: $spacing--x-small;
+
+}
+
+
+.garden-design-form {
+
+    .gform_button {
+
+        background-color: $green;
+
+    }
+
+    .download {
+
+        background-color: $grey;
+
+    }
+
+}
+
+.interior-design-form {
+
+    .gform_button {
+
+        background-color: $blue;
+    }
+
+    .download {
+
+        background-color: $grey;
+
+    }
+
+}

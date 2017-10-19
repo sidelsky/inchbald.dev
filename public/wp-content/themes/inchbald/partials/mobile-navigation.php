@@ -5,7 +5,7 @@
 
             wp_nav_menu( array(
 
-                'menu'            => 'Primary',
+                'menu'            => 'Primary navigation',
                 'container'       => 'nav',
                 'container_class' => 'mobile-navigation',
                 'theme_location'  => 'primary-menu',

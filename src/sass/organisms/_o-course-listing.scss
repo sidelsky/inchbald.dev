@@ -80,6 +80,7 @@
 
         @include set-font-size(1.5rem, 1.5rem, 1.5rem);
         font-family: $font-primary--regular;
+        text-transform: capitalize;
 
     }
 

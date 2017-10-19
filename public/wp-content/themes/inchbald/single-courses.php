@@ -116,15 +116,36 @@
 
 				if ( $second_term_name->name == 'Interior design' ) {
 					$class_name = 'o-course__cta--interior-design';
+					$form_name = 'interior-design-form';
 				}
 
 				if ( $second_term_name->name == 'Garden design' ) {
 					$class_name = 'o-course__cta--garden-design';
+					$form_name = 'garden-design-form';
 				}
 
 				echo '<div class="o-course__cta ' . $class_name . '">';
 					echo '<div class="o-course__cta__col"><p>' . $content['course_application']['title'] . '</p></div>';
-					echo '<div class="o-course__cta__col"><a href="' . $content['course_application']['url'] . '">' . $content['course_application']['button_title'] . '</a></div>';
+					echo '<div class="o-course__cta__col" data-apply-button><a href="#form">' . $content['course_application']['button_title'] . '</a></div>';
+				echo '</div>';
+
+				// Application form:
+				echo '<div class="o-application-form ' . $form_name . '" id="form" data-application-form>';
+					$svg_icon_args = array(
+						'icon' => $content['apply_details']['icon'],
+					);
+					echo '<a href="#" data-close-icon class="close-icon">';
+						svgIcon($svg_icon_args);
+					echo '</a>';
+
+					echo '<h2 class="o-course__sub-title">';
+						echo $content['apply_details']['title'] ;
+						echo '<strong>' . get_the_title() . '</strong>';
+					echo '</h2>';
+					echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]');
+
+					echo '<a class="download" href="http://79.170.40.173/inchbald.co.uk/wp-content/uploads/inchbald-prospectus.pdf" target="_blank">Download a prospectus</a>';
+
 				echo '</div>';
 
 			else :
@@ -134,8 +155,19 @@
 
 			endif;
 
+			//echo '<h2 class="related-posts__main-title">Courses</h2>';
+
+			/*
+			* Include courses
+			*/
+			include 'partials/course-list.php';
+
 		?>
+
+
 	</div>
+
+
 
 </section>
 

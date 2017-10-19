@@ -1,0 +1,147 @@
+/* == WordPress WYSIWYG Editor Styles == */
+
+.entry-content img {
+	margin: 0 0 1.5em 0;
+	}
+
+.alignleft, img.alignleft {
+	margin-right: 1.5em;
+	display: inline;
+	float: left;
+	width: 50%;
+	height: auto;
+
+	}
+
+.alignright, img.alignright {
+	margin-left: 1.5em;
+	display: inline;
+	float: right;
+	width: 50%;
+	height: auto;
+	}
+
+.aligncenter, img.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	clear: both;
+	}
+
+.alignnone, img.alignnone {
+	/* not sure about this one */
+	width: 100%;
+	height: auto;
+	}
+
+.wp-caption {
+	margin-bottom: 1.5em;
+	text-align: center;
+	padding-top: 5px;
+	}
+
+.wp-caption img {
+	border: 0 none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: auto;
+
+	}
+
+.wp-caption p.wp-caption-text {
+	line-height: 1.5;
+	font-size: 10px;
+	margin: 0;
+
+	}
+
+.wp-smiley {
+	margin: 0 !important;
+	max-height: 1em;
+	}
+
+blockquote.left {
+	margin-right: 20px;
+	text-align: right;
+	margin-left: 0;
+	width: 33%;
+	float: left;
+	}
+blockquote.right {
+	margin-left: 20px;
+	text-align: left;
+	margin-right: 0;
+	width: 33%;
+	float: right;
+	}
+.gallery dl {}
+.gallery dt {}
+.gallery dd {}
+.gallery dl a {}
+.gallery dl img {}
+.gallery-caption {}
+
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
+
+
+
+.blockquote {
+
+  padding: $spacing--medium $spacing--large-xx;
+
+
+  &__inner {
+
+    @include set-font-size(2rem, 2rem, 2rem);
+    color: $black;
+    font-family: $font-primary--light;
+
+    &::before,
+    &::after {
+
+      content: '"';
+      position: relative;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      display: inline-block;
+
+    }
+
+
+  }
+
+  &__cite {
+
+    @include set-font-size(1.2rem, 1.2rem, 1.2rem);
+    border-top: solid 1px $grey--darker;
+    color: $black;
+    display: block;
+    font-family: $font-primary--regular;
+    margin: $spacing--x-small 0;
+    padding-top: $spacing--x-small;
+
+  }
+
+}
+
+
+// @media (max-width: 988px){
+//
+//   .wp-caption {
+//
+// 	/* Force the box to be 100% */
+//     width: 100% !important;
+// 	height: auto !important;
+//
+//   }
+//   #content .wp-caption a img {
+//     /* Scale down if too big */
+//     max-width: 99.03225806%; /* 614/620 */
+//     height: auto;
+//   }
+// }
