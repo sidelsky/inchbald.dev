@@ -1,5 +1,11 @@
-<?php if( is_active_sidebar( 'sidebar' ) ) : ?>
-    <aside class="widgetized-page-before-content-widget-area">
-        <?php dynamic_sidebar( 'sidebar' ); ?>
-    </aside>
-<?php endif; ?>
+<aside class="sidebar" role="complementary">
+    		
+	<div class="sidebar-widget">
+		<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-1')) ?>
+	</div>
+	
+	<div class="sidebar-widget">
+		<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-2')) ?>
+	</div>
+		
+</aside>

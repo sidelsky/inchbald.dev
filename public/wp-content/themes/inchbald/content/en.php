@@ -2,6 +2,8 @@
     /**
     * English language
     */
+    //define("URL", '/inchbald.co.uk');
+
     $content = array(
         // No content notice
         'notice' => 'Sorry, nothing to display — please add some content!',
@@ -14,13 +16,13 @@
         'course_titles' => array(
             'interior' => array(
                 'title' => 'Interior Design<br>Courses',
-                'url' => '/inchbald.co.uk/academics/courses/#comboFilters%5BCourse+subject%5D=.interior-design',
+                'url' => '/academics/courses/#comboFilters%5BCourse+subject%5D=.interior-design',
                 'icon' => 'arrow',
                 'link_title' => 'View courses'
             ),
             'garden' => array(
                 'title' => 'Garden Design<br>Courses',
-                'url' => '/inchbald.co.uk/academics/courses/#comboFilters%5BCourse+subject%5D=.garden-design',
+                'url' => '/academics/courses/#comboFilters%5BCourse+subject%5D=.garden-design',
                 'icon' => 'arrow',
                 'link_title' => 'View courses'
             )

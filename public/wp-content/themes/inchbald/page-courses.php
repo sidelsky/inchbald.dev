@@ -18,7 +18,6 @@
 
 		<div class="l-lost-column--three-twelfths">
 			<?php echo list_child_pages(); ?>
-			<?php include 'sidebar.php'; ?>
 		</div>
 
 		<div class="l-lost-column--nine-twelfths">
