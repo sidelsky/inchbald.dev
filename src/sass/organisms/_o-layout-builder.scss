@@ -42,7 +42,6 @@
 
             }
 
-
         }
 
         // blu
@@ -53,7 +52,6 @@
                 background-color: $blue;
 
             }
-
 
         }
 
@@ -66,6 +64,16 @@
 
             }
 
+        }
+
+        // violet
+        &--violet {
+            
+            &::after {
+
+                background-color: $violet;
+
+            }
 
         }
 
@@ -132,6 +140,22 @@
 
         }
 
+        // violet
+        &--violet {
+            
+            background-color: $violet;
+            color: $white;
+
+            &:hover {
+
+                background-color: $white;
+                color: $violet;
+
+            }
+
+        }
+        
+
 
     }
 
@@ -144,13 +168,19 @@
         color: $white;
         display: table;
         margin: $spacing--tiny 0;
-        padding: $spacing--x-tiny $spacing--small;
+        padding: .6rem;
         width: 100%;
 
         p {
 
             @include set-font-size(2.2rem, 2.2rem, 2.2rem);
             margin-bottom: 0;
+
+            @include breakpoint($small)  {
+
+                margin-left: $spacing--tiny;
+
+            }
 
         }
 
@@ -161,9 +191,8 @@
             color: currentColor;
             display: block;
             font-family: $font-primary--regular;
-            padding: 1.5rem 3rem;
+            padding: 1rem 3rem;
             text-align: center;
-            margin-top: $spacing--tiny;
 
             @include breakpoint($small)  {
 
@@ -237,6 +266,25 @@
 
             }
 
+        }
+
+
+        // violet
+        &--violet {
+            
+            background-color: $violet;
+
+            a {
+
+                background-color: $violet;
+
+                &:hover {
+
+                    color: $violet;
+
+                }
+
+            }
 
         }
 
@@ -251,6 +299,7 @@
                 text-align: left;
                 display: table-cell;
                 width: 70%;
+                vertical-align: middle;
 
             }
 
@@ -271,7 +320,6 @@
         p {
 
             @include set-font-size(1.8rem, 2rem, 2.2rem);
-            font-family: $font-primary--regular;
 
         }
 
@@ -279,7 +327,7 @@
         &__col {
 
             display: block;
-            vertical-align: middle;
+            //vertical-align: middle;
             width: 100%;
 
             @include breakpoint($medium) {

@@ -16,7 +16,7 @@
         $grandparent_get = get_post($parent);
         $grandparent = $grandparent_get->post_parent;
 
-        if( is_single() ) {
+        if( is_single() || is_home() ) {
             $thumbnail = NULL;
         }
 

@@ -48,6 +48,10 @@
 									$colour_class = '--green';
 									break;
 
+								case 'violet':
+									$colour_class = '--violet';
+									break;
+
 								default:
 									$colour_class = '--orange';
 									break;
@@ -77,6 +81,10 @@
 
 								case 'green':
 									$colour_class = '--green';
+									break;
+
+								case 'violet':
+									$colour_class = '--violet';
 									break;
 
 								default:
@@ -109,6 +117,10 @@
 									$colour_class = '--green';
 									break;
 
+								case 'violet':
+									$colour_class = '--violet';
+									break;
+
 								default:
 									$colour_class = '--orange';
 									break;
@@ -116,9 +128,9 @@
 
 							echo '<div class="o-layout-builder__banner o-layout-builder__banner' . $colour_class . '">';
 								echo '<div class="o-layout-builder__banner__col">';
-									echo '<p>' . $banner_button_title . '</p>';
+									echo '<p>' . $banner_title . '</p>';
 								echo '</div>';
-								echo '<div class="o-layout-builder__banner__col" data-apply-button="">';
+								echo '<div class="o-layout-builder__banner__col">';
 									echo '<a href="' . $banner_button_link . '">' . $banner_button_title . '</a>';
 								echo '</div>';
 							echo '</div>';
@@ -133,8 +145,6 @@
 
 							$text_image_text = get_sub_field('text_image_text');
 							$text_image_image = get_sub_field('text_image_image');
-
-							//print_r($text_image_image);
 
 							echo '<div class="o-layout-builder__text_image">';
 								echo '<div class="o-layout-builder__text_image__col o-layout-builder__text_image__col--para">';
@@ -160,7 +170,7 @@
 
 
 						/**
-						* text paragragh
+						* Text paragragh
 						*/
 						if( get_row_layout() == 'full_width_paragraph' ) :
 

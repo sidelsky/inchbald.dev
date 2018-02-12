@@ -32,9 +32,10 @@
 
 						$from_date = get_field('from_date');
 						$to_date = get_field('to_date');
+						$event_link = get_field('event_link');
 
 						echo '<div class="o-event-banner__event">';
-							echo '<h3 class="o-event-banner__details">' . '<span>' . get_the_title() . '</span>' . ' <span class="u-hide-below--small">-</span> ' . '<span class="o-event-banner__date">' . $from_date . ' - ' . $to_date . '</span>' . '<a href="' . get_the_permalink() . '" class="o-event-banner__button">';
+							echo '<h3 class="o-event-banner__details">' . '<span>' . get_the_title() . '</span>' . ' <span class="u-hide-below--small">-</span> ' . '<span class="o-event-banner__date">' . $from_date . ' - ' . $to_date . '</span>' . '<a href="' . $event_link . '" class="o-event-banner__button">';
 								echo  $content['event_banner_cta']['title'];
 								svgIcon($svg_icon_args);
 							echo '</a></h3>';
