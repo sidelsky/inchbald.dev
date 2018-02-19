@@ -94,6 +94,7 @@
         padding: 1.5rem 3rem;
         text-align: center;
         transition: all ease .2s;
+        margin-bottom: 2rem;
 
         // orange
         &--orange {
@@ -154,6 +155,21 @@
             }
 
         }
+
+        // Center
+        &--align-center {
+
+            text-align: center
+
+        }
+
+        // Right
+        &--align-right {
+
+            text-align: right;
+
+        }
+
         
 
 

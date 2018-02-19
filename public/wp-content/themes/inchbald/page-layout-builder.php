@@ -11,12 +11,13 @@
 	<section role="main" class="u-max-width-container l-lost-grid u-section-padding-tb">
 
 		<div class="l-lost-column--three-twelfths">
-			<?php echo list_child_pages(); ?>
-			<?php include 'sidebar.php'; ?>
+			<?php
+				echo list_child_pages(); 
+				include 'sidebar.php';
+			?>
 		</div>
 
 		<div class="l-lost-column--nine-twelfths o-layout-builder">
-
 
 			<?php
 				/**
@@ -93,24 +94,23 @@
 							}
 
 							// Button alignment
-							$alignment = get_sub_field('alignment');
-
-							switch ($button_colour) {
+							$alignment = get_sub_field('button_alignment');
+							switch ($alignment) {
 
 								case 'center':
-									$button_alignment = '--center';
+									$button_alignment = '--align-center';
 									break;
 
 								case 'right':
-									$button_alignment = '--right';
+									$button_alignment = '--align-right';
 									break;
 
 								default:
-									$button_alignment = '--left';
+									$button_alignment = '--align-left';
 									break;
 							}
 
-							echo '<a href="' . $button_link . '" class="o-layout-builder__button o-layout-builder__button' . $colour_class . '">' . $button_title . '</a>';
+							echo '<div class="o-layout-builder__button' . $button_alignment . ' "><a href="' . $button_link . '" class="o-layout-builder__button o-layout-builder__button' . $colour_class . ' ">' . $button_title . '</a></div>';
 
 				        endif;
 
@@ -182,7 +182,7 @@
 
 							$full_width_image_image = get_sub_field('full_width_image_image');
 
-							echo '<img src="' . $full_width_image_image['url'] . '" class="o-layout-builder__full-with-image">';
+							echo '<img src="' . $full_width_image_image['url'] . '" class="o-layout-builder__full-with-image" />';
 
 						endif;
 
@@ -197,7 +197,7 @@
 							// no layouts found
 							echo '<div class="o-layout-builder__full-with-para">';
 								echo $text_paragraph;
-							echo '<div>';
+							echo '</div>';
 
 						endif;
 

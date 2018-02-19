@@ -3674,6 +3674,7 @@ body.single .page-item-235 a {
   padding: 1.5rem 3rem;
   text-align: center;
   transition: all ease .2s;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -3726,6 +3727,14 @@ body.single .page-item-235 a {
 .o-layout-builder__button--violet:hover {
   background-color: #fff;
   color: #9063CD;
+}
+
+.o-layout-builder__button--align-center {
+  text-align: center;
+}
+
+.o-layout-builder__button--align-right {
+  text-align: right;
 }
 
 .o-layout-builder__banner {
