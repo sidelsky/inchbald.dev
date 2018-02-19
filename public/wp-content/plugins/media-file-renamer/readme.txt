@@ -2,8 +2,8 @@
 Contributors: TigrouMeow
 Tags: rename, file, files, media, manager, image, renamer, wpml, optimization, seo, retina, gutenberg
 Requires at least: 4.6
-Tested up to: 4.9
-Stable tag: 4.0.1
+Tested up to: 4.9.4
+Stable tag: 4.0.2
 
 Automatically rename files depending on Media titles dynamically + update links. Pro version has many more options. Check the description :)
 
@@ -99,6 +99,10 @@ You are welcome to create plugins using Media File Renamer using special rules f
 5. Options for the automatic renaming (there are more options than just this).
 
 == Changelog ==
+
+= 4.0.2 =
+* Fix: PDF thumbnails support.
+* Update: Code improvement, faster SQL queries.
 
 = 4.0.1 =
 * Fix: Issue with the tolowercase feature.

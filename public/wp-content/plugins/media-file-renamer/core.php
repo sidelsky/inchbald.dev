@@ -105,7 +105,7 @@ class Meow_MFRH_Core {
 		}
 		// Compare filenames
 		foreach ( $fileArray as $file ) {
-			if ( preg_match( "/{$filename}/{$i}", $file ) ) {
+			if ( preg_match( "/" . preg_quote( $filename ) . "/{$i}", $file ) ) {
 				$output = $file;
 				break;
 			}
@@ -497,6 +497,7 @@ class Meow_MFRH_Core {
 		$old_filepath = get_attached_file( $id );
 		$old_filepath = Meow_MFRH_Core::sensitive_file_exists( $old_filepath );
 		$path_parts = pathinfo( $old_filepath );
+		//print_r( $path_parts );
 		$directory = $path_parts['dirname'];
 		$old_filename = $path_parts['basename'];
 
@@ -675,7 +676,7 @@ class Meow_MFRH_Core {
 			$wpdb->query( "DELETE FROM $wpdb->postmeta WHERE meta_key = '_manual_file_renaming'" );
 			$wpdb->query( "INSERT INTO $wpdb->postmeta (meta_key, meta_value, post_id)
 				SELECT '_manual_file_renaming', 1, p.ID
-				FROM $wpdb->posts p WHERE p.post_status = 'inherit' AND p.post_type = 'attachment'"
+				FROM $wpdb->posts p WHERE post_status = 'inherit' AND post_type = 'attachment'"
 			);
 			echo '<div class="updated"><p>';
 		  echo __( 'All the media files are now locked.', 'media-file-renamer' );
@@ -1103,18 +1104,12 @@ class Meow_MFRH_Core {
 			add_post_meta( $id, '_original_filename', $old_filename, true );
 
 		// Rename the main media file.
-		// try {
 		if ( !$this->rename_file( $old_filepath, $new_filepath, $case_issue ) && !$force_rename ) {
-			$this->log( "The file couldn't be renamed from $old_filepath to $new_filepath." );
+			$this->log( "[!] File $old_filepath -> $new_filepath" );
 			return $post;
 		}
-		$this->log( "File $old_filepath renamed to $new_filepath." );
+		$this->log( "File\t$old_filepath -> $new_filepath" );
 		do_action( 'mfrh_path_renamed', $post, $old_filepath, $new_filepath );
-		// }
-		// catch ( Exception $e ) {
-		// 	$this->log( "The file couldn't be renamed from $old_filepath to $new_filepath." );
-		// 	return $post;
-		// }
 
 		// The new extension (or maybe it's just the old one)
 		$old_ext = $path_parts['extension'];
@@ -1130,6 +1125,7 @@ class Meow_MFRH_Core {
 
 		// Update the attachment meta
 		$meta = wp_get_attachment_metadata( $id );
+
 		if ( $meta ) {
 			if ( isset( $meta['file'] ) && !empty( $meta['file'] ) )
 				$meta['file'] = $this->str_replace( $noext_old_filename, $noext_new_filename, $meta['file'] );
@@ -1139,74 +1135,73 @@ class Meow_MFRH_Core {
 				$meta['url'] = $noext_new_filename . '.' . $old_ext;
 		}
 
-		// Images
-		if ( wp_attachment_is_image( $id ) ) {
-			// Loop through the different sizes in the case of an image, and rename them.
+		// Better to check like this rather than with wp_attachment_is_image
+		// PDFs also have thumbnails now, since WP 4.7
+		$has_thumbnails = isset( $meta['sizes'] );
+
+		// Loop through the different sizes in the case of an image, and rename them.
+		if ( $has_thumbnails ) {
 			$orig_image_urls = array();
 			$orig_image_data = wp_get_attachment_image_src( $id, 'full' );
 			$orig_image_urls['full'] = $orig_image_data[0];
-			if ( empty( $meta['sizes'] ) ) {
-				$this->log( "The WP metadata for attachment " . $id . " does not exist.", true );
-			}
-			else {
-				foreach ( $meta['sizes'] as $size => $meta_size ) {
-					if ( !isset($meta['sizes'][$size]['file'] ) )
-						continue;
-					$meta_old_filename = $meta['sizes'][$size]['file'];
-					$meta_old_filepath = trailingslashit( $directory ) . $meta_old_filename;
-					$meta_new_filename = $this->str_replace( $noext_old_filename, $noext_new_filename, $meta_old_filename );
+			foreach ( $meta['sizes'] as $size => $meta_size ) {
+				if ( !isset($meta['sizes'][$size]['file'] ) )
+					continue;
+				$meta_old_filename = $meta['sizes'][$size]['file'];
+				$meta_old_filepath = trailingslashit( $directory ) . $meta_old_filename;
+				$meta_new_filename = $this->str_replace( $noext_old_filename, $noext_new_filename, $meta_old_filename );
 
-					// Manual Rename also uses the new extension (if it was not stripped to avoid user mistake)
-					if ( $force_rename && !empty( $new_ext ) ) {
-						$meta_new_filename = $this->str_replace( $old_ext, $new_ext, $meta_new_filename );
+				// Manual Rename also uses the new extension (if it was not stripped to avoid user mistake)
+				if ( $force_rename && !empty( $new_ext ) ) {
+					$meta_new_filename = $this->str_replace( $old_ext, $new_ext, $meta_new_filename );
+				}
+
+				$meta_new_filepath = trailingslashit( $directory ) . $meta_new_filename;
+				$orig_image_data = wp_get_attachment_image_src( $id, $size );
+				$orig_image_urls[$size] = $orig_image_data[0];
+
+				// Double check files exist before trying to rename.
+				if ( $force_rename || ( file_exists( $meta_old_filepath ) 
+						&& ( ( !file_exists( $meta_new_filepath ) ) || is_writable( $meta_new_filepath ) ) ) ) {
+					// WP Retina 2x is detected, let's rename those files as well
+					if ( function_exists( 'wr2x_get_retina' ) ) {
+						$wr2x_old_filepath = $this->str_replace( '.' . $old_ext, '@2x.' . $old_ext, $meta_old_filepath );
+						$wr2x_new_filepath = $this->str_replace( '.' . $new_ext, '@2x.' . $new_ext, $meta_new_filepath );
+						if ( file_exists( $wr2x_old_filepath ) 
+							&& ( ( !file_exists( $wr2x_new_filepath ) ) || is_writable( $wr2x_new_filepath ) ) ) {
+							
+							// Rename retina file
+							if ( !$this->rename_file( $wr2x_old_filepath, $wr2x_new_filepath, $case_issue ) && !$force_rename ) {
+								$this->log( "[!] Retina $wr2x_old_filepath -> $wr2x_new_filepath" );
+								return $post;
+							}
+							$this->log( "Retina\t$wr2x_old_filepath -> $wr2x_new_filepath" );
+							do_action( 'mfrh_path_renamed', $post, $wr2x_old_filepath, $wr2x_new_filepath );
+						}
 					}
 
-					$meta_new_filepath = trailingslashit( $directory ) . $meta_new_filename;
-					$orig_image_data = wp_get_attachment_image_src( $id, $size );
-					$orig_image_urls[$size] = $orig_image_data[0];
-
-					// Double check files exist before trying to rename.
-					if ( $force_rename || ( file_exists( $meta_old_filepath ) 
-							&& ( ( !file_exists( $meta_new_filepath ) ) || is_writable( $meta_new_filepath ) ) ) ) {
-						// WP Retina 2x is detected, let's rename those files as well
-						if ( function_exists( 'wr2x_get_retina' ) ) {
-							$wr2x_old_filepath = $this->str_replace( '.' . $old_ext, '@2x.' . $old_ext, $meta_old_filepath );
-							$wr2x_new_filepath = $this->str_replace( '.' . $new_ext, '@2x.' . $new_ext, $meta_new_filepath );
-							if ( file_exists( $wr2x_old_filepath ) && ( ( !file_exists( $wr2x_new_filepath ) ) || is_writable( $wr2x_new_filepath ) ) ) {
-								
-								// Rename retina file
-								if ( !$this->rename_file( $wr2x_old_filepath, $wr2x_new_filepath, $case_issue ) && !$force_rename ) {
-									$this->log( "The file couldn't be renamed from $wr2x_old_filepath to $wr2x_new_filepath." );
-									return $post;
-								}
-								$this->log( "Retina file $wr2x_old_filepath renamed to $wr2x_new_filepath." );
-								do_action( 'mfrh_path_renamed', $post, $wr2x_old_filepath, $wr2x_new_filepath );
-							}
-						}
-
-						// Rename meta file
-						if ( !$this->rename_file( $meta_old_filepath, $meta_new_filepath, $case_issue ) && !$force_rename ) {
-							$this->log( "The file couldn't be renamed from $meta_old_filepath to $meta_new_filepath." );
-							return $post;
-						}
-
-						$meta['sizes'][$size]['file'] = $meta_new_filename;
-
-						// Detect if another size has exactly the same filename
-						foreach ( $meta['sizes'] as $s => $m ) {
-							if ( !isset( $meta['sizes'][$s]['file'] ) )
-								continue;
-							if ( $meta['sizes'][$s]['file'] ==  $meta_old_filename ) {
-								$this->log( "Updated $s based on $size, as they use the same file (probably same size)." );
-								$meta['sizes'][$s]['file'] = $meta_new_filename;
-							}
-						}
-
-						// Success, call other plugins
-						$this->log( "File $meta_old_filepath renamed to $meta_new_filepath." );
-						do_action( 'mfrh_path_renamed', $post, $meta_old_filepath, $meta_new_filepath );
-
+					// Rename meta file
+					if ( !$this->rename_file( $meta_old_filepath, $meta_new_filepath, $case_issue ) && !$force_rename ) {
+						$this->log( "[!] File $meta_old_filepath -> $meta_new_filepath" );
+						return $post;
 					}
+
+					$meta['sizes'][$size]['file'] = $meta_new_filename;
+
+					// Detect if another size has exactly the same filename
+					foreach ( $meta['sizes'] as $s => $m ) {
+						if ( !isset( $meta['sizes'][$s]['file'] ) )
+							continue;
+						if ( $meta['sizes'][$s]['file'] ==  $meta_old_filename ) {
+							$this->log( "Updated $s based on $size, as they use the same file (probably same size)." );
+							$meta['sizes'][$s]['file'] = $meta_new_filename;
+						}
+					}
+
+					// Success, call other plugins
+					$this->log( "File\t$meta_old_filepath -> $meta_new_filepath" );
+					do_action( 'mfrh_path_renamed', $post, $meta_old_filepath, $meta_new_filepath );
+
 				}
 			}
 		}
@@ -1227,13 +1222,22 @@ class Meow_MFRH_Core {
 		update_attached_file( $id, $new_filepath );
 		clean_post_cache( $id );
 
+		// Rename slug/permalink
+		if ( get_option( "mfrh_rename_slug" ) ) {
+			$oldslug = $post['post_name'];
+			$info = pathinfo( $new_filepath );
+			$newslug = preg_replace( '/\\.[^.\\s]{3,4}$/', '', $info['basename'] );
+			$post['post_name'] = $newslug;
+			if ( wp_update_post( $post ) )
+				$this->log( "Slug\t$oldslug -> $newslug" );
+		}
+
 		// Call the actions so that the plugin's plugins can update everything else (than the files)
-		if ( wp_attachment_is_image( $id ) ) {
+		if ( $has_thumbnails ) {
 			$orig_image_url = $orig_image_urls['full'];
 			$new_image_data = wp_get_attachment_image_src( $id, 'full' );
 			$new_image_url = $new_image_data[0];
 			$this->call_hooks_rename_url( $post, $orig_image_url, $new_image_url );
-
 			if ( !empty( $meta['sizes'] ) ) {
 				foreach ( $meta['sizes'] as $size => $meta_size ) {
 					$orig_image_url = $orig_image_urls[$size];
@@ -1248,18 +1252,9 @@ class Meow_MFRH_Core {
 			$this->call_hooks_rename_url( $post, $orig_attachment_url, $new_attachment_url );
 		}
 
-		// SLUG
-		if ( get_option( "mfrh_rename_slug" ) ) {
-			$oldslug = $post['post_name'];
-			$info = pathinfo( $new_filepath );
-			$newslug = preg_replace( '/\\.[^.\\s]{3,4}$/', '', $info['basename'] );
-			$post['post_name'] = $newslug;
-			if ( wp_update_post( $post ) )
-				$this->log( "Renamed slug from $oldslug to $newslug." );
-		}
-
 		// HTTP REFERER set to the new media link
-		if ( isset( $_REQUEST['_wp_original_http_referer'] ) && strpos( $_REQUEST['_wp_original_http_referer'], '/wp-admin/' ) === false ) {
+		if ( isset( $_REQUEST['_wp_original_http_referer'] ) && 
+			strpos( $_REQUEST['_wp_original_http_referer'], '/wp-admin/' ) === false ) {
 			$_REQUEST['_wp_original_http_referer'] = get_permalink( $id );
 		}
 
@@ -1303,24 +1298,26 @@ class Meow_MFRH_Core {
 		$this->log_sql( $query, $query_revert );
 		$wpdb->query( $query );
 		clean_post_cache( $post['ID'] );
-		$this->log( "Guid $old_guid changed to $new_filepath." );
+		$this->log( "GUID\t$old_guid -> $new_filepath." );
 	}
 
 	// Mass update of all the meta with the new filenames
 	function action_update_postmeta( $post, $orig_image_url, $new_image_url ) {
 		global $wpdb;
-		$query = $wpdb->prepare( "UPDATE $wpdb->postmeta SET meta_value = '%s'
+		$query = $wpdb->prepare( "UPDATE $wpdb->postmeta 
+			SET meta_value = '%s'
 			WHERE meta_key <> '_original_filename'
 			AND (TRIM(meta_value) = '%s'
 			OR TRIM(meta_value) = '%s'
 		);", $new_image_url, $orig_image_url, str_replace( ' ', '%20', $orig_image_url ) );
-		$query_revert = $wpdb->prepare( "UPDATE $wpdb->postmeta SET meta_value = '%s'
+		$query_revert = $wpdb->prepare( "UPDATE $wpdb->postmeta 
+			SET meta_value = '%s'
 			WHERE meta_key <> '_original_filename'
 			AND meta_value = '%s';
 		", $orig_image_url, $new_image_url );
 		$wpdb->query( $query );
 		$this->log_sql( $query, $query_revert );
-		$this->log( "Metadata exactly like $orig_image_url were replaced by $new_image_url." );
+		$this->log( "Meta\t$orig_image_url -> $new_image_url" );
 	}
 
 	// Mass update of all the articles with the new filenames
@@ -1328,17 +1325,61 @@ class Meow_MFRH_Core {
 		global $wpdb;
 
 		// Content
-		$query = $wpdb->prepare( "UPDATE $wpdb->posts SET post_content = REPLACE(post_content, '%s', '%s');", $orig_image_url, $new_image_url );
-		$query_revert = $wpdb->prepare( "UPDATE $wpdb->posts SET post_content = REPLACE(post_content, '%s', '%s');", $new_image_url, $orig_image_url );
+		$query = $wpdb->prepare( "UPDATE $wpdb->posts 
+			SET post_content = REPLACE(post_content, '%s', '%s')
+			WHERE post_status != 'inherit'
+			AND post_status != 'trash'
+			AND post_type != 'attachment'
+			AND post_type NOT LIKE '%acf-%'
+			AND post_type NOT LIKE '%edd_%'
+			AND post_type != 'shop_order'
+			AND post_type != 'shop_order_refund'
+			AND post_type != 'nav_menu_item'
+			AND post_type != 'revision'
+			AND post_type != 'auto-draft'", $orig_image_url, $new_image_url );
+		$query_revert = $wpdb->prepare( "UPDATE $wpdb->posts 
+			SET post_content = REPLACE(post_content, '%s', '%s')
+			WHERE post_status != 'inherit'
+			AND post_status != 'trash'
+			AND post_type != 'attachment'
+			AND post_type NOT LIKE '%acf-%'
+			AND post_type NOT LIKE '%edd_%'
+			AND post_type != 'shop_order'
+			AND post_type != 'shop_order_refund'
+			AND post_type != 'nav_menu_item'
+			AND post_type != 'revision'
+			AND post_type != 'auto-draft'", $new_image_url, $orig_image_url );
 		$wpdb->query( $query );
 		$this->log_sql( $query, $query_revert );
-		$this->log( "Post content like $orig_image_url were replaced by $new_image_url." );
-
+		$this->log( "Content\t$orig_image_url -> $new_image_url" );
+		
 		// Excerpt
-		$query = $wpdb->prepare( "UPDATE $wpdb->posts SET post_excerpt = REPLACE(post_excerpt, '%s', '%s');", $orig_image_url, $new_image_url );
-		$query_revert = $wpdb->prepare( "UPDATE $wpdb->posts SET post_excerpt = REPLACE(post_excerpt, '%s', '%s');", $new_image_url, $orig_image_url );
+		$query = $wpdb->prepare( "UPDATE $wpdb->posts 
+			SET post_excerpt = REPLACE(post_excerpt, '%s', '%s')
+			WHERE post_status != 'inherit'
+			AND post_status != 'trash'
+			AND post_type != 'attachment'
+			AND post_type NOT LIKE '%acf-%'
+			AND post_type NOT LIKE '%edd_%'
+			AND post_type != 'shop_order'
+			AND post_type != 'shop_order_refund'
+			AND post_type != 'nav_menu_item'
+			AND post_type != 'revision'
+			AND post_type != 'auto-draft'", $orig_image_url, $new_image_url );
+		$query_revert = $wpdb->prepare( "UPDATE $wpdb->posts 
+			SET post_excerpt = REPLACE(post_excerpt, '%s', '%s')
+			WHERE post_status != 'inherit'
+			AND post_status != 'trash'
+			AND post_type != 'attachment'
+			AND post_type NOT LIKE '%acf-%'
+			AND post_type NOT LIKE '%edd_%'
+			AND post_type != 'shop_order'
+			AND post_type != 'shop_order_refund'
+			AND post_type != 'nav_menu_item'
+			AND post_type != 'revision'
+			AND post_type != 'auto-draft'", $new_image_url, $orig_image_url );
 		$wpdb->query( $query );
 		$this->log_sql( $query, $query_revert );
-		$this->log( "Post content like $orig_image_url were replaced by $new_image_url." );
+		$this->log( "Excerpt\t$orig_image_url -> $new_image_url" );
 	}
 }

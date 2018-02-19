@@ -92,6 +92,24 @@
 									break;
 							}
 
+							// Button alignment
+							$alignment = get_sub_field('alignment');
+
+							switch ($button_colour) {
+
+								case 'center':
+									$button_alignment = '--center';
+									break;
+
+								case 'right':
+									$button_alignment = '--right';
+									break;
+
+								default:
+									$button_alignment = '--left';
+									break;
+							}
+
 							echo '<a href="' . $button_link . '" class="o-layout-builder__button o-layout-builder__button' . $colour_class . '">' . $button_title . '</a>';
 
 				        endif;
