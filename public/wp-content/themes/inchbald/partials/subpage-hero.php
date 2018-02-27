@@ -5,7 +5,7 @@
     */
 
     // Check if it's NOT the home page (Front page)
-    if( !is_front_page() ) {
+    if( !is_front_page() && !is_search() ) {
 
         // Get the featured image
         $thumbnail = get_the_post_thumbnail_url();
@@ -16,7 +16,7 @@
         $grandparent_get = get_post($parent);
         $grandparent = $grandparent_get->post_parent;
 
-        if( is_single() || is_home() ) {
+        if( is_single() || is_home() || is_search() ) {
             $thumbnail = NULL;
         }
 
@@ -86,6 +86,7 @@
 
                         }
 
+
                         if($parent) {
 
                             // Parent title
@@ -100,5 +101,29 @@
         echo '</section>';
 
     }
+
+
+    //If is Search
+    if( is_search() ) {
+
+        echo '<section class="o-subpage-hero o-subpage-hero--shallow">';
+            echo '<div class="o-subpage-hero__inner">';
+                echo '<div class="u-max-width-container">';
+                    echo '<ul class="o-subpage-hero__bread">';
+
+                        echo '<li class="o-subpage-hero__crumbs">';
+                            echo 'Search results for ';
+                        echo '</li>';
+
+                        echo '<li class="o-subpage-hero__crumbs o-subpage-hero__crumbs__main-title">';
+                            the_search_query();
+                        echo '</li>';
+
+                    echo '</ul>';
+                echo '</div>';
+            echo '</div>';
+        echo '</section>';
+
+    }   
 
  ?>

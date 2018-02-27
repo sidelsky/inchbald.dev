@@ -3530,6 +3530,12 @@ body.single .page-item-235 a {
   }
 }
 
+.o-posts__search-result {
+  line-height: 6rem;
+  border-bottom: solid 1px #ebebeb;
+  margin: 0;
+}
+
 .o-application-form {
   -webkit-transition: max-height 1s;
   display: none;
